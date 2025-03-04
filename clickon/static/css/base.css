@@ -15,13 +15,18 @@
     --madimi-one: "Madimi One", sans-serif;
   }
   
-  body {
+html{
+    min-height: 100vh;
+}
+
+body {
     font-family: var(--ubuntu);
+    min-height: 100vh;
     margin: 0;
     padding: 0;
     background-color: var(--white-background);
-  }
-  
+}
+
   .container-fluid{
     max-width: 1440px;
     margin: 0 auto;
@@ -33,9 +38,11 @@
   }
 
   .container-navbar{
-    position: relative;
+    position: sticky;
     max-width: 1440px;
+    height: 130px;
     margin: 0 auto;
+    z-index: 500;
   }
 
   .navbar-brand{
@@ -501,4 +508,76 @@
 
 .auth-button-lg .nav-link:hover {
     color: var(--primary-green)
+}
+
+
+/* Cards */
+.categorias-container{
+  margin: auto auto 50px auto;
+  max-width: 1440px;
+}
+
+.categoria-top{
+  margin-top: 100px;
+}
+
+.categorias-container h2{
+  font-family: var(--madimi-one);
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--primary-green);
+}
+
+.categorias-container .top-container{
+  padding-bottom: 24px;
+}
+
+.categorias-container .top-container .todos-container p{
+    font-weight: 500;
+    color: var(--primary-green);
+    margin: auto 20px auto auto;
+}
+
+.categorias-container .top-container .todos-container i{
+  color: var(--primary-green);
+}
+
+.card{
+  width: 320px;
+  height: 200px;
+  border-radius: 20px;
+  border: none;
+}
+
+.card .card-image{
+    width: 100%;
+    height: 130px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.card .card-info{
+    height: 70px;
+    width: 100%;
+}
+
+.card .card-info .logo{
+    width: 36px;
+    height: 36px;
+    border-radius: 20px;
+}
+
+.card .card-info h3{
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 0px;
+}
+
+.card .card-info p{
+  font-size: 14px;
+  margin: 0px;
+}
+
+.card .card-info .bold{
+  font-weight: 500;
 }
