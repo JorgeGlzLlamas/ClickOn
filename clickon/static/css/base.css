@@ -52,11 +52,6 @@ body {
     height: 130px;
     margin: 0 auto;
     z-index: 500;
-
-    position: relative;
-    max-width: 1440px;
-    margin: 0 auto;
-
   }
 
   .navbar-brand{
@@ -555,8 +550,21 @@ body {
   color: var(--primary-green);
 }
 
+@media (min-width: 1440px) {
+  .cards-container {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 1439px) {
+  .cards-container {
+    gap: 16px; 
+    justify-content: flex-start; 
+  }
+}
+
 .card{
-  width: 320px;
+  flex: 0 0 320px;
   height: 200px;
   border-radius: 20px;
   border: none;
