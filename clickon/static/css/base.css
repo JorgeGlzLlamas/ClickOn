@@ -727,3 +727,258 @@ body {
 .categorias-busquedas-filtros .busquedas-frecuentes-container p{
   margin-bottom: 0px;
 }
+
+/* Footer */
+.footer {
+  background-color: var(--dark-green);
+  color: var(--white);
+  width: 100%;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.logo-section {
+  position: relative;
+  min-width: 280px;
+}
+
+.logo-container {
+  background-color: var(--light-green);
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  padding: 20px;
+  width: 280px;
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  width: 24px;
+  height: 16px;
+  margin-right: 10px;
+}
+
+.logo-text {
+  color: var(--white);
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.footer-links {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  gap: 40px;
+}
+
+.footer-column h3 {
+  font-size: 16px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 14px;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.footer-column ul li a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.social-media {
+  display: flex;
+  gap: 20px;
+}
+
+.social-icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--white);
+}
+
+.container-cards{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  overflow-x: auto;
+  padding: 10rem 0;
+}
+
+@media (max-width: 768px) {
+  .responsive-cards{
+      grid-template-columns: repeat(2, 2fr);
+      gap: 50px;  
+  }
+}
+
+@media (max-width: 480px) {
+  .container-cards {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.footer-bottom {
+  background-color: var(--light-green);
+  padding: 15px 0;
+}
+
+.footer-bottom-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copyright {
+  font-size: 14px;
+}
+
+.privacy-link {
+  color: var(--white);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.privacy-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 992px) {
+  .footer-content {
+      flex-direction: column;
+  }
+
+  .logo-section {
+      margin-bottom: 30px;
+  }
+
+  .footer-links {
+      flex-direction: column;
+      gap: 30px;
+  }
+
+  .social-media {
+      margin-top: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-bottom-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+  }
+}
+
+
+/* Categorías Populares */
+.texto-cards {
+	position: absolute;
+	font-size: 20px;
+	position: absolute;
+	text-align: center;
+	color: var(--primary-green);
+	width: 100%;
+	height: 100%;
+}
+
+.category-card {
+  width: 280px;
+  height: 320px;
+  border-radius: 25px;
+  position: relative;
+  background: linear-gradient(176.02deg, #FFFFFF 3.38%, #9DE11A 43.46%, #5AAA08 83.19%);
+  padding: 20px;
+  text-align: center;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.circular-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin: -60px auto 15px;
+  overflow: hidden;
+  border: 4px solid #ffffff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.circular-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.category-name {
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  margin: 10px 0;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+.price-range {
+  color: white;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.rating {
+  display: inline-block;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  float: right;
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 50% rrgba(254, 250, 250, 0.2)!important;
+  -webkit-text-stroke: 1px white;
+  margin: 0 3px;
+  transition: color 0.3s;
+}
+
+/* Rectangle 16 */
+
+.rating label:before {
+  content: '\2605';
+  font-size: 40px;
+}
+
+.rating input:checked ~ label,
+.rating label:hover,
+.rating label:hover ~ label {
+  color: var(--dark-green);
+  transition: color 0.3s;
+}
+
+
