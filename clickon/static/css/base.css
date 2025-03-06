@@ -14,7 +14,6 @@
     --ubuntu: "Ubuntu", sans-serif;
     --madimi-one: "Madimi One", sans-serif;
   }
-  
 
 html{
     min-height: 100vh;
@@ -51,7 +50,7 @@ body {
     max-width: 1440px;
     height: 130px;
     margin: 0 auto;
-    z-index: 500;
+    z-index: 3000;
   }
 
   .navbar-brand{
@@ -110,6 +109,66 @@ body {
   }
   
   /* Main Header */
+
+.header-container{
+  width: 100%;
+}
+
+.header-container .info-header-container{
+    display: flex;
+    justify-content: center;
+}
+
+.header-container .info-header-container form{
+    margin: auto;
+    z-index: 2000 !important;
+    font-family: var(--madimi-one);
+    font-size: 40px;
+    font-weight: 500;
+    color: var(--white);
+}
+
+.info-header-container form h2{
+  text-align: center;
+}
+
+.info-header-container form .cp-form{
+    background-color: var(--white);
+    width: 700px;
+    height: 60px;
+    border-radius: 50px;
+}
+
+.info-header-container form .cp-form input{
+    margin-left: 20px;
+    height: 30px;
+    border: none;
+    width: 100%;
+    font-family: var(--ubuntu);
+    font-size: 20px;
+}
+
+.info-header-container form .cp-form button{
+    margin-right: 20px;
+}
+.info-header-container form .cp-form button i{
+    margin: 0;
+}
+
+.info-header-container form .cp-form input:focus{
+  outline: none;
+}
+
+
+
+
+.dark-shadow{
+  background-color: var(--text);
+  height: 600px;
+  z-index: 50;
+  opacity: 65%;
+}
+
   .main-header {
     background-color: var(--white);
     position: absolute;
@@ -550,6 +609,30 @@ body {
   color: var(--primary-green);
 }
 
+.cards-container .position{
+    top: 10px;
+    left: 20px;
+    background-color: var(--dark-green);
+    border-radius: 10px;
+    width: 130px;
+}
+
+.cards-container .light-green{
+    background-color: var(--light-green);
+}
+
+.cards-container .position p{
+    padding: 5px 0px;
+    margin: 0px;
+    text-align: center;
+    color: var(--white);
+}
+
+.cards-container .light-green p{
+    color: var(--text);
+}
+
+
 @media (min-width: 1440px) {
   .cards-container {
     justify-content: space-between;
@@ -603,3 +686,44 @@ body {
   font-weight: 500;
 }
 
+
+.categorias-busquedas-filtros{
+  max-width: 1440px;
+  margin: 600px auto 0px auto;
+}
+
+.categorias-busquedas-filtros .categorias{
+    width: 100%;
+}
+
+.categorias-busquedas-filtros .categorias a{
+    text-decoration: none;
+    border-bottom: 1px solid var(--text);
+    padding: 0px 20px;
+}
+
+.categorias-busquedas-filtros .categorias .active{
+    border-bottom: 1px solid var(--primary-green);
+    color: var(--primary-green);
+}
+
+.categorias-busquedas-filtros .busquedas-frecuentes-container{
+    padding: 24px 0px;
+    width: 100%;
+}
+
+.categorias-busquedas-filtros .busquedas-frecuentes-container .busquedas-frecuentes{
+  width: 100%;
+}
+
+.categorias-busquedas-filtros .busquedas-frecuentes-container img{
+  width: 80px;
+  height: 80px;
+  border: 1px solid black;
+  margin: auto;
+
+}
+
+.categorias-busquedas-filtros .busquedas-frecuentes-container p{
+  margin-bottom: 0px;
+}

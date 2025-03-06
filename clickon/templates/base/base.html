@@ -23,10 +23,70 @@
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
     </head>
     <body>
+        <div class="position-absolute top-0 header-container w-100"  style="height: 600px;">
+            <div class="position-relative">
+                <div class="postion-absolute top-0 info-header-container" style="height: 600px;">
+                    <form>
+                        <h2>Todo lo que necesitas al alcance de un click</h2>
+                        <div class="d-flex align-items-center justify-content-between cp-form">
+                            <input class="search-cp-control" 
+                                placeholder="Ingresa tu código postal para mejorar tu experiencia" />
+                            <button class="search-btn p-0 search-cp-control" type="submit">
+                                <i class="bi bi-send fs-4"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="position-absolute dark-shadow top-0 w-100" style="height: 600px;"></div>
+                <div class="position-absolute w-100 top-0">
+                    <img src="{% static "img/googlemaps.webp" %}" class="w-100" style="height: 600px;" />
+                </div>
+            </div>
+        </div>
         <header class="container-navbar sticky-top px-0">
             {% include "base/includes/navbar.html" %}            
         </header>
         
+        <div class="categorias-busquedas-filtros">
+            <div class="d-flex categorias align-items-center">
+                <a href="#" class="active">Todos</a>
+                <a href="#">Comida rápida</a>
+                <a href="#">Comida saludable</a>
+                <a href="#">Bebidas</a>
+                <a href="#">Postres</a>
+                <a href="#">Despensa</a>
+                <a href="#">Congelados</a>
+                <a href="#">Dietas especiales</a>
+            </div>
+            <div class="busquedas-frecuentes-container d-flex align-items-center">
+                <i class="bi bi-arrow-left-circle-fill fs-4 me-2"></i>
+                <div class="busquedas-frecuentes d-flex align-items-center">
+                    <div class="busqueda-card gap-3">
+                        <img src="#" />
+                        <p>Búsqueda 1</p>
+                    </div>
+                    <div class="busqueda-card gap-3">
+                        <img src="#" />
+                        <p>Búsqueda 1</p>
+                    </div>
+                    <div class="busqueda-card gap-3">
+                        <img src="#" />
+                        <p>Búsqueda 1</p>
+                    </div>
+                    <div class="busqueda-card gap-3">
+                        <img src="#" />
+                        <p>Búsqueda 1</p>
+                    </div>
+                    <div class="busqueda-card gap-3">
+                        <img src="#" />
+                        <p>Búsqueda 1</p>
+                    </div>
+                </div>
+                <i class="bi bi-arrow-right-circle-fill fs-4 ms-2"></i>
+            </div>
+            <div class="d-flex filters-container">
+            </div>
+        </div>
 
         {% include "base/includes/cards.html" %}
 
