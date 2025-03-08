@@ -62,7 +62,6 @@ body {
     width: 350px;
     z-index: 9999 !important;
   }
-
   
   /* Promotional Banner */
   .promo-banner {
@@ -114,6 +113,16 @@ body {
   width: 100%;
 }
 
+.header-container .background-image{
+  height: 600px;
+}
+
+@media (max-width: 991){
+  .header-container .background-image{
+    height: 400px;
+  }
+}
+
 .header-container .info-header-container{
     display: flex;
     justify-content: center;
@@ -126,6 +135,7 @@ body {
     font-size: 40px;
     font-weight: 500;
     color: var(--white);
+    width: 100%;
 }
 
 .info-header-container form h2{
@@ -134,7 +144,8 @@ body {
 
 .info-header-container form .cp-form{
     background-color: var(--white);
-    width: 700px;
+    width: 70%;
+    margin: auto;
     height: 60px;
     border-radius: 50px;
 }
@@ -150,6 +161,7 @@ body {
 
 .info-header-container form .cp-form button{
     margin-right: 20px;
+    margin-left: 10px;
 }
 .info-header-container form .cp-form button i{
     margin: 0;
@@ -690,6 +702,7 @@ body {
 .categorias-busquedas-filtros{
   max-width: 1440px;
   margin: 600px auto 0px auto;
+  overflow-x: auto;
 }
 
 .categorias-busquedas-filtros .categorias{
