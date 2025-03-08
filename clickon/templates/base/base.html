@@ -23,16 +23,17 @@
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
     </head>
     <body>
-        <div class="position-absolute top-0 header-container w-100"  style="height: 600px;">
+
+        <div class="position-absolute top-0 header-container w-100">
             <div class="position-relative">
-                <div class="postion-absolute top-0 info-header-container" style="height: 600px;">
+                <div class="postion-absolute top-0 info-header-container">
                     <form>
                         <h2>Todo lo que necesitas al alcance de un click</h2>
                         <div class="d-flex align-items-center justify-content-between cp-form">
                             <input class="search-cp-control" 
                                 placeholder="Ingresa tu código postal para mejorar tu experiencia" />
                             <button class="search-btn p-0 search-cp-control" type="submit">
-                                <i class="bi bi-send fs-4"></i>
+                                <i class="bi bi-send"></i>
                             </button>
                         </div>
                     </form>
@@ -43,10 +44,11 @@
                 </div>
             </div>
         </div>
+        
         <header class="container-navbar sticky-top px-0">
             {% include "base/includes/navbar.html" %}            
         </header>
-        
+
         <div class="categorias-busquedas-filtros">
             <div class="d-flex categorias align-items-center">
                 <a href="#" class="active">Todos</a>
@@ -89,10 +91,10 @@
         </div>
 
         {% include "base/includes/cards.html" %}
-
         {% include "base/includes/cards_seccion.html" %}
 
         {% include "base/includes/footer.html" %}
+
 
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" 
