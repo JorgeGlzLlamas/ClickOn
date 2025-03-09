@@ -5,7 +5,7 @@
     --white: #ffffff;
     --white-background: #F9FAFB;
     --text: #101010;
-    --gray: #B78F8F;
+    --gray: #9E7789;
     --gray-100: #f8f9fa;
     --gray-200: #e9ecef;
     --gray-300: #dee2e6;
@@ -106,8 +106,60 @@ body {
     height: 30px;
     object-fit: contain;
   }
-  
-  /* Main Header */
+
+#navbar .dropdown-item{
+  padding: 10px 5px 10px 10px;
+}
+
+#navbar .nav-link{
+  color: var(--text);
+  font-size: 18px;
+}
+
+#navbar .nav-link:hover{
+    color: var(--dark-green);
+}
+
+#navbar .dropdown-item:hover{
+  background-color: rgba(157, 225, 26, 0.1);
+  border-left: 3px solid var(--dark-green);
+  color: var(--dark-green);
+}
+
+#navbar .dropdown-submenu {
+  position: relative;
+}
+
+#navbar .dropdown-submenu .dropdown-menu {
+  display: none;
+  position: absolute;
+  left: 100%; /* Despliega el submenú a la derecha */
+  top: 0;
+  margin-top: 0;
+  border-radius: 8px;
+}
+
+/* 🔹 Muestra el submenú al pasar el mouse */
+#navbar .dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+}
+
+/* 🔹 Estilo para que los submenús no se solapen */
+_#navbar .dropdown-menu {
+  min-width: 200px;
+}
+
+#navbar .dropdown-submenu > .dropdown-toggle::after {
+  transition: transform 0.3s ease; /* Suaviza la animación */
+  display: inline-block;
+}
+
+/* 🔹 Cuando el submenú está abierto, rota más la flecha */
+#navbar .dropdown-submenu:hover > .dropdown-toggle::after {
+  transform: rotate(-90deg);
+}
+
+/* Main Header */
 
 .header-container{
   width: 100%;
@@ -128,7 +180,6 @@ body {
   margin: auto;
   z-index: 2000 !important;
   font-family: var(--madimi-one);
-  font-size: 40px;
   font-weight: 500;
   color: var(--white);
   width: 100%;
@@ -136,72 +187,8 @@ body {
 
 .info-header-container form h2{
   text-align: center;
+  font-size: 40px;
 }
-
-@media (max-width: 1191px) {
-  .header-container,
-  .header-container .background-image,
-  .header-container .dark-shadow {
-    height: 500px !important;
-  }
-
-  .info-header-container{
-    height: 500px !important;
-  }
-
-  .info-header-container form{
-    margin-bottom: 150px !important;
-  }
-
-  .categorias-busquedas-filtros{
-    margin-top: 450px !important;
-  }
-
-  
-}
-
-@media (max-width: 991px) {
-  .header-container,
-  .header-container .background-image,
-  .header-container .dark-shadow {
-    height: 400px !important;
-  }
-
-  .info-header-container{
-    height: 400px !important;
-  }
-
-  .info-header-container form{
-      margin-bottom: 100px !important;
-  }
-
-  .categorias-busquedas-filtros{
-    margin-top: 350px !important;
-  }
-
-.info-header-container form h2{
-    font-size: 24px !important;
-}
-
-.info-header-container form button i{
-    height: 15px !important;
-    width: 15px !important;
-}
-
-  .cp-form{
-      height: 40px !important;
-  }
-
-  .search-cp-control{
-    font-size: 16px !important;
-    height: 20px;
-  }
-
-  .search-btn i{
-    font-size: 20px !important;
-  }
-}
-
 
 .info-header-container form .cp-form{
     background-color: var(--white);
@@ -358,22 +345,51 @@ body {
     padding: 0;
   }
   
-  #navbar{
+#navbar{
     margin-left: 300px;
-  }
+}
 
-  
+#navbar-hamburger {
+    position: fixed;
+    background-color: var(--primary-green);
+    width: 297px;
+    height: 100vh;
+}
 
-  .navbar-nav .nav-link {
-    color: var(--text);
+#navbar-hamburger .nav-link{
+    padding-left: 10px;
+    color: var(--white);
     font-weight: 500;
-    padding: 8px 15px;
-    position: relative;
-  }
-  
-  .navbar-nav .nav-link:hover {
-    color: var(--gray-200);
-  }
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#navbar-hamburger .nav-link i {
+  transition: transform 0.3s ease;
+  margin-right: 20px;
+}
+
+#navbar-hamburger .submenu{
+    padding-left: 20px;
+}
+
+#navbar-hamburger .subsubmenu{
+  padding-left: 30px;
+}
+
+#navbar-hamburger .nav-link:hover{
+    background-color: rgba(157, 225, 26, 0.1);
+    border-left: 3px solid var(--white);
+}
+
+#navbar-hamburger .nav-link.active i {
+  transform: rotate(90deg);
+}
+
+#navbar-hamburger .nav-link:hover i {
+  transform: rotate(90deg); 
+}
   
   .dropdown-menu {
     border-radius: 0;
@@ -414,7 +430,7 @@ body {
     height: auto;
   }
 
-  .search-btn i{
+  .search-cp-control i{
     font-size: 30px;
   }
   
@@ -489,121 +505,6 @@ body {
     color: var(--white-background);
   }
   
-  /* Responsive Adjustments */
-  @media (max-width: 1200px) {
-    #navbar{
-        display: none;
-    }
-  }
-
-
-@media (max-width: 767px) {
-
-    .promo-banner {
-        display: none;
-    }
-
-    .navbar-brand{
-        width: 100%;
-    }
-
-    .logo-container {
-        background-color: var(--primary-green);
-        clip-path: none;
-        display: flex;
-        align-items: center;
-        justify-content: start;
-        width: 100%;
-        height: 50px;
-        padding-left: 20px;
-    }
-      
-    .hamburger-icon {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 25px;
-        height: 15px;
-        margin-right: 15px;
-        align-items: flex-end;
-    }
-      
-    .hamburger-icon span {
-        display: block;
-        height: 3px;
-        background-color: var(--white);
-    }
-    
-    .hamburger-icon .hamburger-1{
-        width: 100%;
-    }
-    .hamburger-icon .hamburger-2{
-        width: 80%;
-    }
-    .hamburger-icon .hamburger-3{
-        width: 60%;
-    }
-      
-    .logo p {
-        font-family: var(--madimi-one);
-        font-size: 30px;
-        font-weight: bold;
-        text-shadow: 
-            -2px -2px 0 var(--white),  
-             2px -2px 0 var(--white),  
-            -2px  2px 0 var(--white),  
-             2px  2px 0 var(--white); /* Contorno blanco */
-        letter-spacing: 2px;
-        padding: 0px;
-        margin: 0px;
-    }
-}
-
-@media (max-width: 768px) {
-    .container-fluid {
-        justify-content: center !important;
-    }
-    #busqueda-carrito-login{
-        width: 100%;
-        justify-content: center;
-    }
-    .search-form {
-        display: flex;
-        align-items: center;
-        border-radius: 10px;
-        border: 1px solid var(--gray);
-        width: 80%;
-    }
-      
-    .input-control {
-        border: none;
-        margin-left: 15px;
-        padding: 5px 20px 5px 0px;
-        width: 95%;
-    }
-    
-    .input-control:focus{
-        outline: none;
-    }
-      
-    .search-btn {
-        margin-right: 10px;
-        background: transparent;
-        border: transparent;
-        color: var(--gray-800);
-    }
-
-    .hamburger-menu{
-        top: 50px;
-    }
-}
-
-@media (min-width: 769px) {
-    .container-fluid {
-        justify-content: flex-end !important;
-    }
-}
-
 /* Estilo general del dropdown */
 .auth-button-lg .dropdown-menu {
     position: absolute;
@@ -710,18 +611,8 @@ body {
 }
 
 
-@media (min-width: 1440px) {
-  .cards-container {
-    justify-content: space-between;
-  }
-}
 
-@media (max-width: 1439px) {
-  .cards-container {
-    gap: 16px; 
-    justify-content: flex-start; 
-  }
-}
+
 
 .card{
   flex: 0 0 320px;
@@ -767,17 +658,21 @@ body {
 .categorias-busquedas-filtros{
   max-width: 1440px;
   margin: 600px auto 0px auto;
-  overflow-x: auto;
 }
 
 .categorias-busquedas-filtros .categorias{
     width: 100%;
+    overflow-x: auto;
 }
 
 .categorias-busquedas-filtros .categorias a{
     text-decoration: none;
     border-bottom: 1px solid var(--text);
+    padding: 0px 10px;
+    flex: 0 0 auto;
+    text-align: center;
     padding: 0px 20px;
+    color: var(--text);
 }
 
 .categorias-busquedas-filtros .categorias .active{
@@ -788,10 +683,33 @@ body {
 .categorias-busquedas-filtros .busquedas-frecuentes-container{
     padding: 24px 0px;
     width: 100%;
+    position: relative;
+}
+
+.categorias-busquedas-filtros .busquedas-frecuentes-container i{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 10;
+    color: var(--primary-green);
+}
+
+.categorias-busquedas-filtros .busquedas-frecuentes-container .left{
+    left: 0;
+}
+
+.categorias-busquedas-filtros .busquedas-frecuentes-container .right{
+    right: 0;
 }
 
 .categorias-busquedas-filtros .busquedas-frecuentes-container .busquedas-frecuentes{
-  width: 100%;
+  flex-grow: 1;
+  overflow-x: auto;
+  margin: auto 50px;
+  scroll-behavior: smooth;
+  white-space: nowrap;
 }
 
 .categorias-busquedas-filtros .busquedas-frecuentes-container img{
@@ -804,6 +722,29 @@ body {
 
 .categorias-busquedas-filtros .busquedas-frecuentes-container p{
   margin-bottom: 0px;
+}
+
+.filters-container{
+    overflow-x: auto;
+}
+
+.filters-container .filter{
+  display: flex;
+  align-items: center;  
+  padding: 5px 10px;
+  background-color: var(--light-green);
+  border-radius: 10px;
+  margin-right: 20px;
+  text-decoration: none;
+  color: var(--text);
+  flex: 0 0 auto;
+}
+
+.filters-container .filter p{
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0px 15px 0px 0px;
+  
 }
 
 /* Footer */
@@ -905,11 +846,7 @@ body {
   overflow-x: auto;
 }
 
-@media (max-width: 1439px) {
-  .responsive-cards{
-      gap: 25px;  
-  }
-}
+
 
 
 .footer-bottom {
@@ -940,40 +877,17 @@ body {
   text-decoration: underline;
 }
 
-@media (max-width: 992px) {
-  .footer-content {
-      flex-direction: column;
-  }
-
-  .logo-section {
-      margin-bottom: 30px;
-  }
-
-  .footer-links {
-      flex-direction: column;
-      gap: 30px;
-  }
-
-  .social-media {
-      margin-top: 30px;
-  }
-}
-
-@media (max-width: 768px) {
-  .footer-bottom-content {
-      flex-direction: column;
-      text-align: center;
-      gap: 10px;
-  }
-}
-
-
 /* Categorías Populares */
 .texto-cards {
 	font-size: 20px;
 	text-align: center;
 	color: var(--primary-green);
   margin: 50px auto;
+}
+
+.texto-cards h3{
+  font-family: var(--madimi-one);
+  font-size: 48px;
 }
 
 .category-card {
@@ -1046,6 +960,126 @@ body {
 .rating label:hover ~ label {
   color: var(--dark-green);
   transition: color 0.3s;
+}
+
+/* Restaurantes mejor calificados */
+.restaurants {
+  font-size: 20px;
+  background-color: #FFFFFF;
+  width: 20rem;
+  border-radius: 1rem;
+
+}
+
+.restaurants span {
+  color: var(--primary-green);
+  font-weight: 500;
+}
+
+.container-restaurants {
+	max-width: 1440px;
+	overflow-x: auto;
+	margin: 0 auto 10rem auto;
+}
+
+.restaurant-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.restaurant-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  width: 700px;
+  margin-top: 1rem;
+}
+
+
+.restaurant-card .restaurant-image {
+  width: 250px;
+  height: 200px;
+  border: 1px solid black;
+  max-height: 200px;
+  object-fit: cover;
+  display: flex;
+  justify-content: start;
+  border-radius: 20px 0px 0px 20px; 
+}
+
+.restaurant-details {
+  width: 410px;
+  height: 160px;
+  margin: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.restaurant-details .category {
+  font-style: italic;
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--text);
+}
+
+.restaurant-details h4{
+  font-family: 26px;
+  color: var(--text);
+}
+
+.restaurant-details .address {
+  font-size: 20px;
+  color: var(--gray);
+}
+
+.rating-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.star {
+  color: var(--primary-green);
+}
+
+.restaurant-details .bottom-info{
+    height: 30px;
+    position: relative;
+}
+
+.restaurant-details .bottom-info .price-label {
+  position: absolute;
+	background-color: var(--dark-green);
+	color: var(--white);
+	border-radius: 10px 0px 0px 10px;
+	font-weight: 600;
+  padding: 2px 10px;
+  height: 30px;
+  width: 152px;
+}
+
+.restaurant-details .bottom-info .price-value {
+  position: absolute;
+  left: 152px;
+  font-weight: bold;
+  color: var(--text);
+  box-sizing: border-box;
+  width: 4rem;
+  padding: 2px 15px;
+  border: .5px solid #246B1A;
+  border-radius: 0px 10px 10px 0px;
+  height: 30px;
 }
 
 
