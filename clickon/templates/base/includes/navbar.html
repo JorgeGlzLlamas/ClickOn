@@ -40,23 +40,73 @@
                 <!-- Navigation Content -->
                     <ul id="navbar" class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                 Categorías
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Categoría 1</a></li>
-                                <li><a class="dropdown-item" href="#">Categoría 2</a></li>
-                                <li><a class="dropdown-item" href="#">Categoría 3</a></li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">Comida rápida</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Hamburguesas</a></li>
+                                        <li><a class="dropdown-item" href="#">Pizzas</a></li>
+                                        <li><a class="dropdown-item" href="#">Hot dogs</a></li>
+                                        <li><a class="dropdown-item" href="#">Snacks salados</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">Comida saludable</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Ensaladas</a></li>
+                                        <li><a class="dropdown-item" href="#">Jugos</a></li>
+                                        <li><a class="dropdown-item" href="#">Snacks saludables</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">Bebidas</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Refrescos y sodas</a></li>
+                                        <li><a class="dropdown-item" href="#">Jugos</a></li>
+                                        <li><a class="dropdown-item" href="#">Café y té</a></li>
+                                        <li><a class="dropdown-item" href="#">Bebidas energéticas</a></li>
+                                        <li><a class="dropdown-item" href="#">Leche y bebidas vegetables</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">Postres</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Pasteles y tartas</a></li>
+                                        <li><a class="dropdown-item" href="#">Galletas y panadería</a></li>
+                                        <li><a class="dropdown-item" href="#">Helados y postres</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">Despensa y congelados</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Comida congelada</a></li>
+                                        <li><a class="dropdown-item" href="#">Enlatados</a></li>
+                                        <li><a class="dropdown-item" href="#">Cereales y barras</a></li>
+                                        <li><a class="dropdown-item" href="#">Salsas y condimentos</a></li>
+                                        <li><a class="dropdown-item" href="#">Pasta y arroz</a></li>
+                                    </ul>
+                                </li>
+                                <li class="dropdown-submenu">
+                                    <a class="dropdown-item dropdown-toggle" href="#">Dietas especiales</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Vegetariana</a></li>
+                                        <li><a class="dropdown-item" href="#">Sin glúten</a></li>
+                                    </ul>
+                                </li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                                 Servicios
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Servicio 1</a></li>
-                                <li><a class="dropdown-item" href="#">Servicio 2</a></li>
-                                <li><a class="dropdown-item" href="#">Servicio 3</a></li>
+                                <li><a class="dropdown-item" href="#">Convierte en repartidor</a></li>
+                                <li><a class="dropdown-item" href="#">Registrar mi negocio</a></li>
+                                <li><a class="dropdown-item" href="#">FAQ</a></li>
+                                <li><a class="dropdown-item" href="#">Solución de problemas</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -99,37 +149,119 @@
 </div>
 
 <div id="hamburgerMenu" class="hamburger-menu d-none">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    <ul id="navbar-hamburger" class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
             <!-- Botón para colapsar el menú de Categorías -->
             <a class="nav-link" data-bs-toggle="collapse" 
                 href="#categoriasMenu" role="button" aria-expanded="false" 
                 aria-controls="categoriasMenu">
                 Categorías
+                <i class="bi bi-caret-right-fill"></i>
             </a>
             <div class="collapse" id="categoriasMenu">
-                <ul class="navbar-nav ms-3">
-                    <li class="nav-item"><a class="nav-link" href="#">Categoría 1</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Categoría 2</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Categoría 3</a></li>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link submenu" data-bs-toggle="collapse" href="#comidaRapida" role="button" aria-expanded="false" aria-controls="comidaRapida">
+                            Comida rápida
+                            <i class="bi bi-caret-right-fill"></i>
+                        </a>
+                        <div class="collapse" id="comidaRapida">
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Hamburguesas</a></li>
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Pizzas</a></li>
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Hot dogs</a></li>
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Snacks salados</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link submenu" data-bs-toggle="collapse" href="#comidaSaludable" role="button" aria-expanded="false" aria-controls="comidaSaludable">
+                            Comida saludable
+                            <i class="bi bi-caret-right-fill"></i>
+                        </a>
+                        <div class="collapse" id="comidaSaludable">
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Ensaladas</a></li>
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Jugos</a></li>
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Snacks saludables</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link submenu" data-bs-toggle="collapse" href="#bebidas" role="button" aria-expanded="false" aria-controls="bebidas">
+                            Bebidas
+                            <i class="bi bi-caret-right-fill"></i>
+                        </a>
+                        <div class="collapse" id="bebidas">
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Refrescos y sodas</a></li>
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Jugos</a></li>
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Café y té</a></li>
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Bebidas energéticas</a></li>
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Leche y bebidas vegetales</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link submenu" data-bs-toggle="collapse" href="#postres" role="button" aria-expanded="false" aria-controls="postres">
+                            Postres
+                            <i class="bi bi-caret-right-fill"></i>
+                        </a>
+                        <div class="collapse" id="postres">
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Pasteles y tartas</a></li>
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Galletas y panadería</a></li>
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Helados y postres</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link submenu" data-bs-toggle="collapse" href="#despensaCongelados" role="button" aria-expanded="false" aria-controls="despensaCongelados">
+                            Despensa y congelados
+                            <i class="bi bi-caret-right-fill"></i>
+                        </a>
+                        <div class="collapse" id="despensaCongelados">
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Comida congelada</a></li>
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Enlatados</a></li>
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Cereales y barras</a></li>
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Salsas y condimentos</a></li>
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Pasta y arroz</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link submenu" data-bs-toggle="collapse" href="#dietasEspeciales" role="button" aria-expanded="false" aria-controls="dietasEspeciales">
+                            Dietas especiales
+                            <i class="bi bi-caret-right-fill"></i>
+                        </a>
+                        <div class="collapse" id="dietasEspeciales">
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Vegetariana</a></li>
+                                <li class="nav-item"><a class="nav-link subsubmenu" href="#">Sin glúten</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </li>
-
+    
         <li class="nav-item">
             <!-- Botón para colapsar el menú de Servicios -->
             <a class="nav-link" data-bs-toggle="collapse" 
                 href="#serviciosMenu" role="button" 
                 aria-expanded="false" aria-controls="serviciosMenu">
                 Servicios
+                <i class="bi bi-caret-right-fill"></i>
             </a>
             <div class="collapse" id="serviciosMenu">
-                <ul class="navbar-nav ms-3">
-                    <li class="nav-item"><a class="nav-link" href="#">Servicio 1</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Servicio 2</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Servicio 3</a></li>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link submenu" href="#">Convierte en repartidor</a></li>
+                    <li class="nav-item"><a class="nav-link submenu" href="#">Registrar mi negocio</a></li>
+                    <li class="nav-item"><a class="nav-link submenu" href="#">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link submenu" href="#">Solución de problemas</a></li>
                 </ul>
             </div>
         </li>
-    </ul>
+    </ul>    
 </div>

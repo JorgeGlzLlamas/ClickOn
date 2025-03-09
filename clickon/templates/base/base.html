@@ -21,79 +21,26 @@
                 rel="stylesheet">
         <!-- Importación de archivos css -->
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base-media-xlg.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base-media-lg.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base-media-md.css' %}">
+        <link rel="stylesheet" href="{% static 'css/base-media-sm.css' %}">
     </head>
     <body>
-        <div class="position-absolute top-0 header-container w-100"  style="height: 600px;">
-            <div class="position-relative">
-                <div class="postion-absolute top-0 info-header-container" style="height: 600px;">
-                    <form>
-                        <h2>Todo lo que necesitas al alcance de un click</h2>
-                        <div class="d-flex align-items-center justify-content-between cp-form">
-                            <input class="search-cp-control" 
-                                placeholder="Ingresa tu código postal para mejorar tu experiencia" />
-                            <button class="search-btn p-0 search-cp-control" type="submit">
-                                <i class="bi bi-send fs-4"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-                <div class="position-absolute dark-shadow top-0 w-100" style="height: 600px;"></div>
-                <div class="position-absolute w-100 top-0">
-                    <img src="{% static "img/googlemaps.webp" %}" class="w-100" style="height: 600px;" />
-                </div>
-            </div>
-        </div>
+
+        {% block top_content %}
+            {{ top_content }}
+        {% endblock %}
+
         <header class="container-navbar sticky-top px-0">
             {% include "base/includes/navbar.html" %}            
         </header>
-        
-        <div class="categorias-busquedas-filtros">
-            <div class="d-flex categorias align-items-center">
-                <a href="#" class="active">Todos</a>
-                <a href="#">Comida rápida</a>
-                <a href="#">Comida saludable</a>
-                <a href="#">Bebidas</a>
-                <a href="#">Postres</a>
-                <a href="#">Despensa</a>
-                <a href="#">Congelados</a>
-                <a href="#">Dietas especiales</a>
-            </div>
-            <div class="busquedas-frecuentes-container d-flex align-items-center">
-                <i class="bi bi-arrow-left-circle-fill fs-4 me-2"></i>
-                <div class="busquedas-frecuentes d-flex align-items-center">
-                    <div class="busqueda-card gap-3">
-                        <img src="#" />
-                        <p>Búsqueda 1</p>
-                    </div>
-                    <div class="busqueda-card gap-3">
-                        <img src="#" />
-                        <p>Búsqueda 1</p>
-                    </div>
-                    <div class="busqueda-card gap-3">
-                        <img src="#" />
-                        <p>Búsqueda 1</p>
-                    </div>
-                    <div class="busqueda-card gap-3">
-                        <img src="#" />
-                        <p>Búsqueda 1</p>
-                    </div>
-                    <div class="busqueda-card gap-3">
-                        <img src="#" />
-                        <p>Búsqueda 1</p>
-                    </div>
-                </div>
-                <i class="bi bi-arrow-right-circle-fill fs-4 ms-2"></i>
-            </div>
-            <div class="d-flex filters-container">
-            </div>
-        </div>
 
-        {% include "base/includes/cards.html" %}
-
-        {% include "base/includes/cards_seccion.html" %}
+        {% block main_content %}
+            {{ main_content }}
+        {% endblock %}
 
         {% include "base/includes/footer.html" %}
-
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" 
                 integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" 
@@ -103,8 +50,8 @@
                 crossorigin="anonymous"></script>
         
         <script>
-            // Marquee animation for the promotional banner
-            document.addEventListener("DOMContentLoaded", () => {
+           // Marquee animation for the promotional banner
+           document.addEventListener("DOMContentLoaded", () => {
                 // This is just to ensure the animation works properly
                 // You can add more JavaScript functionality as needed
             
@@ -120,6 +67,17 @@
                 })
                 }
             })
+
+            // Aquí manejamos el evento de click en el nav-link
+            const navLinks = document.querySelectorAll('.nav-link'); // Seleccionamos todos los nav-links
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    // Añadimos o quitamos la clase 'active' para el enlace que fue clickeado
+                    this.classList.toggle('active');
+                });
+            });
+
 
             document.getElementById('hamburgerMenuToggle').addEventListener('click', function(e) {
                 e.preventDefault(); // Evitar el comportamiento por defecto del enlace
@@ -148,8 +106,7 @@
             
                 // Alternar la clase 'open' en el icono de hamburguesa para cambiar el ícono
                 icon.classList.toggle('open');
-            });                
-
+            });
         </script>
     </body>
 </html>
