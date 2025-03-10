@@ -1,0 +1,295 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %} ClickOn {% endblock %}
+
+{% block breadcrumbs %}
+<nav class="nav-breadcrumb breadcrumb-busqueda-page">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'core:inicio' %}">Inicio</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Alitas</li>
+    </ol>
+</nav>
+{% endblock %}
+
+{% block main_content %}
+<div class="texto-cards-recomendados">
+    <h3>Top resultados para "Alitas"</h1>
+    <p>Descubre las mejores "Alitas" en los mejores lugares</p>
+</div>
+<div class="categorias-busquedas-filtros">
+    <div class="busquedas-frecuentes-container d-flex align-items-center">
+        <i class="bi bi-arrow-left-circle-fill left"></i>
+        <div class="busquedas-frecuentes d-flex align-items-center">
+            <div class="busqueda-card me-4">
+                <img src="{% static 'img/establecimiento/Favoritos1.webp' %}" />
+                <p>Búsqueda 1</p>
+            </div>
+            <div class="busqueda-card me-4">
+                <img src="{% static 'img/establecimiento/Favoritos2.webp' %}" />
+                <p>Búsqueda 1</p>
+            </div>
+            <div class="busqueda-card me-4">
+                <img src="{% static 'img/establecimiento/Favoritos3.webp' %}" />
+                <p>Búsqueda 1</p>
+            </div>
+            <div class="busqueda-card me-4">
+                <img src="{% static 'img/establecimiento/Favoritos4.webp' %}" />
+                <p>Búsqueda 1</p>
+            </div>
+            <div class="busqueda-card me-4">
+                <img src="{% static 'img/establecimiento/Combo1.webp' %}" />
+                <p>Búsqueda 1</p>
+            </div>
+            <div class="busqueda-card me-4">
+                <img src="{% static 'img/establecimiento/Combo2.webp' %}" />
+                <p>Búsqueda 1</p>
+            </div>
+            <div class="busqueda-card me-4">
+                <img src="{% static 'img/establecimiento/Combo3.webp' %}" />
+                <p>Búsqueda 1</p>
+            </div>
+            <div class="busqueda-card me-4">
+                <img src="{% static 'img/establecimiento/Combo4.webp' %}" />
+                <p>Búsqueda 1</p>
+            </div>
+            <div class="busqueda-card me-4">
+                <img src="{% static 'img/establecimiento/mas1.webp' %}" />
+                <p>Búsqueda 1</p>
+            </div>
+            <div class="busqueda-card me-4">
+                <img src="{% static 'img/establecimiento/mas2.webp' %}" />
+                <p>Búsqueda 1</p>
+            </div>
+            <div class="busqueda-card me-4">
+                <img src="{% static 'img/establecimiento/mas3.webp' %}" />
+                <p>Búsqueda 1</p>
+            </div>
+            <div class="busqueda-card me-4">
+                <img src="{% static 'img/establecimiento/mas4.webp' %}" />
+                <p>Búsqueda 1</p>
+            </div>
+            <div class="busqueda-card me-4">
+                <img src="{% static 'img/establecimiento/mas5.webp' %}" />
+                <p>Búsqueda 1</p>
+            </div>
+            <div class="busqueda-card me-4">
+                <img src="{% static 'img/establecimiento/mas6.webp' %}" />
+                <p>Búsqueda 1</p>
+            </div>
+            <div class="busqueda-card">
+                <img src="{% static 'img/establecimiento/mas7.webp' %}" />
+                <p>Búsqueda 1</p>
+            </div>
+        </div>
+        <i class="bi bi-arrow-right-circle-fill right"></i>
+    </div>
+</div>
+<div class="container-recomendados">
+    <div class="card-recomendada">
+        <img src="{% static 'img/establecimiento/logo.webp' %}" alt="Candy Restaurant" class="img-recomendada">
+        <a href="{% url 'core:establecimiento' %}" class="texto-cards-recomendado">Alitas mañosos club</a>
+            <span class="ranking">4.5
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-star"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+            </span>
+            <span class="ranking"> 
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clock-hour-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                <path d="M12 12l3 -2" /><path d="M12 7v5" /></svg>20min..
+            </span>
+            <span class="ranking">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-motorbike"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 16m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M19 16m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+            <path d="M7.5 14h5l4 -4h-10.5m1.5 4l4 -4" /><path d="M13 6h2l1.5 3l2 4" /></svg>$10.00
+            </span>        
+    </div>
+</div>
+<div class="container-recomendados">
+    <a href="" data-bs-toggle="offcanvas" data-bs-target="#offcanvasProducto" class="card-recomendados">
+        <div class="card-content">
+            <h4 class="title">Combo Nuggets</h4>
+            <p class="subtitle">1x Nuggets, 1x Papas</p>
+            <p class="price">$45.00</p>
+        </div>
+        <img src="{% static 'img/alitas.webp' %}" alt="Candy Restaurant" class="img-card">
+        <div class="add-button">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.75"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M9 12h6" /><path d="M12 9v6" /></svg>
+        </div>
+    </a>
+    <div class="card-recomendados">
+        <div class="card-content">
+            <h4 class="title">Combo Nuggets</h4>
+            <p class="subtitle">1x Nuggets, 1x Papas</p>
+            <p class="price">$45.00</p>
+        </div>
+        <img src="{% static 'img/alitas.webp' %}" alt="Candy Restaurant" class="img-card">
+        <div class="add-button">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.75"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M9 12h6" /><path d="M12 9v6" /></svg>
+        </div>
+    </div>
+    <div class="card-recomendados">
+        <div class="card-content">
+            <h4 class="title">Combo Nuggets</h4>
+            <p class="subtitle">1x Nuggets, 1x Papas</p>
+            <p class="price">$45.00</p>
+        </div>
+        <img src="{% static 'img/alitas.webp' %}" alt="Candy Restaurant" class="img-card">
+        <div class="add-button">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.75"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M9 12h6" /><path d="M12 9v6" /></svg>
+        </div>   
+    </div>
+    <div class="card-recomendados">
+        <div class="card-content">
+            <h4 class="title">Combo Nuggets</h4>
+            <p class="subtitle">1x Nuggets, 1x Papas</p>
+            <p class="price">$45.00</p>
+        </div>
+        <img src="{% static 'img/alitas.webp' %}" alt="Candy Restaurant" class="img-card">
+        <div class="add-button">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.75"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M9 12h6" /><path d="M12 9v6" /></svg>
+        </div> 
+    </div>
+</div>
+<div class="container-recomendados">
+    <div class="card-recomendada">
+        <img src="{% static 'img/logo.webp' %}" alt="Candy Restaurant" class="img-recomendada">
+        <h4 class="texto-cards-recomendado">Candy Restaurant</h4>
+            <span class="ranking">4.5
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-star"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+            </span>
+            <span class="ranking"> 
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clock-hour-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                <path d="M12 12l3 -2" /><path d="M12 7v5" /></svg>20min..
+            </span>
+            <span class="ranking">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-motorbike"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 16m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M19 16m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+            <path d="M7.5 14h5l4 -4h-10.5m1.5 4l4 -4" /><path d="M13 6h2l1.5 3l2 4" /></svg>$10.00
+            </span>        
+    </div>
+</div>
+<div class="container-recomendados">
+    <div class="card-recomendados">
+        <div class="card-content">
+            <h4 class="title">Combo Nuggets</h4>
+            <p class="subtitle">1x Nuggets, 1x Papas</p>
+            <p class="price">$45.00</p>
+        </div>
+        <img src="{% static 'img/alitas.webp' %}" alt="Candy Restaurant" class="img-card">
+        <div class="add-button">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="30"  height="30"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.75"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M9 12h6" /><path d="M12 9v6" /></svg>
+        </div>
+    </div>
+    <div class="card-recomendados">
+        <div class="card-content">
+            <h4 class="title">Combo Nuggets</h4>
+            <p class="subtitle">1x Nuggets, 1x Papas</p>
+            <p class="price">$45.00</p>
+        </div>
+        <img src="{% static 'img/alitas.webp' %}" alt="Candy Restaurant" class="img-card">
+        <div class="add-button">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.75"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M9 12h6" /><path d="M12 9v6" /></svg>
+        </div>
+    </div>
+    <div class="card-recomendados">
+        <div class="card-content">
+            <h4 class="title">Combo Nuggets</h4>
+            <p class="subtitle">1x Nuggets, 1x Papas</p>
+            <p class="price">$45.00</p>
+        </div>
+        <img src="{% static 'img/alitas.webp' %}" alt="Candy Restaurant" class="img-card">
+        <div class="add-button">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.75"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M9 12h6" /><path d="M12 9v6" /></svg>
+        </div>   
+    </div>
+    <div class="card-recomendados">
+        <div class="card-content">
+            <h4 class="title">Combo Nuggets</h4>
+            <p class="subtitle">1x Nuggets, 1x Papas</p>
+            <p class="price">$45.00</p>
+        </div>
+        <img src="{% static 'img/alitas.webp' %}" alt="Candy Restaurant" class="img-card">
+        <div class="add-button">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.75"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M9 12h6" /><path d="M12 9v6" /></svg>
+        </div> 
+    </div>
+</div>
+<div class="container-recomendados">
+    <div class="card-recomendada">
+        <img src="{% static 'img/logo.webp' %}" alt="Candy Restaurant" class="img-recomendada">
+        <h4 class="texto-cards-recomendado">Candy Restaurant</h4>
+            <span class="ranking">4.5
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-star"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+            </span>
+            <span class="ranking"> 
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-clock-hour-2"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                <path d="M12 12l3 -2" /><path d="M12 7v5" /></svg>20min..
+            </span>
+            <span class="ranking">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="20"  height="20"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-motorbike"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 16m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M19 16m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+            <path d="M7.5 14h5l4 -4h-10.5m1.5 4l4 -4" /><path d="M13 6h2l1.5 3l2 4" /></svg>$10.00
+            </span>        
+    </div>
+</div>
+<div class="container-recomendados">
+    <div class="card-recomendados">
+        <div class="card-content">
+            <h4 class="title">Combo Nuggets</h4>
+            <p class="subtitle">1x Nuggets, 1x Papas</p>
+            <p class="price">$45.00</p>
+        </div>
+        <img src="{% static 'img/alitas.webp' %}" alt="Candy Restaurant" class="img-card">
+        <div class="add-button">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.75"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M9 12h6" /><path d="M12 9v6" /></svg>
+        </div>
+    </div>
+    <div class="card-recomendados">
+        <div class="card-content">
+            <h4 class="title">Combo Nuggets</h4>
+            <p class="subtitle">1x Nuggets, 1x Papas</p>
+            <p class="price">$45.00</p>
+        </div>
+        <img src="{% static 'img/alitas.webp' %}" alt="Candy Restaurant" class="img-card">
+        <div class="add-button">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.75"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M9 12h6" /><path d="M12 9v6" /></svg>
+        </div>
+    </div>
+    <div class="card-recomendados">
+        <div class="card-content">
+            <h4 class="title">Combo Nuggets</h4>
+            <p class="subtitle">1x Nuggets, 1x Papas</p>
+            <p class="price">$45.00</p>
+        </div>
+        <img src="{% static 'img/alitas.webp' %}" alt="Candy Restaurant" class="img-card">
+        <div class="add-button">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="28"  height="28"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.75"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M9 12h6" /><path d="M12 9v6" /></svg>
+        </div>   
+    </div>
+    <div class="card-recomendados">
+        <div class="card-content">
+            <h4 class="title">Combo Nuggets</h4>
+            <p class="subtitle">1x Nuggets, 1x Papas</p>
+            <p class="price">$45.00</p>
+        </div>
+        <img src="{% static 'img/alitas.webp' %}" alt="Candy Restaurant" class="img-card">
+        <div class="add-button">
+            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="1.75"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-circle-plus"><path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M9 12h6" /><path d="M12 9v6" /></svg>
+        </div> 
+    </div>
+</div>
+
+    {% include "producto.html" %}
+
+{% endblock %}
