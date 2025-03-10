@@ -36,6 +36,10 @@
             {% include "base/includes/navbar.html" %}            
         </header>
 
+        {% block breadcrumbs %}
+            {{ breadcrumbs }}
+        {% endblock %}
+
         {% block main_content %}
             {{ main_content }}
         {% endblock %}
@@ -49,6 +53,9 @@
                 integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" 
                 crossorigin="anonymous"></script>
         
+        {% block scripts %}
+            {{ scripts }}
+        {% endblock %}
         <script>
            // Marquee animation for the promotional banner
            document.addEventListener("DOMContentLoaded", () => {

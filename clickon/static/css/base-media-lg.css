@@ -58,4 +58,41 @@
     .social-media {
         margin-top: 30px;
     }
+
+    .nav-breadcrumb{
+        margin-top: 400px;
+    }
+
+    .establecimiento-container{
+        top: 300px;
+    }
+}
+
+@media (max-width: 886px){
+    .productos-establecimiento .filtros-producto{
+        display: none;
+    }
+
+    .productos-establecimiento{
+        margin-top: 400px;
+    }
+
+    .nav-breadcrumb{
+        display: none;
+    }
+}
+
+@media (max-width: 840px){
+    .establecimiento-container .establecimiento-nombre h2{
+        font-size: 36px;
+    }
+
+    .establecimiento-container .establecimiento-detalles{
+        font-size: 14px;
+    }
+
+    .establecimiento-container .image{
+        width: 120px;
+        height: 120px;
+    }
 }

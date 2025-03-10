@@ -115,3 +115,27 @@
         justify-content: flex-end !important;
     }
 }
+
+@media (max-width: 671px) {
+    .categorias-productos-container .productos-container {
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    }
+
+    .categorias-productos-container .productos-container .producto-card{
+        width: 400px;
+        margin: auto;
+    }
+
+    .establecimiento-container .establecimiento-nombre h2{
+        font-size: 32px;
+    }
+
+    .establecimiento-container .establecimiento-detalles{
+        font-size: 12px;
+    }
+
+    .establecimiento-container .image{
+        width: 90px;
+        height: 90px;
+    }
+}
