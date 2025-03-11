@@ -3,7 +3,7 @@ Django 5.1.6
 Python 3.12.9
 
 # Instalar dependencias
-pip install -r requirements.txt
+pip install -r requirements/requirements.txt
 
 # Actualizar dependencias
 pip freeze > requirements/requirements.txt

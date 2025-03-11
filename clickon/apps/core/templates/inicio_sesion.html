@@ -1,0 +1,93 @@
+{% extends "base/base_auth.html" %}
+{% load static %}
+
+{% block title %} Inicio sesión {% endblock %}
+
+{% block content %}
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            <!-- Left side - Form -->
+            <div class="col-md-6 form-container">
+                <a href="{% url 'core:inicio' %}" class="back-home">
+                    <i class="bi bi-arrow-left"></i>
+                    Inicio
+                </a>
+                <div class="logo-text">
+                    <span class="welcome-text">Bienvenid@s a</span>
+                    <div class="logo">
+                        <span class="logo-icon">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+                        CLICK ON
+                    </div>
+                </div>
+                
+                <p class="subtitle">Por favor complete sus datos a continuación para iniciar sesión en su cuenta</p>
+                
+                <!-- Login Form -->
+                <form>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico registrado">
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="password" class="form-label">Contraseña</label>
+                        <div class="password-container">
+                            <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+                            <span class="password-toggle" onclick="togglePassword()">
+                                <i class="bi bi-eye" id="toggleIcon"></i>
+                            </span>
+                        </div>
+                        <div class="forgot-password">
+                            <a href="{% url 'core:recuperar_contrasena' %}" class="forgot-link">¿Olvidaste tu contraseña?</a>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary login-btn w-100">Iniciar Sesión</button>
+                </form>
+                
+                <div class="signup-link">
+                    <p>¿No tienes una cuenta? <a href="{% url 'core:registro' %}">Regístrate</a></p>
+                </div>
+                
+                <div class="divider">O</div>
+                
+                <div class="social-icons">
+                    <a href="#" class="social-btn google-btn">
+                        <img src="{% static 'img/google.png' %}" alt="Google">
+                        <span>Continuar con Google</span>
+                    </a>
+                    <a href="#" class="social-btn facebook-btn">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/600px-Facebook_Logo_%282019%29.png" alt="Facebook">
+                        <span>Continuar con Facebook</span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Right side - Background Image -->
+            <div class="col-md-6 bg-image">
+                <div class="image-overlay">
+                    <h2>¡Bienvenido de nuevo!</h2>
+                    <p>Descubre un mundo de posibilidades al alcance de un click</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    function togglePassword() {
+        const passwordInput = document.getElementById('password');
+        const toggleIcon = document.getElementById('toggleIcon');
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleIcon.classList.remove('bi-eye');
+            toggleIcon.classList.add('bi-eye-slash');
+        } else {
+            passwordInput.type = 'password';
+            toggleIcon.classList.remove('bi-eye-slash');
+            toggleIcon.classList.add('bi-eye');
+        }
+    }
+</script>
+{% endblock %}
