@@ -18,3 +18,6 @@ def registro(request):
 
 def recuperar_contrasena(request):
     return render(request, 'recuperar_contrasena.html')
+
+def contacto(request):
+    return render(request, 'contacto.html')

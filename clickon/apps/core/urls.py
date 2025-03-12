@@ -10,4 +10,5 @@ urlpatterns = [
     path('inicio-sesion/', inicio.inicio_sesion, name="sesion"),
     path('registro/', inicio.registro, name="registro"),
     path('recuperar-contrasena/', inicio.recuperar_contrasena, name='recuperar_contrasena'),
+    path('contacto/', inicio.contacto, name='contacto')
 ]
