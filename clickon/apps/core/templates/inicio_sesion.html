@@ -4,14 +4,18 @@
 {% block title %} Inicio sesión {% endblock %}
 
 {% block content %}
+    <!-- Contenedor principal fluido sin padding -->
     <div class="container-fluid p-0">
+        <!-- Fila sin gutters (espacios entre columnas) -->
         <div class="row g-0">
-            <!-- Left side - Form -->
+            <!-- Lado izquierdo - Formulario de inicio de sesión -->
             <div class="col-md-6 form-container">
+                <!-- Enlace para volver a la página de inicio -->
                 <a href="{% url 'core:inicio' %}" class="back-home">
                     <i class="bi bi-arrow-left"></i>
                     Inicio
                 </a>
+                <!-- Contenedor del logo y texto de bienvenida -->
                 <div class="logo-text">
                     <span class="welcome-text">Bienvenid@s a</span>
                     <div class="logo">
@@ -22,42 +26,53 @@
                     </div>
                 </div>
                 
+                <!-- Texto descriptivo del formulario -->
                 <p class="subtitle">Por favor complete sus datos a continuación para iniciar sesión en su cuenta</p>
                 
-                <!-- Login Form -->
+                <!-- Formulario de inicio de sesión -->
                 <form>
+                    <!-- Campo para el correo electrónico -->
                     <div class="mb-3">
                         <label for="email" class="form-label">Correo Electrónico</label>
                         <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico registrado">
                     </div>
                     
+                    <!-- Campo para la contraseña con botón para mostrar/ocultar -->
                     <div class="mb-4">
                         <label for="password" class="form-label">Contraseña</label>
                         <div class="password-container">
                             <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
+                            <!-- Botón para mostrar/ocultar contraseña -->
                             <span class="password-toggle" onclick="togglePassword()">
                                 <i class="bi bi-eye" id="toggleIcon"></i>
                             </span>
                         </div>
+                        <!-- Enlace para recuperar contraseña olvidada -->
                         <div class="forgot-password">
                             <a href="{% url 'core:recuperar_contrasena' %}" class="forgot-link">¿Olvidaste tu contraseña?</a>
                         </div>
                     </div>
                     
+                    <!-- Botón para enviar el formulario -->
                     <button type="submit" class="btn btn-primary login-btn w-100">Iniciar Sesión</button>
                 </form>
                 
+                <!-- Enlace para registrarse si no tiene cuenta -->
                 <div class="signup-link">
                     <p>¿No tienes una cuenta? <a href="{% url 'core:registro' %}">Regístrate</a></p>
                 </div>
                 
+                <!-- Divisor entre opciones de inicio de sesión -->
                 <div class="divider">O</div>
                 
+                <!-- Botones para inicio de sesión con redes sociales -->
                 <div class="social-icons">
+                    <!-- Botón para inicio de sesión con Google -->
                     <a href="#" class="social-btn google-btn">
                         <img src="{% static 'img/google.png' %}" alt="Google">
                         <span>Continuar con Google</span>
                     </a>
+                    <!-- Botón para inicio de sesión con Facebook -->
                     <a href="#" class="social-btn facebook-btn">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/600px-Facebook_Logo_%282019%29.png" alt="Facebook">
                         <span>Continuar con Facebook</span>
@@ -65,8 +80,9 @@
                 </div>
             </div>
             
-            <!-- Right side - Background Image -->
+            <!-- Lado derecho - Imagen de fondo -->
             <div class="col-md-6 bg-image">
+                <!-- Capa superpuesta con texto sobre la imagen -->
                 <div class="image-overlay">
                     <h2>¡Bienvenido de nuevo!</h2>
                     <p>Descubre un mundo de posibilidades al alcance de un click</p>
@@ -74,17 +90,21 @@
             </div>
         </div>
     </div>
+<!-- Script JavaScript para mostrar/ocultar la contraseña -->
 <script>
     function togglePassword() {
+        // Obtiene el elemento de entrada de contraseña
         const passwordInput = document.getElementById('password');
+        // Obtiene el icono del botón de mostrar/ocultar
         const toggleIcon = document.getElementById('toggleIcon');
         
+        // Cambia el tipo de entrada entre 'password' y 'text'
         if (passwordInput.type === 'password') {
-            passwordInput.type = 'text';
+            passwordInput.type = 'text'; // Muestra la contraseña
             toggleIcon.classList.remove('bi-eye');
             toggleIcon.classList.add('bi-eye-slash');
         } else {
-            passwordInput.type = 'password';
+            passwordInput.type = 'password'; // Oculta la contraseña
             toggleIcon.classList.remove('bi-eye-slash');
             toggleIcon.classList.add('bi-eye');
         }

@@ -1,42 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <!-- Configuración básica del documento -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar Contraseña - ClickOn</title>
     {% load static %}
+    <!-- Enlace a la hoja de estilos específica para recuperación de contraseña -->
     <link rel="stylesheet" href="{% static 'css/recuperar_contrasena.css' %}">
+    <!-- Importación de la fuente Madimi One desde Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
     <!-- Asumiendo que U Point es una fuente personalizada que ya está importada en el proyecto -->
 </head>
 <body>
+    <!-- Contenedor del fondo con efecto de desenfoque -->
     <div class="background-container"></div>
+    <!-- Contenedor principal del formulario de recuperación -->
     <div class="recovery-container">
+        <!-- Caja que contiene el formulario de recuperación -->
         <div class="recovery-box">
+            <!-- Título principal de la página -->
             <h1>Recuperar Contraseña</h1>
+            <!-- Texto descriptivo que explica el propósito de la página -->
             <p class="recovery-description">Ingresa tu correo electrónico o número telefónico para recuperar tu contraseña</p>
             
+            <!-- Botones para seleccionar el método de recuperación -->
             <div class="recovery-options">
+                <!-- Botón para recuperar por correo electrónico (activo por defecto) -->
                 <button class="option-btn active" id="email-option">Correo Electrónico</button>
+                <!-- Botón para recuperar por número telefónico -->
                 <button class="option-btn" id="phone-option">Número Telefónico</button>
             </div>
             
+            <!-- Formulario para recuperación por correo electrónico (visible por defecto) -->
             <form id="email-form" class="recovery-form">
+                <!-- Grupo para el campo de correo electrónico -->
                 <div class="form-group">
                     <label for="email">Correo Electrónico</label>
                     <input type="email" id="email" name="email" placeholder="Ingresa tu correo electrónico" required>
                 </div>
+                <!-- Botón para enviar el formulario -->
                 <button type="submit" class="submit-btn">Enviar Código de Recuperación</button>
             </form>
             
+            <!-- Formulario para recuperación por número telefónico (oculto por defecto) -->
             <form id="phone-form" class="recovery-form hidden">
+                <!-- Grupo para el campo de número telefónico -->
                 <div class="form-group">
                     <label for="phone">Número Telefónico</label>
                     <input type="tel" id="phone" name="phone" placeholder="Ingresa tu número telefónico" required>
                 </div>
+                <!-- Botón para enviar el formulario -->
                 <button type="submit" class="submit-btn">Enviar Código de Recuperación</button>
             </form>
             
+            <!-- Enlace para volver a la página de inicio de sesión -->
             <div class="back-link">
                 <a href="{% url 'core:sesion' %}">
                     <i class="bi bi-arrow-left-circle"></i>
@@ -46,19 +64,28 @@
         </div>
     </div>
 
+    <!-- Script JavaScript para la interactividad de la página -->
     <script>
         // Script para cambiar entre opciones de recuperación
         document.getElementById('email-option').addEventListener('click', function() {
+            // Activa el botón de correo electrónico
             this.classList.add('active');
+            // Desactiva el botón de número telefónico
             document.getElementById('phone-option').classList.remove('active');
+            // Muestra el formulario de correo electrónico
             document.getElementById('email-form').classList.remove('hidden');
+            // Oculta el formulario de número telefónico
             document.getElementById('phone-form').classList.add('hidden');
         });
         
         document.getElementById('phone-option').addEventListener('click', function() {
+            // Activa el botón de número telefónico
             this.classList.add('active');
+            // Desactiva el botón de correo electrónico
             document.getElementById('email-option').classList.remove('active');
+            // Oculta el formulario de correo electrónico
             document.getElementById('email-form').classList.add('hidden');
+            // Muestra el formulario de número telefónico
             document.getElementById('phone-form').classList.remove('hidden');
         });
     </script>

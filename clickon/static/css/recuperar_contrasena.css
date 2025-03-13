@@ -1,10 +1,11 @@
-/* Reset básico */
+/* Reset básico para eliminar márgenes y rellenos predeterminados */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Estilo general del cuerpo de la página */
 body {
     font-family: 'U Point', 'Madimi One', sans-serif;
     height: 100vh;
@@ -17,7 +18,7 @@ body {
     background-color: #F9FAFB;
 }
 
-/* Fondo difuminado */
+/* Contenedor del fondo con efecto de desenfoque */
 .background-container {
     position: absolute;
     top: 0;
@@ -32,6 +33,7 @@ body {
     animation: subtleZoom 20s infinite alternate ease-in-out;
 }
 
+/* Animación de zoom sutil para el fondo */
 @keyframes subtleZoom {
     0% {
         transform: scale(1);
@@ -41,7 +43,7 @@ body {
     }
 }
 
-/* Contenedor principal */
+/* Contenedor principal del formulario de recuperación */
 .recovery-container {
     width: 100%;
     max-width: 500px;
@@ -49,7 +51,7 @@ body {
     z-index: 1;
 }
 
-/* Caja de recuperación */
+/* Caja que contiene el formulario de recuperación */
 .recovery-box {
     background-color: rgba(249, 250, 251, 0.95);
     border-radius: 10px;
@@ -59,7 +61,7 @@ body {
     border: 1px solid rgba(90, 170, 8, 0.1);
 }
 
-/* Título */
+/* Estilo del título principal */
 h1 {
     font-family: 'Madimi One', sans-serif;
     color: #5AAA08;
@@ -67,14 +69,14 @@ h1 {
     font-size: 2rem;
 }
 
-/* Descripción */
+/* Estilo del texto descriptivo */
 .recovery-description {
     color: #101010;
     margin-bottom: 25px;
     font-size: 1rem;
 }
 
-/* Opciones de recuperación */
+/* Contenedor de las opciones de recuperación */
 .recovery-options {
     display: flex;
     justify-content: center;
@@ -82,7 +84,7 @@ h1 {
     gap: 10px;
 }
 
-/* Modern hover effects for buttons */
+/* Efectos modernos para los botones de opciones */
 .option-btn {
     padding: 10px 15px;
     background-color: #F9FAFB;
@@ -94,29 +96,34 @@ h1 {
     color: #246B1A;
 }
 
+/* Efecto al pasar el cursor sobre los botones de opciones */
 .option-btn:hover {
     background-color: rgba(90, 170, 8, 0.1);
 }
 
+/* Estilo para el botón de opción activo */
 .option-btn.active {
     background-color: #5AAA08;
     color: #F9FAFB;
     border-color: #246B1A;
 }
 
-/* Formulario */
+/* Estilo del formulario de recuperación */
 .recovery-form {
     text-align: left;
 }
 
+/* Clase para ocultar elementos */
 .hidden {
     display: none;
 }
 
+/* Estilo para cada grupo de campos del formulario */
 .form-group {
     margin-bottom: 20px;
 }
 
+/* Estilo para las etiquetas de los campos */
 label {
     display: block;
     margin-bottom: 8px;
@@ -124,6 +131,7 @@ label {
     font-weight: bold;
 }
 
+/* Estilo para los campos de entrada */
 input {
     width: 100%;
     padding: 12px;
@@ -135,13 +143,14 @@ input {
     color: #101010;
 }
 
+/* Estilo para los campos de entrada cuando están enfocados */
 input:focus {
     outline: none;
     border-color: #9DE11A;
     box-shadow: 0 0 0 2px rgba(157, 225, 26, 0.2);
 }
 
-/* Botón de envío */
+/* Estilo para el botón de envío */
 .submit-btn {
     width: 100%;
     padding: 12px;
@@ -156,17 +165,19 @@ input:focus {
     margin-top: 10px;
 }
 
+/* Efecto al pasar el cursor sobre el botón de envío */
 .submit-btn:hover {
     background-color: #246B1A;
 }
 
-/* Enlace para volver */
-/* Improved back link styling */
+/* Enlace para volver a la página anterior */
+/* Estilo mejorado para el enlace de regreso */
 .back-link {
     margin-top: 30px;
     text-align: center;
 }
 
+/* Estilo del enlace para volver */
 .back-link a {
     display: inline-flex;
     align-items: center;
@@ -182,6 +193,7 @@ input:focus {
     overflow: hidden;
 }
 
+/* Efecto de fondo radial para el enlace de regreso */
 .back-link a::before {
     content: '';
     position: absolute;
@@ -195,40 +207,47 @@ input:focus {
     pointer-events: none;
 }
 
+/* Animación del efecto de fondo al pasar el cursor */
 .back-link a:hover::before {
     transform: translate(-50%, -50%) scale(1);
 }
 
+/* Efectos adicionales al pasar el cursor sobre el enlace de regreso */
 .back-link a:hover {
     background-color: rgba(90, 170, 8, 0.2);
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(36, 107, 26, 0.2);
 }
 
+/* Animación del icono en el enlace de regreso */
 .back-link a i {
     transition: transform 0.3s ease;
 }
 
+/* Movimiento del icono al pasar el cursor */
 .back-link a:hover i {
     transform: translateX(-3px);
 }
 
+/* Efecto adicional para los botones de opciones */
 .option-btn:hover::before {
     transform: translate(-50%, -50%) scale(1);
 }
 
+/* Elevación de los botones de opciones al pasar el cursor */
 .option-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(90, 170, 8, 0.3);
 }
 
-/* Submit button animation */
+/* Animación para el botón de envío */
 .submit-btn {
     position: relative;
     overflow: hidden;
     transition: all 0.4s ease;
 }
 
+/* Efecto de resplandor para el botón de envío */
 .submit-btn::after {
     content: '';
     position: absolute;
@@ -242,21 +261,24 @@ input:focus {
     pointer-events: none;
 }
 
+/* Animación del resplandor al pasar el cursor */
 .submit-btn:hover::after {
     transform: translate(-50%, -50%) scale(1);
 }
 
+/* Elevación del botón de envío al pasar el cursor */
 .submit-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 20px rgba(36, 107, 26, 0.4);
 }
 
-/* Back link animation */
+/* Animación adicional para el enlace de regreso */
 .back-link a {
     position: relative;
     transition: all 0.3s ease;
 }
 
+/* Efecto de subrayado para el enlace de regreso */
 .back-link a::after {
     content: '';
     position: absolute;
@@ -270,26 +292,30 @@ input:focus {
     transition: transform 0.3s ease;
 }
 
+/* Animación del subrayado al pasar el cursor */
 .back-link a:hover::after {
     transform: scaleX(1);
     transform-origin: left;
 }
 
+/* Cambio de color del enlace al pasar el cursor */
 .back-link a:hover {
     color: #5AAA08;
     text-shadow: 0 0 5px rgba(90, 170, 8, 0.2);
 }
 
-/* Form input animations */
+/* Animaciones para los campos de entrada */
 input {
     transition: all 0.3s ease;
 }
 
+/* Efecto al pasar el cursor sobre los campos de entrada */
 input:hover {
     border-color: #9DE11A;
     box-shadow: 0 0 0 3px rgba(157, 225, 26, 0.2);
 }
 
+/* Efecto de escala al enfocar los campos de entrada */
 input:focus {
     transform: scale(1.02);
     box-shadow: 0 0 0 3px rgba(157, 225, 26, 0.3);

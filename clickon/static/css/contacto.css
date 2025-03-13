@@ -1,15 +1,17 @@
-/* Contact Form Styles */
+/* Contenedor principal de la página de contacto */
 .contact-container {
     max-width: 1200px;
     margin: 40px auto 80px;
     padding: 0 20px;
 }
 
+/* Encabezado de la sección de contacto */
 .contact-header {
     text-align: center;
     margin-bottom: 50px;
 }
 
+/* Estilo del título principal */
 .contact-header h1 {
     font-family: var(--madimi-one);
     color: var(--dark-green);
@@ -17,6 +19,7 @@
     margin-bottom: 15px;
 }
 
+/* Estilo del párrafo descriptivo en el encabezado */
 .contact-header p {
     font-family: var(--ubuntu);
     color: var(--text);
@@ -25,17 +28,20 @@
     margin: 0 auto;
 }
 
+/* Contenedor flexible para el formulario y la información de contacto */
 .contact-content {
     display: flex;
     gap: 40px;
     flex-wrap: wrap;
 }
 
+/* Contenedor del formulario de contacto */
 .contact-form-container {
     flex: 1;
     min-width: 300px;
 }
 
+/* Estilo del formulario de contacto */
 .contact-form {
     background-color: var(--white);
     padding: 30px;
@@ -43,10 +49,12 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
+/* Estilo para cada grupo de campos del formulario */
 .form-group {
     margin-bottom: 20px;
 }
 
+/* Estilo para las etiquetas de los campos */
 .form-group label {
     display: block;
     margin-bottom: 8px;
@@ -55,6 +63,7 @@
     color: var(--text);
 }
 
+/* Estilo para los campos de entrada */
 .form-control {
     width: 100%;
     padding: 12px 15px;
@@ -65,43 +74,51 @@
     transition: all 0.3s ease;
 }
 
+/* Estilo para los campos cuando están enfocados */
 .form-control:focus {
     outline: none;
     border-color: var(--primary-green);
     box-shadow: 0 0 0 3px rgba(90, 170, 8, 0.2);
 }
 
+/* Estilo específico para el área de texto */
 textarea.form-control {
     resize: vertical;
     min-height: 120px;
 }
 
+/* Contenedor para checkbox */
 .form-check {
     display: flex;
     align-items: flex-start;
 }
 
+/* Estilo para el input de tipo checkbox */
 .form-check-input {
     margin-top: 5px;
     margin-right: 10px;
 }
 
+/* Estilo para la etiqueta del checkbox */
 .form-check-label {
     font-size: 14px;
     line-height: 1.5;
 }
 
+/* Estilo para el enlace de política de privacidad */
 .privacy-link {
     color: var(--primary-green);
     text-decoration: none;
     transition: color 0.3s;
 }
 
+/* Estilo para el enlace de privacidad al pasar el cursor */
 .privacy-link:hover {
     color: var(--dark-green);
     text-decoration: underline;
 }
 
+/* Estilo para el botón de enviar */
 .submit-btn {
     background-color: var(--primary-green);
     color: var(--white);
@@ -115,12 +132,14 @@ textarea.form-control {
     width: 100%;
 }
 
+/* Estilo para el botón de enviar al pasar el cursor */
 .submit-btn:hover {
     background-color: var(--dark-green);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(36, 107, 26, 0.3);
 }
 
+/* Contenedor de información de contacto */
 .contact-info {
     flex: 1;
     min-width: 300px;
@@ -129,6 +148,7 @@ textarea.form-control {
     gap: 25px;
 }
 
+/* Tarjeta de información de contacto */
 .info-card {
     background-color: var(--white);
     padding: 20px;
@@ -139,6 +159,7 @@ textarea.form-control {
     gap: 15px;
 }
 
+/* Estilo para los iconos de información */
 .info-icon {
     background-color: rgba(90, 170, 8, 0.1);
     width: 50px;
@@ -151,6 +172,7 @@ textarea.form-control {
     font-size: 22px;
 }
 
+/* Estilo para el título en las tarjetas de información */
 .info-content h3 {
     font-family: var(--madimi-one);
     color: var(--dark-green);
@@ -158,12 +180,14 @@ textarea.form-control {
     font-size: 20px;
 }
 
+/* Estilo para el texto en las tarjetas de información */
 .info-content p {
     margin: 0;
     color: var(--text);
     line-height: 1.6;
 }
 
+/* Contenedor para los enlaces de redes sociales */
 .social-contact {
     background-color: var(--white);
     padding: 20px;
@@ -171,6 +195,7 @@ textarea.form-control {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
+/* Título de la sección de redes sociales */
 .social-contact h3 {
     font-family: var(--madimi-one);
     color: var(--dark-green);
@@ -178,11 +203,13 @@ textarea.form-control {
     font-size: 20px;
 }
 
+/* Contenedor de iconos de redes sociales */
 .social-icons-contact {
     display: flex;
     gap: 15px;
 }
 
+/* Estilo para los enlaces de redes sociales */
 .social-icons-contact a {
     background-color: rgba(90, 170, 8, 0.1);
     width: 45px;
@@ -196,13 +223,14 @@ textarea.form-control {
     transition: all 0.3s ease;
 }
 
+/* Estilo para los enlaces de redes sociales al pasar el cursor */
 .social-icons-contact a:hover {
     background-color: var(--primary-green);
     color: var(--white);
     transform: translateY(-3px);
 }
 
-/* Responsive styles */
+/* Estilos responsivos para dispositivos móviles */
 @media (max-width: 768px) {
     .contact-content {
         flex-direction: column;

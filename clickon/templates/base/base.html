@@ -26,6 +26,8 @@
         <link rel="stylesheet" href="{% static 'css/base-media-md.css' %}">
         <link rel="stylesheet" href="{% static 'css/base-media-sm.css' %}">
         <link rel="stylesheet" href="{% static 'css/contacto.css' %}">
+        <!-- Importación de Maps -->
+         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     </head>
     <body>
 
@@ -116,5 +118,9 @@
                 icon.classList.toggle('open');
             });
         </script>
+        <!-- Leaflet JS -->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <!-- Your custom JS -->
+        <script src="{% static 'js/shipping.js' %}"></script>
     </body>
 </html>
