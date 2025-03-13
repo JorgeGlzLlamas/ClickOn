@@ -8,21 +8,22 @@
 <div class="position-absolute top-0 header-container w-100">
     <div class="position-relative">
         <div class="postion-absolute top-0 info-header-container">
-            <form>
+            <form id="direccionForm">
                 <h2>Todo lo que necesitas al alcance de un click</h2>
                 <div class="d-flex align-items-center justify-content-between cp-form">
-                    <input class="search-cp-control" 
-                        placeholder="Ingresa tu código postal para mejorar tu experiencia" />
+                    <input class="search-cp-control" id="direccionInput"
+                        placeholder="Ingresa tu dirección para calcular envío" />
                     <button class="search-btn p-0 search-cp-control" type="submit">
                         <i class="bi bi-send"></i>
                     </button>
                 </div>
             </form>
+            <div id="resultadoEnvio" class="mt-2 rounded" style="display: none;"></div>
         </div>
-        <div class="d-flex align-items-center justify-content-between cp-form">
-            <input type="text" placeholder="Ingresa tu dirección o código postal" class="form-control me-2">
-            <button type="button" class="btn btn-primary">Calcular</button>
+        <div class="position-absolute w-100 top-0">
+            <div id="mapa-estatico" class="w-100 background-image"></div>
         </div>
+</div>
     </div>
 </div>
 {% endblock %}

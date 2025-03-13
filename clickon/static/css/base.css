@@ -1670,4 +1670,188 @@ background: #FFFFFF;
   fill: white;
 }
 
+/* Estilos para el mapa */
+/* Estilos para el mapa y cálculo de envío */
+#mapa-estatico {
+  height: 500px;
+  min-height: 500px;
+  width: 100%;
+  z-index: 1;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
 
+/* Estilos para los popups del mapa */
+.leaflet-popup-content-wrapper {
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--primary-green);
+}
+
+.leaflet-popup-content {
+  margin: 12px;
+  font-family: var(--ubuntu);
+}
+
+.popup-content {
+  text-align: center;
+  padding: 5px;
+}
+
+.popup-content strong {
+  font-family: var(--madimi-one);
+  color: var(--dark-green);
+  font-size: 18px;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.popup-content p {
+  margin: 0;
+  color: var(--text);
+  font-size: 14px;
+}
+
+/* Estilos para el resultado de envío */
+#resultadoEnvio {
+  background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+  color: white;
+  border-radius: 12px;
+  margin-top: 15px;
+  font-weight: 500;
+  animation: fadeIn 0.5s;
+  z-index: 1050;
+  position: relative;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  top: 20%;
+  height: 70%;
+}
+
+.tarifa-container {
+  padding: 20px;
+}
+
+.tarifa-titulo {
+  font-family: var(--madimi-one);
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.tarifa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.tarifa-item {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.15);
+  padding: 12px 15px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.tarifa-item:hover {
+  transform: translateY(-3px);
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.tarifa-item i {
+  font-size: 22px;
+  margin-right: 10px;
+}
+
+.tarifa-item p {
+  margin: 0;
+  font-size: 15px;
+}
+
+.tarifa-item.tarifa-total {
+  grid-column: 1 / -1;
+  background-color: rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.tarifa-item.tarifa-total p {
+  font-size: 18px;
+  font-family: var(--madimi-one);
+}
+
+/* Animación para la ruta */
+.animated-route {
+  stroke-dashoffset: 1000;
+  animation: dash 2s linear forwards;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilos para el formulario de dirección */
+#direccionForm {
+  margin-bottom: 20px;
+}
+
+#direccionForm h2 {
+  font-family: var(--madimi-one);
+  color: var(--dark-green);
+  margin-bottom: 15px;
+  font-size: 28px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.cp-form {
+  background-color: white;
+  border-radius: 50px;
+  padding: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--primary-green);
+  overflow: hidden;
+}
+
+.search-cp-control {
+  border: none;
+  background: transparent;
+  padding: 12px 20px;
+  font-family: var(--ubuntu);
+  font-size: 16px;
+}
+
+input.search-cp-control {
+  flex: 1;
+  outline: none;
+}
+
+button.search-cp-control {
+  background-color: var(--primary-green);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+button.search-cp-control:hover {
+  background-color: var(--dark-green);
+  transform: scale(1.05);
+}
+
+button.search-cp-control i {
+  font-size: 20px;
+}
