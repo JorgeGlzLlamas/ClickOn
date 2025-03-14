@@ -26,6 +26,9 @@
         <link rel="stylesheet" href="{% static 'css/base-media-md.css' %}">
         <link rel="stylesheet" href="{% static 'css/base-media-sm.css' %}">
         <link rel="stylesheet" href="{% static 'css/contacto.css' %}">
+        <link rel="stylesheet" href="{% static 'css/perfil.css' %}">
+        <link rel="stylesheet" href="{% static 'css/tema-oscuro.css' %}">
+        <link rel="stylesheet" href="{% static 'css/admin_perfil.css' %}">
         <!-- Importación de Maps -->
          <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     </head>
@@ -59,6 +62,7 @@
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         <!-- Tu JS personalizado -->        
         <script src="{% static 'js/mapa.js' %}"></script>
+        <script src="{% static 'js/admin_perfil.js' %}"></script>
         
         {% block scripts %}
             {{ scripts }}

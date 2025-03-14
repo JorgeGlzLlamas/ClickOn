@@ -21,3 +21,9 @@ def recuperar_contrasena(request):
 
 def contacto(request):
     return render(request, 'contacto.html')
+
+def perfilCliente(request):
+    return render(request, 'perfilCliente.html')
+
+def perfilAdmin(request):
+    return render(request, 'perfilAdmin.html')

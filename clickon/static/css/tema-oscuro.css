@@ -1,0 +1,79 @@
+/* Estilos para el modo oscuro */
+body.modo-oscuro {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Cabecera del perfil en modo oscuro */
+body.modo-oscuro .cabecera-perfil,
+body.modo-oscuro .pestanas-perfil,
+body.modo-oscuro .contenido-pestana,
+body.modo-oscuro .tarjeta-pedido,
+body.modo-oscuro .tarjeta-direccion,
+body.modo-oscuro .tarjeta-favorito,
+body.modo-oscuro .seccion-configuracion {
+    background-color: #1e1e1e;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border-color: #333;
+}
+
+body.modo-oscuro .info-perfil h1,
+body.modo-oscuro .contenido-pestana h2,
+body.modo-oscuro .detalles-item h4,
+body.modo-oscuro .cabecera-direccion h3,
+body.modo-oscuro .info-favorito h3,
+body.modo-oscuro .seccion-configuracion h3,
+body.modo-oscuro .opcion-preferencia h4,
+body.modo-oscuro .opcion-notificacion h4 {
+    color: #e0e0e0;
+}
+
+body.modo-oscuro .info-perfil p,
+body.modo-oscuro .pestana,
+body.modo-oscuro .detalles-item p,
+body.modo-oscuro .cuerpo-direccion p,
+body.modo-oscuro .categoria-favorito,
+body.modo-oscuro .opcion-preferencia p,
+body.modo-oscuro .opcion-notificacion p {
+    color: #aaa;
+}
+
+body.modo-oscuro .cabecera-pedido,
+body.modo-oscuro .acciones-pedido,
+body.modo-oscuro .resumen-pedido {
+    background-color: #252525;
+    border-color: #333;
+}
+
+body.modo-oscuro .btn-detalles,
+body.modo-oscuro .btn-editar,
+body.modo-oscuro .btn-tamano {
+    background-color: #333;
+    color: #e0e0e0;
+    border-color: #444;
+}
+
+body.modo-oscuro .control-formulario {
+    background-color: #252525;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+/* Tamaños de texto */
+body.texto-pequeño {
+    font-size: 14px;
+}
+
+body.texto-normal {
+    font-size: 16px;
+}
+
+body.texto-grande {
+    font-size: 18px;
+}
+
+/* Sin animaciones */
+body.sin-animaciones * {
+    transition: none !important;
+    animation: none !important;
+}

@@ -1,0 +1,368 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %} Mi Perfil - ClickOn {% endblock %}
+
+{% block main_content %}
+<div class="contenedor-perfil">
+    <div class="cabecera-perfil">
+        <div class="portada-perfil">
+            <img src="{% static 'img/portada-perfil.webp' %}" alt="Portada de perfil">
+        </div>
+        <div class="editar-avatar">
+            <i class="bi bi-pencil-fill"></i>
+        </div>
+        <div class="avatar-perfil">
+            <img src="{% static 'img/avatar-predeterminado.webp' %}" alt="Foto de perfil">
+        </div>
+        <div class="info-perfil">
+            <h1>Juan Pérez</h1>
+            <p><i class="bi bi-geo-alt-fill"></i> Tepic, Nayarit</p>
+            <p><i class="bi bi-envelope-fill"></i> juan.perez@ejemplo.com</p>
+            <p><i class="bi bi-telephone-fill"></i> (311) 123-4567</p>
+        </div>
+    </div>
+
+    <div class="pestanas-perfil">
+        <div class="pestana activa" data-pestana="pedidos">Mis Pedidos</div>
+        <div class="pestana" data-pestana="direcciones">Mis Direcciones</div>
+        <div class="pestana" data-pestana="favoritos">Favoritos</div>
+        <div class="pestana" data-pestana="configuracion">Configuración</div>
+    </div>
+
+    <div class="contenido-pestana" id="pedidos-contenido">
+        <h2>Historial de Pedidos</h2>
+        
+        <div class="tarjeta-pedido">
+            <div class="cabecera-pedido">
+                <div class="numero-pedido">
+                    <h3>Pedido #12345</h3>
+                    <span class="fecha-pedido">15 de mayo, 2023</span>
+                </div>
+                <div class="estado-pedido entregado">
+                    <span>Entregado</span>
+                </div>
+            </div>
+            <div class="detalles-pedido">
+                <div class="items-pedido">
+                    <div class="item-pedido">
+                        <img src="{% static 'img/establecimiento/Combo1.webp' %}" alt="Combo Alitas">
+                        <div class="detalles-item">
+                            <h4>Combo Alitas</h4>
+                            <p>Cantidad: 1</p>
+                        </div>
+                        <div class="precio-item">$180.00</div>
+                    </div>
+                    <div class="item-pedido">
+                        <img src="{% static 'img/Nachos.webp' %}" alt="Nachos Supremos">
+                        <div class="detalles-item">
+                            <h4>Nachos Supremos</h4>
+                            <p>Cantidad: 1</p>
+                        </div>
+                        <div class="precio-item">$120.00</div>
+                    </div>
+                </div>
+                <div class="resumen-pedido">
+                    <div class="item-resumen">
+                        <span>Subtotal:</span>
+                        <span>$300.00</span>
+                    </div>
+                    <div class="item-resumen">
+                        <span>Envío:</span>
+                        <span>$50.00</span>
+                    </div>
+                    <div class="item-resumen total">
+                        <span>Total:</span>
+                        <span>$350.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="acciones-pedido">
+                <button class="btn-repetir-pedido">Volver a pedir</button>
+                <button class="btn-detalles">Ver detalles</button>
+            </div>
+        </div>
+
+        <div class="tarjeta-pedido">
+            <div class="cabecera-pedido">
+                <div class="numero-pedido">
+                    <h3>Pedido #12344</h3>
+                    <span class="fecha-pedido">10 de mayo, 2023</span>
+                </div>
+                <div class="estado-pedido entregado">
+                    <span>Entregado</span>
+                </div>
+            </div>
+            <div class="detalles-pedido">
+                <div class="items-pedido">
+                    <div class="item-pedido">
+                        <img src="{% static 'img/Pizza.webp' %}" alt="Pizza Familiar">
+                        <div class="detalles-item">
+                            <h4>Pizza Familiar</h4>
+                            <p>Cantidad: 1</p>
+                        </div>
+                        <div class="precio-item">$220.00</div>
+                    </div>
+                </div>
+                <div class="resumen-pedido">
+                    <div class="item-resumen">
+                        <span>Subtotal:</span>
+                        <span>$220.00</span>
+                    </div>
+                    <div class="item-resumen">
+                        <span>Envío:</span>
+                        <span>$40.00</span>
+                    </div>
+                    <div class="item-resumen total">
+                        <span>Total:</span>
+                        <span>$260.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="acciones-pedido">
+                <button class="btn-repetir-pedido">Volver a pedir</button>
+                <button class="btn-detalles">Ver detalles</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="contenido-pestana oculto" id="direcciones-contenido">
+        <h2>Mis Direcciones</h2>
+        
+        <div class="contenedor-direcciones">
+            <div class="tarjeta-direccion">
+                <div class="cabecera-direccion">
+                    <h3>Casa</h3>
+                    <span class="etiqueta-direccion predeterminada">Predeterminada</span>
+                </div>
+                <div class="cuerpo-direccion">
+                    <p>Av. México #123</p>
+                    <p>Col. Centro, Tepic, Nayarit</p>
+                    <p>CP 63000</p>
+                </div>
+                <div class="acciones-direccion">
+                    <button class="btn-editar"><i class="bi bi-pencil"></i> Editar</button>
+                    <button class="btn-eliminar"><i class="bi bi-trash"></i> Eliminar</button>
+                </div>
+            </div>
+
+            <div class="tarjeta-direccion">
+                <div class="cabecera-direccion">
+                    <h3>Trabajo</h3>
+                </div>
+                <div class="cuerpo-direccion">
+                    <p>Blvd. Tepic-Xalisco #456</p>
+                    <p>Col. Industrial, Tepic, Nayarit</p>
+                    <p>CP 63173</p>
+                </div>
+                <div class="acciones-direccion">
+                    <button class="btn-editar"><i class="bi bi-pencil"></i> Editar</button>
+                    <button class="btn-eliminar"><i class="bi bi-trash"></i> Eliminar</button>
+                </div>
+            </div>
+
+            <div class="tarjeta-agregar-direccion">
+                <div class="icono-agregar">
+                    <i class="bi bi-plus-circle-fill"></i>
+                </div>
+                <p>Agregar nueva dirección</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="contenido-pestana oculto" id="favoritos-contenido">
+        <h2>Mis Favoritos</h2>
+        
+        <div class="contenedor-favoritos">
+            <div class="tarjeta-favorito">
+                <div class="imagen-favorito">
+                    <img src="{% static 'img/establecimiento/Combo1.webp' %}" alt="Combo Alitas">
+                    <button class="eliminar-favorito"><i class="bi bi-heart-fill"></i></button>
+                </div>
+                <div class="info-favorito">
+                    <h3>Combo Alitas</h3>
+                    <p class="categoria-favorito">Alitas mañosos club</p>
+                    <div class="calificacion-favorito">
+                        <span>4.8</span>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="precio-favorito">$180.00</p>
+                </div>
+                <button class="btn-agregar-carrito">Agregar al carrito</button>
+            </div>
+
+            <div class="tarjeta-favorito">
+                <div class="imagen-favorito">
+                    <img src="{% static 'img/Pizza.webp' %}" alt="Pizza Familiar">
+                    <button class="eliminar-favorito"><i class="bi bi-heart-fill"></i></button>
+                </div>
+                <div class="info-favorito">
+                    <h3>Pizza Familiar</h3>
+                    <p class="categoria-favorito">Pizzería</p>
+                    <div class="calificacion-favorito">
+                        <span>4.7</span>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="precio-favorito">$220.00</p>
+                </div>
+                <button class="btn-agregar-carrito">Agregar al carrito</button>
+            </div>
+
+            <div class="tarjeta-favorito">
+                <div class="imagen-favorito">
+                    <img src="{% static 'img/Nachos.webp' %}" alt="Nachos Supremos">
+                    <button class="eliminar-favorito"><i class="bi bi-heart-fill"></i></button>
+                </div>
+                <div class="info-favorito">
+                    <h3>Nachos Supremos</h3>
+                    <p class="categoria-favorito">Nachos</p>
+                    <div class="calificacion-favorito">
+                        <span>4.6</span>
+                        <i class="bi bi-star-fill"></i>
+                    </div>
+                    <p class="precio-favorito">$120.00</p>
+                </div>
+                <button class="btn-agregar-carrito">Agregar al carrito</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="contenido-pestana oculto" id="configuracion-contenido">
+        <h2>Configuración de Cuenta</h2>
+        
+        <div class="contenedor-configuracion">
+            <div class="seccion-configuracion">
+                <h3>Información Personal</h3>
+                <form class="formulario-configuracion">
+                    <div class="grupo-formulario">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" value="Juan" class="control-formulario">
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" id="apellido" value="Pérez" class="control-formulario">
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" value="juan.perez@ejemplo.com" class="control-formulario">
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" value="(311) 123-4567" class="control-formulario">
+                    </div>
+                    <button type="submit" class="btn-guardar">Guardar Cambios</button>
+                </form>
+            </div>
+
+            <div class="seccion-configuracion">
+                <h3>Cambiar Contraseña</h3>
+                <form class="formulario-configuracion">
+                    <div class="grupo-formulario">
+                        <label for="contrasena-actual">Contraseña Actual</label>
+                        <input type="password" id="contrasena-actual" class="control-formulario">
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="nueva-contrasena">Nueva Contraseña</label>
+                        <input type="password" id="nueva-contrasena" class="control-formulario">
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="confirmar-contrasena">Confirmar Contraseña</label>
+                        <input type="password" id="confirmar-contrasena" class="control-formulario">
+                    </div>
+                    <button type="submit" class="btn-guardar">Actualizar Contraseña</button>
+                </form>
+            </div>
+
+            <div class="seccion-configuracion">
+                <h3>Preferencias de Notificación</h3>
+                <div class="configuracion-notificaciones">
+                    <div class="opcion-notificacion">
+                        <div>
+                            <h4>Notificaciones por Correo</h4>
+                            <p>Recibir actualizaciones sobre pedidos y promociones</p>
+                        </div>
+                        <label class="interruptor">
+                            <input type="checkbox" checked>
+                            <span class="deslizador redondo"></span>
+                        </label>
+                    </div>
+                    <div class="opcion-notificacion">
+                        <div>
+                            <h4>Notificaciones SMS</h4>
+                            <p>Recibir actualizaciones sobre pedidos por SMS</p>
+                        </div>
+                        <label class="interruptor">
+                            <input type="checkbox">
+                            <span class="deslizador redondo"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seccion-configuracion">
+                <h3>Preferencias de Página</h3>
+                <div class="configuracion-preferencias">
+                    <div class="opcion-preferencia">
+                        <div>
+                            <h4>Modo Oscuro</h4>
+                            <p>Cambiar entre modo claro y oscuro</p>
+                        </div>
+                        <label class="interruptor">
+                            <input type="checkbox" id="modo-oscuro-toggle">
+                            <span class="deslizador redondo"></span>
+                        </label>
+                    </div>
+                    <div class="opcion-preferencia">
+                        <div>
+                            <h4>Tamaño de Texto</h4>
+                            <p>Ajustar el tamaño del texto en la página</p>
+                        </div>
+                        <div class="selector-tamano">
+                            <button class="btn-tamano" data-tamano="pequeño">A-</button>
+                            <button class="btn-tamano activo" data-tamano="normal">A</button>
+                            <button class="btn-tamano" data-tamano="grande">A+</button>
+                        </div>
+                    </div>
+                    <div class="opcion-preferencia">
+                        <div>
+                            <h4>Animaciones</h4>
+                            <p>Activar o desactivar animaciones</p>
+                        </div>
+                        <label class="interruptor">
+                            <input type="checkbox" id="animaciones-toggle" checked>
+                            <span class="deslizador redondo"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const pestanas = document.querySelectorAll('.pestana');
+        const contenidosPestana = document.querySelectorAll('.contenido-pestana');
+        
+        pestanas.forEach(pestana => {
+            pestana.addEventListener('click', function() {
+                const idPestana = this.getAttribute('data-pestana');
+                
+                // Quitar clase activa de todas las pestañas
+                pestanas.forEach(p => p.classList.remove('activa'));
+                
+                // Agregar clase activa a la pestaña clickeada
+                this.classList.add('activa');
+                
+                // Ocultar todos los contenidos de pestañas
+                contenidosPestana.forEach(contenido => {
+                    contenido.classList.add('oculto');
+                });
+                
+                // Mostrar el contenido de la pestaña seleccionada
+                document.getElementById(`${idPestana}-contenido`).classList.remove('oculto');
+            });
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,720 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %} Panel de Administrador - ClickOn {% endblock %}
+
+{% block main_content %}
+<div class="contenedor-perfil-admin">
+    <div class="cabecera-perfil">
+        <div class="portada-perfil">
+            <img src="{% static 'img/portada-admin.webp' %}" alt="Portada de administrador">
+        </div>
+        <div class="editar-avatar">
+            <i class="bi bi-pencil-fill"></i>
+        </div>
+        <div class="avatar-perfil">
+            <img src="{% static 'img/avatar-admin.webp' %}" alt="Foto de administrador">
+        </div>
+        <div class="info-perfil">
+            <h1>Carlos Rodríguez</h1>
+            <p class="cargo-admin">Gerente General</p>
+            <p><i class="bi bi-geo-alt-fill"></i> Tepic, Nayarit</p>
+            <p><i class="bi bi-envelope-fill"></i> carlos.rodriguez@clickon.com</p>
+            <p><i class="bi bi-telephone-fill"></i> (311) 987-6543</p>
+        </div>
+    </div>
+
+    <div class="pestanas-perfil">
+        <div class="pestana activa" data-pestana="dashboard">Dashboard</div>
+        <div class="pestana" data-pestana="pedidos">Pedidos</div>
+        <div class="pestana" data-pestana="productos">Productos</div>
+        <div class="pestana" data-pestana="categorias">Categorías</div>
+        <div class="pestana" data-pestana="promociones">Promociones</div>
+        <div class="pestana" data-pestana="clientes">Clientes</div>
+        <div class="pestana" data-pestana="configuracion">Configuración</div>
+    </div>
+
+    <!-- Contenido de Dashboard -->
+    <div class="contenido-pestana" id="dashboard-contenido">
+        <div class="tarjetas-resumen">
+            <div class="tarjeta-resumen">
+                <div class="icono-resumen ventas">
+                    <i class="bi bi-currency-dollar"></i>
+                </div>
+                <div class="datos-resumen">
+                    <h3>$15,890</h3>
+                    <p>Ventas del mes</p>
+                </div>
+                <div class="tendencia positiva">
+                    <i class="bi bi-arrow-up-right"></i>
+                    <span>12.5%</span>
+                </div>
+            </div>
+            <div class="tarjeta-resumen">
+                <div class="icono-resumen pedidos">
+                    <i class="bi bi-bag"></i>
+                </div>
+                <div class="datos-resumen">
+                    <h3>128</h3>
+                    <p>Pedidos del mes</p>
+                </div>
+                <div class="tendencia positiva">
+                    <i class="bi bi-arrow-up-right"></i>
+                    <span>8.2%</span>
+                </div>
+            </div>
+            <div class="tarjeta-resumen">
+                <div class="icono-resumen clientes">
+                    <i class="bi bi-people"></i>
+                </div>
+                <div class="datos-resumen">
+                    <h3>45</h3>
+                    <p>Nuevos clientes</p>
+                </div>
+                <div class="tendencia positiva">
+                    <i class="bi bi-arrow-up-right"></i>
+                    <span>5.3%</span>
+                </div>
+            </div>
+            <div class="tarjeta-resumen">
+                <div class="icono-resumen valoracion">
+                    <i class="bi bi-star"></i>
+                </div>
+                <div class="datos-resumen">
+                    <h3>4.8</h3>
+                    <p>Valoración promedio</p>
+                </div>
+                <div class="tendencia neutral">
+                    <i class="bi bi-dash"></i>
+                    <span>0%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="graficos-dashboard">
+            <div class="grafico-ventas">
+                <div class="cabecera-grafico">
+                    <h3>Ventas Recientes</h3>
+                    <div class="filtro-periodo">
+                        <select>
+                            <option>Últimos 7 días</option>
+                            <option>Últimos 30 días</option>
+                            <option>Último trimestre</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="cuerpo-grafico">
+                    <!-- Aquí iría el gráfico de ventas -->
+                    <div class="placeholder-grafico">
+                        <img src="{% static 'img/grafico-ventas.webp' %}" alt="Gráfico de ventas">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="productos-populares">
+                <div class="cabecera-grafico">
+                    <h3>Productos Más Vendidos</h3>
+                    <a href="#" class="ver-todos">Ver todos</a>
+                </div>
+                <div class="lista-productos-populares">
+                    <div class="producto-popular">
+                        <img src="{% static 'img/producto1.webp' %}" alt="Producto 1">
+                        <div class="info-producto-popular">
+                            <h4>Combo Alitas</h4>
+                            <p>32 vendidos</p>
+                        </div>
+                        <div class="ventas-producto">
+                            <span>$5,760</span>
+                        </div>
+                    </div>
+                    <div class="producto-popular">
+                        <img src="{% static 'img/producto2.webp' %}" alt="Producto 2">
+                        <div class="info-producto-popular">
+                            <h4>Pizza Familiar</h4>
+                            <p>28 vendidos</p>
+                        </div>
+                        <div class="ventas-producto">
+                            <span>$6,160</span>
+                        </div>
+                    </div>
+                    <div class="producto-popular">
+                        <img src="{% static 'img/producto3.webp' %}" alt="Producto 3">
+                        <div class="info-producto-popular">
+                            <h4>Nachos Supremos</h4>
+                            <p>24 vendidos</p>
+                        </div>
+                        <div class="ventas-producto">
+                            <span>$2,880</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pedidos-recientes">
+            <div class="cabecera-seccion">
+                <h3>Pedidos Recientes</h3>
+                <a href="#" class="ver-todos">Ver todos</a>
+            </div>
+            <div class="tabla-responsive">
+                <table class="tabla-pedidos">
+                    <thead>
+                        <tr>
+                            <th>ID Pedido</th>
+                            <th>Cliente</th>
+                            <th>Fecha</th>
+                            <th>Total</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#12350</td>
+                            <td>María López</td>
+                            <td>20 mayo, 2023</td>
+                            <td>$245.00</td>
+                            <td><span class="estado-pedido entregado">Entregado</span></td>
+                            <td>
+                                <button class="btn-accion-tabla"><i class="bi bi-eye"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#12349</td>
+                            <td>Pedro Sánchez</td>
+                            <td>20 mayo, 2023</td>
+                            <td>$180.00</td>
+                            <td><span class="estado-pedido en-proceso">En proceso</span></td>
+                            <td>
+                                <button class="btn-accion-tabla"><i class="bi bi-eye"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#12348</td>
+                            <td>Ana Martínez</td>
+                            <td>19 mayo, 2023</td>
+                            <td>$320.00</td>
+                            <td><span class="estado-pedido entregado">Entregado</span></td>
+                            <td>
+                                <button class="btn-accion-tabla"><i class="bi bi-eye"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#12347</td>
+                            <td>Roberto Díaz</td>
+                            <td>19 mayo, 2023</td>
+                            <td>$150.00</td>
+                            <td><span class="estado-pedido cancelado">Cancelado</span></td>
+                            <td>
+                                <button class="btn-accion-tabla"><i class="bi bi-eye"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido de Pedidos -->
+    <div class="contenido-pestana" id="pedidos-contenido" style="display: none;">
+        <h2>Gestión de Pedidos</h2>
+        <div class="filtros-pedidos">
+            <div class="grupo-filtro">
+                <label for="filtro-estado">Estado</label>
+                <select id="filtro-estado" class="control-filtro">
+                    <option value="todos">Todos</option>
+                    <option value="entregado">Entregados</option>
+                    <option value="en-proceso">En proceso</option>
+                    <option value="cancelado">Cancelados</option>
+                </select>
+            </div>
+            <div class="grupo-filtro">
+                <label for="filtro-fecha">Fecha</label>
+                <select id="filtro-fecha" class="control-filtro">
+                    <option value="7dias">Últimos 7 días</option>
+                    <option value="30dias">Últimos 30 días</option>
+                    <option value="90dias">Últimos 90 días</option>
+                </select>
+            </div>
+            <div class="grupo-filtro">
+                <label for="buscar-pedido">Buscar</label>
+                <input type="text" id="buscar-pedido" class="control-filtro" placeholder="ID o cliente...">
+            </div>
+            <button class="btn-aplicar-filtro">Aplicar filtros</button>
+        </div>
+        
+        <div class="tabla-responsive">
+            <table class="tabla-pedidos">
+                <thead>
+                    <tr>
+                        <th>ID Pedido</th>
+                        <th>Cliente</th>
+                        <th>Fecha</th>
+                        <th>Total</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Más filas de pedidos -->
+                    <tr>
+                        <td>#12346</td>
+                        <td>Laura Gómez</td>
+                        <td>18 mayo, 2023</td>
+                        <td>$210.00</td>
+                        <td><span class="estado-pedido entregado">Entregado</span></td>
+                        <td>
+                            <div class="acciones-multiples">
+                                <button class="btn-accion-tabla"><i class="bi bi-eye"></i></button>
+                                <button class="btn-accion-tabla"><i class="bi bi-pencil"></i></button>
+                                <button class="btn-accion-tabla"><i class="bi bi-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Más filas... -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="paginacion">
+            <button class="btn-pagina"><i class="bi bi-chevron-left"></i></button>
+            <button class="btn-pagina activa">1</button>
+            <button class="btn-pagina">2</button>
+            <button class="btn-pagina">3</button>
+            <button class="btn-pagina"><i class="bi bi-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Contenido de Productos -->
+    <div class="contenido-pestana" id="productos-contenido" style="display: none;">
+        <h2>Gestión de Productos</h2>
+        <div class="acciones-productos">
+            <button class="btn-agregar-producto"><i class="bi bi-plus-lg"></i> Agregar Producto</button>
+            <div class="filtros-productos">
+                <select class="filtro-categoria">
+                    <option value="">Todas las categorías</option>
+                    <option value="1">Pizzas</option>
+                    <option value="2">Hamburguesas</option>
+                    <option value="3">Bebidas</option>
+                </select>
+                <input type="text" class="buscar-producto" placeholder="Buscar producto...">
+            </div>
+        </div>
+        
+        <div class="grid-productos">
+            <div class="tarjeta-producto">
+                <div class="imagen-producto">
+                    <img src="{% static 'img/producto1.webp' %}" alt="Combo Alitas">
+                    <div class="acciones-rapidas">
+                        <button class="btn-accion-producto"><i class="bi bi-pencil"></i></button>
+                        <button class="btn-accion-producto"><i class="bi bi-trash"></i></button>
+                    </div>
+                </div>
+                <div class="info-producto">
+                    <h3>Combo Alitas</h3>
+                    <p class="categoria-producto">Combos</p>
+                    <div class="detalles-producto">
+                        <span class="precio-producto">$180.00</span>
+                        <span class="stock-producto">Stock: 25</span>
+                    </div>
+                    <div class="estado-producto activo">Activo</div>
+                </div>
+            </div>
+            <!-- Más productos... -->
+        </div>
+        
+        <div class="paginacion">
+            <button class="btn-pagina"><i class="bi bi-chevron-left"></i></button>
+            <button class="btn-pagina activa">1</button>
+            <button class="btn-pagina">2</button>
+            <button class="btn-pagina">3</button>
+            <button class="btn-pagina"><i class="bi bi-chevron-right"></i></button>
+        </div>
+    </div>
+
+    <!-- Contenido de Categorías -->
+    <div class="contenido-pestana" id="categorias-contenido" style="display: none;">
+        <h2>Gestión de Categorías</h2>
+        <div class="acciones-categorias">
+            <button class="btn-agregar-categoria"><i class="bi bi-plus-lg"></i> Agregar Categoría</button>
+            <input type="text" class="buscar-categoria" placeholder="Buscar categoría...">
+        </div>
+        
+        <div class="tabla-responsive">
+            <table class="tabla-categorias">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Productos</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><img src="{% static 'img/categoria-pizza.webp' %}" alt="Pizzas" class="img-categoria-tabla"></td>
+                        <td>Pizzas</td>
+                        <td>12</td>
+                        <td><span class="estado-categoria activo">Activo</span></td>
+                        <td>
+                            <div class="acciones-multiples">
+                                <button class="btn-accion-tabla"><i class="bi bi-pencil"></i></button>
+                                <button class="btn-accion-tabla"><i class="bi bi-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Más categorías... -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Contenido de Promociones -->
+    <div class="contenido-pestana" id="promociones-contenido" style="display: none;">
+        <h2>Gestión de Promociones</h2>
+        <div class="acciones-promociones">
+            <button class="btn-agregar-promocion"><i class="bi bi-plus-lg"></i> Agregar Promoción</button>
+            <div class="filtros-promociones">
+                <select class="filtro-estado-promocion">
+                    <option value="">Todos los estados</option>
+                    <option value="activo">Activas</option>
+                    <option value="inactivo">Inactivas</option>
+                    <option value="programada">Programadas</option>
+                </select>
+                <input type="text" class="buscar-promocion" placeholder="Buscar promoción...">
+            </div>
+        </div>
+        
+        <div class="grid-promociones">
+            <div class="tarjeta-promocion">
+                <div class="imagen-promocion">
+                    <img src="{% static 'img/promo1.webp' %}" alt="2x1 en Pizzas">
+                    <div class="descuento-promocion">-50%</div>
+                </div>
+                <div class="info-promocion">
+                    <h3>2x1 en Pizzas</h3>
+                    <p class="periodo-promocion">15 mayo - 30 mayo, 2023</p>
+                    <div class="detalles-promocion">
+                        <span class="codigo-promocion">PIZZA2X1</span>
+                        <span class="usos-promocion">Usos: 45/100</span>
+                    </div>
+                    <div class="estado-promocion activo">Activa</div>
+                    <div class="acciones-promocion">
+                        <button class="btn-editar-promocion">Editar</button>
+                        <button class="btn-desactivar-promocion">Desactivar</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Más promociones... -->
+        </div>
+    </div>
+
+    <!-- Contenido de Configuración -->
+    <div class="contenido-pestana" id="configuracion-contenido" style="display: none;">
+        <h2>Configuración del Sistema</h2>
+        
+        <div class="secciones-configuracion">
+            <div class="seccion-configuracion">
+                <h3>Información de la Tienda</h3>
+                <div class="formulario-configuracion">
+                    <div class="grupo-formulario">
+                        <label for="nombre-tienda">Nombre de la Tienda</label>
+                        <input type="text" id="nombre-tienda" class="control-formulario" value="ClickOn Restaurant">
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="direccion-tienda">Dirección</label>
+                        <input type="text" id="direccion-tienda" class="control-formulario" value="Av. Principal #123, Tepic, Nayarit">
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="telefono-tienda">Teléfono</label>
+                        <input type="text" id="telefono-tienda" class="control-formulario" value="(311) 123-4567">
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="email-tienda">Email</label>
+                        <input type="email" id="email-tienda" class="control-formulario" value="contacto@clickon.com">
+                    </div>
+                    <button class="btn-guardar">Guardar Cambios</button>
+                </div>
+            </div>
+            
+            <div class="seccion-configuracion">
+                <h3>Configuración de Envíos</h3>
+                <div class="formulario-configuracion">
+                    <div class="grupo-formulario">
+                        <label for="costo-envio">Costo de Envío</label>
+                        <input type="text" id="costo-envio" class="control-formulario" value="$30.00">
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="envio-gratis">Envío Gratis a partir de</label>
+                        <input type="text" id="envio-gratis" class="control-formulario" value="$300.00">
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="tiempo-entrega">Tiempo estimado de entrega</label>
+                        <input type="text" id="tiempo-entrega" class="control-formulario" value="30-45 minutos">
+                    </div>
+                    <div class="grupo-formulario checkbox">
+                        <input type="checkbox" id="envio-activo" checked>
+                        <label for="envio-activo">Servicio de envío activo</label>
+                    </div>
+                    <button class="btn-guardar">Guardar Cambios</button>
+                </div>
+            </div>
+            
+            <div class="seccion-configuracion">
+                <h3>Métodos de Pago</h3>
+                <div class="lista-metodos-pago">
+                    <div class="metodo-pago">
+                        <div class="info-metodo">
+                            <img src="{% static 'img/efectivo.webp' %}" alt="Efectivo" class="icono-metodo">
+                            <div class="detalles-metodo">
+                                <h4>Efectivo</h4>
+                                <p>Pago al recibir el pedido</p>
+                            </div>
+                        </div>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="efectivo-activo" checked>
+                            <label for="efectivo-activo" class="deslizador"></label>
+                        </div>
+                    </div>
+                    <div class="metodo-pago">
+                        <div class="info-metodo">
+                            <img src="{% static 'img/tarjeta.webp' %}" alt="Tarjeta" class="icono-metodo">
+                            <div class="detalles-metodo">
+                                <h4>Tarjeta de Crédito/Débito</h4>
+                                <p>Pago en línea seguro</p>
+                            </div>
+                        </div>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="tarjeta-activo" checked>
+                            <label for="tarjeta-activo" class="deslizador"></label>
+                        </div>
+                    </div>
+                    <div class="metodo-pago">
+                        <div class="info-metodo">
+                            <img src="{% static 'img/paypal.webp' %}" alt="PayPal" class="icono-metodo">
+                            <div class="detalles-metodo">
+                                <h4>PayPal</h4>
+                                <p>Pago con cuenta PayPal</p>
+                            </div>
+                        </div>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="paypal-activo">
+                            <label for="paypal-activo" class="deslizador"></label>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-guardar">Guardar Cambios</button>
+            </div>
+            
+            <div class="seccion-configuracion">
+                <h3>Seguridad de la Cuenta</h3>
+                <div class="formulario-configuracion">
+                    <div class="grupo-formulario">
+                        <label for="contrasena-actual">Contraseña Actual</label>
+                        <input type="password" id="contrasena-actual" class="control-formulario">
+                    </div>
+                    <div class="grupo-formulario">
+                        <label for="confirmar-contrasena">Confirmar Nueva Contraseña</label>
+                        <input type="password" id="confirmar-contrasena" class="control-formulario">
+                    </div>
+                    <button class="btn-guardar">Cambiar Contraseña</button>
+                </div>
+            </div>
+            
+            <div class="seccion-configuracion">
+                <h3>Notificaciones</h3>
+                <div class="opciones-notificaciones">
+                    <div class="opcion-notificacion">
+                        <div class="info-notificacion">
+                            <h4>Nuevos Pedidos</h4>
+                            <p>Recibir notificaciones cuando lleguen nuevos pedidos</p>
+                        </div>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="notif-pedidos" checked>
+                            <label for="notif-pedidos" class="deslizador"></label>
+                        </div>
+                    </div>
+                    <div class="opcion-notificacion">
+                        <div class="info-notificacion">
+                            <h4>Productos Agotados</h4>
+                            <p>Alertas cuando un producto esté por agotarse</p>
+                        </div>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="notif-agotados" checked>
+                            <label for="notif-agotados" class="deslizador"></label>
+                        </div>
+                    </div>
+                    <div class="opcion-notificacion">
+                        <div class="info-notificacion">
+                            <h4>Nuevas Reseñas</h4>
+                            <p>Notificaciones cuando los clientes dejen reseñas</p>
+                        </div>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="notif-resenas">
+                            <label for="notif-resenas" class="deslizador"></label>
+                        </div>
+                    </div>
+                    <div class="opcion-notificacion">
+                        <div class="info-notificacion">
+                            <h4>Informes Semanales</h4>
+                            <p>Recibir resumen semanal de ventas por email</p>
+                        </div>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="notif-informes" checked>
+                            <label for="notif-informes" class="deslizador"></label>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-guardar">Guardar Preferencias</button>
+            </div>
+            
+            <div class="seccion-configuracion">
+                <h3>Apariencia del Sistema</h3>
+                <div class="opciones-apariencia">
+                    <div class="opcion-preferencia">
+                        <h4>Tema</h4>
+                        <div class="selector-tema">
+                            <div class="opcion-tema activa" data-tema="claro">
+                                <div class="preview-tema claro"></div>
+                                <span>Claro</span>
+                            </div>
+                            <div class="opcion-tema" data-tema="oscuro">
+                                <div class="preview-tema oscuro"></div>
+                                <span>Oscuro</span>
+                            </div>
+                            <div class="opcion-tema" data-tema="sistema">
+                                <div class="preview-tema sistema"></div>
+                                <span>Sistema</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="opcion-preferencia">
+                        <h4>Tamaño de Fuente</h4>
+                        <div class="selector-tamano">
+                            <button class="btn-tamano" data-tamano="pequeño">A</button>
+                            <button class="btn-tamano activo" data-tamano="normal">A</button>
+                            <button class="btn-tamano" data-tamano="grande">A</button>
+                        </div>
+                    </div>
+                    <div class="opcion-preferencia">
+                        <h4>Animaciones</h4>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="animaciones-activas" checked>
+                            <label for="animaciones-activas" class="deslizador"></label>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-guardar">Guardar Preferencias</button>
+            </div>
+            
+            <div class="seccion-configuracion">
+                <h3>Copias de Seguridad</h3>
+                <div class="opciones-backup">
+                    <div class="info-backup">
+                        <p>Última copia de seguridad: <strong>18 mayo, 2023 - 08:30 AM</strong></p>
+                        <p>Estado: <span class="estado-backup exitoso">Exitoso</span></p>
+                    </div>
+                    <div class="acciones-backup">
+                        <button class="btn-backup"><i class="bi bi-download"></i> Crear Copia de Seguridad</button>
+                        <button class="btn-restaurar"><i class="bi bi-upload"></i> Restaurar Copia</button>
+                    </div>
+                    <div class="opciones-programacion">
+                        <h4>Programar Copias Automáticas</h4>
+                        <div class="grupo-formulario">
+                            <select id="frecuencia-backup" class="control-formulario">
+                                <option value="diario">Diariamente</option>
+                                <option value="semanal" selected>Semanalmente</option>
+                                <option value="mensual">Mensualmente</option>
+                            </select>
+                        </div>
+                        <div class="toggle-switch">
+                            <input type="checkbox" id="backup-automatico" checked>
+                            <label for="backup-automatico" class="deslizador"></label>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-guardar">Guardar Configuración</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Contenido de Clientes -->
+    <div class="contenido-pestana" id="clientes-contenido" style="display: none;">
+        <h2>Gestión de Clientes</h2>
+        <div class="filtros-clientes">
+            <div class="grupo-filtro">
+                <label for="filtro-actividad">Actividad</label>
+                <select id="filtro-actividad" class="control-filtro">
+                    <option value="todos">Todos</option>
+                    <option value="activos">Activos</option>
+                    <option value="inactivos">Inactivos</option>
+                </select>
+            </div>
+            <div class="grupo-filtro">
+                <label for="filtro-registro">Fecha de registro</label>
+                <select id="filtro-registro" class="control-filtro">
+                    <option value="todos">Todos</option>
+                    <option value="30dias">Últimos 30 días</option>
+                    <option value="90dias">Últimos 90 días</option>
+                    <option value="anual">Este año</option>
+                </select>
+            </div>
+            <div class="grupo-filtro">
+                <label for="buscar-cliente">Buscar</label>
+                <input type="text" id="buscar-cliente" class="control-filtro" placeholder="Nombre o email...">
+            </div>
+            <button class="btn-aplicar-filtro">Aplicar filtros</button>
+        </div>
+        
+        <div class="tabla-responsive">
+            <table class="tabla-clientes">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Registro</th>
+                        <th>Pedidos</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1001</td>
+                        <td class="cliente-info">
+                            <img src="{% static 'img/avatar1.webp' %}" alt="Avatar" class="avatar-cliente">
+                            <span>María López</span>
+                        </td>
+                        <td>maria.lopez@email.com</td>
+                        <td>(311) 123-4567</td>
+                        <td>15 enero, 2023</td>
+                        <td>8</td>
+                        <td>
+                            <div class="acciones-multiples">
+                                <button class="btn-accion-tabla"><i class="bi bi-eye"></i></button>
+                                <button class="btn-accion-tabla"><i class="bi bi-envelope"></i></button>
+                                <button class="btn-accion-tabla"><i class="bi bi-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!-- Más clientes... -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="paginacion">
+            <button class="btn-pagina"><i class="bi bi-chevron-left"></i></button>
+            <button class="btn-pagina activa">1</button>
+            <button class="btn-pagina">2</button>
+            <button class="btn-pagina">3</button>
+            <button class="btn-pagina"><i class="bi bi-chevron-right"></i></button>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/admin_perfil.js' %}"></script>
+{% endblock %}
