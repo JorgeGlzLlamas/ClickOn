@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Sitemap</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #5AAA08;
+            --secondary-color: #246B1A;
+            --accent-color: #9DE11A;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .sitemap-container {
+            margin: 30px auto;
+        }
+        
+        .main-section {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .sub-section {
+            border: 1px solid var(--primary-color);
+            padding: 8px 12px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            background-color: white;
+            font-weight: bold;
+        }
+        
+        .item-list {
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: black;
+        }
+
+        .item-list a{
+            text-decoration: none;
+            color: black;
+        }
+
+        .item-list a:hover{
+            color: black;
+            font-weight: 600;
+        }
+        
+        .category-title {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+        
+        .sub-item {
+            margin-left: 20px;
+            margin-bottom: 3px;
+        }
+
+        .sub-item-level-2 {
+            margin-left: 50px;
+        }
+        
+        .highlight-box {
+            border: 1px solid var(--accent-color);
+            background-color: rgba(157, 225, 26, 0.1);
+            padding: 8px 12px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .sitemap-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .item-list, .sub-item {
+                margin-left: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container sitemap-container">
+        <div class="sitemap-header">
+            <h1>Mapa de sitio ClickOn</h1>
+        </div>
+        
+        <div class="row">
+            <!-- Inicio Section -->
+            <div class="col-md-3 mb-4">
+                <div class="main-section">Inicio</div>
+                
+                <div class="sub-section">Menú Navegación</div>
+                <div class="item-list">
+                    <div>Barra de búsqueda</div>
+                    <div class="category-title">Categorías</div>
+                    <div class="sub-item">Comida Rápida</div>
+                    <div class="sub-item sub-item-level-2">Hamburguesas</div>
+                    <div class="sub-item sub-item-level-2">Pizzas</div>
+                    <div class="sub-item sub-item-level-2">Hot dogs</div>
+                    <div class="sub-item sub-item-level-2">Snacks Salados</div>
+                    <a href="{% url 'core:recomendados' %}" class="sub-item sub-item-level-2">Alitas</a>
+                    <div class="sub-item">Comida saludable</div>
+                    <div class="sub-item sub-item-level-2">Ensaladas</div>
+                    <div class="sub-item sub-item-level-2">Jugos</div>
+                    <div class="sub-item sub-item-level-2">Snacks saludables</div>
+                    <div class="sub-item">Bebidas</div>
+                    <div class="sub-item sub-item-level-2">Refrescos y sodas</div>
+                    <div class="sub-item sub-item-level-2">Jugos</div>
+                    <div class="sub-item sub-item-level-2">Café y té</div>
+                    <div class="sub-item sub-item-level-2">Bebidas energéticas</div>
+                    <div class="sub-item sub-item-level-2">Leche y bebidas vegetales</div>
+                    <div class="sub-item">Postres</div>
+                    <div class="sub-item sub-item-level-2">Pasteles y tartas</div>
+                    <div class="sub-item sub-item-level-2">Galletas y panadería</div>
+                    <div class="sub-item sub-item-level-2">Helados y postres</div>
+                    <div class="sub-item">Despensa y congelados</div>
+                    <div class="sub-item sub-item-level-2">Comida congelada</div>
+                    <div class="sub-item sub-item-level-2">Enlatados</div>
+                    <div class="sub-item sub-item-level-2">Cereales y barras</div>
+                    <div class="sub-item sub-item-level-2">Salsas y condimentos</div>
+                    <div class="sub-item sub-item-level-2">Pasta y arroz</div>
+                    <div class="sub-item">Dietas especiales</div>
+                    <div class="sub-item sub-item-level-2">Vegetariana</div>
+                    <div class="sub-item sub-item-level-2">Sin gluten</div>
+                </div>
+                
+                <div class="sub-section">Búsquedas</div>
+                <div class="item-list">
+                    <div class="category-title">Categorías</div>
+                    <div class="sub-item">Todos</div>
+                    <div class="sub-item">Comida rápida</div>
+                    <div class="sub-item">Comida saludable</div>
+                    <div class="sub-item">Bebidas</div>
+                    <div class="sub-item">Postres</div>
+                    <div class="sub-item">Despensa y congelados</div>
+                    <div class="sub-item">Dietas especiales</div>
+                    
+                    <div class="category-title">Productos</div>
+                    <div class="highlight-box">Populares cerca de ti</div>
+                    <div class="highlight-box">Ofertas de hoy</div>
+                    <div class="highlight-box">Comidas a excelente precio</div>
+                    <div class="highlight-box">Categorías populares</div>
+                    
+                    <div class="category-title">Mexicana</div>
+                    <div class="category-title">Italiana</div>
+                    <div class="category-title">China</div>
+                    <div class="category-title">Bebidas y licores</div>
+                    
+                    <div class="highlight-box">Restaurantes mejor calificados</div>
+                </div>
+                
+                <div class="sub-section">Filtros</div>
+                <div class="item-list">
+                    <div>Costos</div>
+                    <div>Costos de envío</div>
+                    <div>Ofertas</div>
+                    <div>Mayor calificación</div>
+                    <div>Tipo de dieta</div>
+                </div>
+            </div>
+            
+            <!-- Mi Cuenta Section -->
+            <div class="col-md-3 mb-4">
+                <div class="main-section">Mi Cuenta</div>
+                <div class="item-list">
+                    <div>Iniciar sesión / Registrarse</div>
+                    <div>Mis pedidos</div>
+                    <div>Historial de pedidos</div>
+                    <div>Mi perfil</div>
+                    <div>Métodos de pago</div>
+                    <div>Favoritos (Comercios/Productos)</div>
+                    <div>Actualizaciones de pedidos</div>
+                    <div>Alertas de promociones</div>
+                    <div>Solicitudes de retroalimentación</div>
+                </div>
+                
+                <div class="main-section">Servicios</div>
+                <div class="item-list">
+                    <div>Ayuda y soporte</div>
+                    <div>Preguntas frecuentes</div>
+                    <div>Solución de problemas</div>
+                    <div>Localizar Comercio/Restaurante Más Cercano</div>
+                    <div>Ubicaciones de Socios</div>
+                </div>
+            </div>
+            
+            <!-- Administracion Section -->
+            <div class="col-md-3 mb-4">
+                <div class="main-section">Administración</div>
+                <div class="item-list">
+                    <div>Repartidores</div>
+                    <div>Registrarse / Iniciar sesión</div>
+                    <div>Gestión de Perfil</div>
+                    <div>Verificación de Documentación</div>
+                    <div>Gestión de pedidos</div>
+                    <div>Aceptar pedidos</div>
+                    <div>Rastrear Entregas</div>
+                    <div>Ver Ganancias</div>
+                    
+                    <div class="category-title">Comercios / Restaurantes</div>
+                    <div class="sub-item">Registrarse / Iniciar sesión</div>
+                    <div class="sub-item">Gestión del Comercio</div>
+                    <div class="sub-item">Agregar / Editar / Eliminar Productos</div>
+                    <div class="sub-item">Gestionar Promociones y Paquetes</div>
+                    <div class="sub-item">Horarios y disponibilidad</div>
+                    <div class="sub-item">Ver Ventas</div>
+                </div>
+                
+                <div class="main-section">Ayuda</div>
+                <div class="item-list">
+                    <div>Cómo comprar</div>
+                    <div>Información de entrega</div>
+                    <div>Reportar problemas Contáctenos</div>
+                    <div>Términos y condiciones</div>
+                    <div>Política de Privacidad</div>
+                </div>
+            </div>
+            
+            <!-- Categorias Section -->
+            <div class="col-md-3 mb-4">
+                <div class="main-section">Categorías</div>
+                <div class="item-list">
+                    <div class="category-title">Servicios</div>
+                    <div class="sub-item">Mismo día</div>
+                    <div class="sub-item">Programada</div>
+                    <div class="sub-item">Opciones de pago</div>
+                    <div class="sub-item">Atención al cliente</div>
+                    
+                    <div class="category-title">Outlet y Descuentos</div>
+                    <div class="sub-item">Productos con descuento</div>
+                    <div class="sub-item">Liquidaciones</div>
+                    <div class="sub-item">Ofertas Estacionales</div>
+                    
+                    <div class="category-title">Marcas Destacadas</div>
+                    <div class="sub-item">Marcas Populares (ej. GAP, Puma, Bath & Body Works)</div>
+                    <div class="sub-item">Nuevas Llegadas</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

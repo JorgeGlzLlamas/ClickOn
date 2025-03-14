@@ -15,3 +15,6 @@ def inicio_sesion(request):
 
 def registro(request):
     return render(request, "registro.html")
+
+def mapa_sitio(request):
+    return render(request, "mapa_sitio.html")
