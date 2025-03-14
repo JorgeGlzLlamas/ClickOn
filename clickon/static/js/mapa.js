@@ -16,237 +16,338 @@ const PUNTO_FIJO = [
     dmsToDecimal(lngDMS.degrees, lngDMS.minutes, lngDMS.seconds, lngDMS.direction)
 ];
 
-const TARIFA_BASE = 20; // Tarifa base en pesos
-const TARIFA_POR_KM = 5; // Pesos adicionales por kilómetro
-
 // Inicializar el mapa cuando el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
     // Verificar si el elemento del mapa existe en la página actual
     const mapaContainer = document.getElementById('mapa-estatico');
     if (!mapaContainer) return;
 
+    // Asegurar que el contenedor del mapa sea visible
+    mapaContainer.style.display = 'block';
+    mapaContainer.style.height = '610px';
+    mapaContainer.style.position = 'relative';
+    
     // Inicializar el mapa
     let mapa = L.map('mapa-estatico', {
         center: PUNTO_FIJO,
         zoom: 15,
-        dragging: true,  // Deshabilitar arrastre
-        touchZoom: true, // Deshabilitar zoom táctil
-        doubleClickZoom: true, // Deshabilitar zoom con doble clic
-        scrollWheelZoom: true, // Deshabilitar zoom con rueda del ratón
-        boxZoom: true,   // Deshabilitar zoom con caja
-        keyboard: true,  // Deshabilitar teclado
-        zoomControl: true // Ocultar controles de zoom
+        dragging: true,
+        touchZoom: true, 
+        doubleClickZoom: true,
+        scrollWheelZoom: true,
+        boxZoom: true,
+        keyboard: true,
+        zoomControl: true
     });
 
-    // Añadir capa de mapa de OpenStreetMap (gratuito)
+    // Añadir capa de mapa de OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(mapa);
 
-    // Crear icono personalizado para el establecimiento (punto de inicio)
+    // Crear icono personalizado para el establecimiento
     const iconoEstablecimiento = L.icon({
-        iconUrl: 'https://cdn-icons-png.flaticon.com/512/3170/3170733.png', // Icono de tienda/establecimiento
+        iconUrl: 'https://cdn-icons-png.flaticon.com/512/3170/3170733.png',
         shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
         iconSize: [50, 50],
         iconAnchor: [25, 50],
-        popupAnchor: [0, -45],
         shadowSize: [41, 41]
     });
-
-    // Crear icono personalizado para la casa del cliente (destino)
-    const iconoCasaCliente = L.icon({
-        iconUrl: 'https://cdn-icons-png.flaticon.com/512/8059/8059355.png', // Icono de casa
-        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
-        iconSize: [45, 45],
-        iconAnchor: [22, 45],
-        popupAnchor: [0, -40],
-        shadowSize: [41, 41]
-    });
-
-    // Añadir marcador para el establecimiento con el icono correspondiente
-    const marcadorFijo = L.marker(PUNTO_FIJO, {icon: iconoEstablecimiento}).addTo(mapa);
-    marcadorFijo.bindPopup("<div class='popup-content'><strong>Click On</strong><p>Nuestra ubicación</p></div>").openPopup();
-
-    // Variables para almacenar la ruta actual y el marcador de destino
-    let rutaActual = null;
-    let marcadorDestino = null;
-
-    // Manejar el envío del formulario
-    const formulario = document.getElementById('direccionForm');
     
-    if (formulario) {
-        formulario.addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const direccion = document.getElementById('direccionInput').value;
-            
-            if (!direccion) {
-                alert("Por favor, ingresa una dirección");
-                return;
-            }
-            
-            try {
-                // Mostrar indicador de carga
-                document.getElementById('direccionInput').disabled = true;
-                
-                // Geocodificar la dirección
-                const coordenadas = await geocodificarDireccion(direccion);
-                
-                // Calcular la ruta
-                await calcularRuta(coordenadas, mapa);
-            } catch (error) {
-                alert("No se pudo encontrar la dirección. Por favor, intenta con otra.");
-            } finally {
-                // Ocultar indicador de carga
-                document.getElementById('direccionInput').disabled = false;
-            }
-        });
-    }
+    // Crear icono personalizado para la ubicación del usuario
+    const iconoUsuario = L.icon({
+        iconUrl: 'https://cdn-icons-png.flaticon.com/512/25/25694.png', // Icono de casa
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [40, 40],
+        iconAnchor: [20, 40],
+        shadowSize: [41, 41]
+    });
 
-    // Función para calcular ruta usando OSRM (Open Source Routing Machine)
-    async function calcularRuta(destino, mapa) {
+    // Añadir marcador para el establecimiento
+    L.marker(PUNTO_FIJO, {icon: iconoEstablecimiento}).addTo(mapa);
+    
+    // Variables para almacenar la ruta y el marcador del usuario
+    let rutaUsuario = null;
+    let marcadorUsuario = null;
+    
+    // Función para dibujar ruta desde punto fijo hasta ubicación del usuario
+    async function dibujarRutaUsuario(coordenadasUsuario) {
         try {
             // Si ya existe una ruta, eliminarla
-            if (rutaActual) {
-                mapa.removeLayer(rutaActual);
+            if (rutaUsuario) {
+                mapa.removeLayer(rutaUsuario);
             }
             
-            // Si ya existe un marcador de destino, eliminarlo
-            if (marcadorDestino) {
-                mapa.removeLayer(marcadorDestino);
+            // Si ya existe un marcador de usuario, eliminarlo
+            if (marcadorUsuario) {
+                mapa.removeLayer(marcadorUsuario);
             }
             
-            // Crear marcador para el destino con el icono de casa
-            marcadorDestino = L.marker(destino, {icon: iconoCasaCliente}).addTo(mapa);
-            marcadorDestino.bindPopup("<div class='popup-content'><strong>Tu ubicación</strong><p>Destino de entrega</p></div>").openPopup();
+            // Añadir marcador para la ubicación del usuario
+            marcadorUsuario = L.marker(coordenadasUsuario, {icon: iconoUsuario}).addTo(mapa);
             
-            // Obtener ruta usando OSRM (que sigue las calles)
-            const url = `https://router.project-osrm.org/route/v1/driving/${PUNTO_FIJO[1]},${PUNTO_FIJO[0]};${destino[1]},${destino[0]}?overview=full&geometries=polyline&steps=true`;
-            
+            // Obtener la mejor ruta usando OSRM con optimización
+            const url = `https://router.project-osrm.org/route/v1/driving/${PUNTO_FIJO[1]},${PUNTO_FIJO[0]};${coordenadasUsuario[1]},${coordenadasUsuario[0]}?overview=full&geometries=geojson&steps=true`;
             const respuesta = await fetch(url);
             const datos = await respuesta.json();
             
             if (datos.code !== 'Ok' || !datos.routes || datos.routes.length === 0) {
-                throw new Error('No se pudo calcular la ruta');
+                throw new Error("No se pudo calcular la ruta");
             }
             
-            // Obtener la ruta y decodificar la geometría
-            const ruta = datos.routes[0];
-            const coordenadasRuta = decodePolyline(ruta.geometry);
+            // Seleccionar la mejor ruta (la primera es la recomendada por OSRM)
+            const mejorRuta = datos.routes[0];
             
-            // Dibujar la ruta con estilo mejorado
-            rutaActual = L.polyline(coordenadasRuta, {
-                color: 'var(--dark-green)',
-                weight: 6,
-                opacity: 0.8,
-                lineCap: 'round',
+            // Usar directamente las coordenadas GeoJSON en lugar de decodificar polyline
+            const puntos = mejorRuta.geometry.coordinates.map(coord => [coord[1], coord[0]]);
+            
+            // Crear una ruta que siga las calles con estilo mejorado y más visible
+            rutaUsuario = L.polyline(puntos, {
+                color: '#28a745',
+                weight: 8,
+                opacity: 1,
                 lineJoin: 'round',
-                dashArray: '10, 10', // Línea punteada para mejor visibilidad
-                className: 'animated-route' // Para animación CSS
+                lineCap: 'round'
             }).addTo(mapa);
             
-            // Ajustar la vista para mostrar toda la ruta
-            mapa.fitBounds(rutaActual.getBounds(), { padding: [50, 50] });
+            // Ajustar el mapa para mostrar toda la ruta
+            mapa.fitBounds(rutaUsuario.getBounds(), {
+                padding: [50, 50]
+            });
             
-            // Calcular distancia en kilómetros
-            const distanciaKm = ruta.distance / 1000;
+            // Mostrar distancia y tiempo estimado
+            const distanciaKm = (mejorRuta.distance / 1000).toFixed(2);
+            const tiempoMinutos = Math.ceil(mejorRuta.duration / 60);
             
-            // Calcular tarifa
-            const tarifa = TARIFA_BASE + (distanciaKm * TARIFA_POR_KM);
+            // Calcular costo de envío (ejemplo: $10 por kilómetro)
+            const costoPorKm = 10;
+            const costoEnvio = (distanciaKm * costoPorKm).toFixed(2);
             
-                       // Mostrar resultados en el elemento superior con diseño mejorado
-                       const resultadoEnvio = document.getElementById('resultadoEnvio');
-                       resultadoEnvio.innerHTML = `
-                           <div class="tarifa-container">
-                               <h3 class="tarifa-titulo">Detalles de Envío</h3>
-                               <div class="tarifa-grid">
-                                   <div class="tarifa-item">
-                                       <i class="bi bi-geo-alt-fill"></i>
-                                       <p><strong>Distancia:</strong> ${distanciaKm.toFixed(2)} km</p>
-                                   </div>
-                                   <div class="tarifa-item">
-                                       <i class="bi bi-cash-coin"></i>
-                                       <p><strong>Tarifa base:</strong> $${TARIFA_BASE.toFixed(2)} MXN</p>
-                                   </div>
-                                   <div class="tarifa-item">
-                                       <i class="bi bi-plus-circle-fill"></i>
-                                       <p><strong>Tarifa por km:</strong> $${(distanciaKm * TARIFA_POR_KM).toFixed(2)} MXN</p>
-                                   </div>
-                                   <div class="tarifa-item tarifa-total">
-                                       <i class="bi bi-check-circle-fill"></i>
-                                       <p><strong>Tarifa total:</strong> $${tarifa.toFixed(2)} MXN</p>
-                                   </div>
-                               </div>
-                           </div>
-                       `;
-                       resultadoEnvio.style.display = 'block';
-            
-            return {
-                distancia: distanciaKm,
-                tarifa: tarifa
+            // Obtener la dirección del usuario mediante geocodificación inversa
+            const obtenerDireccion = async (lat, lng) => {
+                try {
+                    const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=18&addressdetails=1`;
+                    const respuesta = await fetch(url);
+                    const datos = await respuesta.json();
+                    return datos.display_name || "Ubicación no disponible";
+                } catch (error) {
+                    console.error("Error al obtener dirección:", error);
+                    return "Ubicación no disponible";
+                }
             };
-        } catch (error) {
-            console.error("Error al calcular la ruta:", error);
             
-            // Si falla OSRM, mostrar un mensaje de error en el elemento superior
-            const resultadoEnvio = document.getElementById('resultadoEnvio');
-            resultadoEnvio.innerHTML = `
-                <div class="alert-danger p-2 rounded">
-                    <p class="mb-0">No se pudo calcular la ruta. Por favor, intenta con otra dirección.</p>
+            // Obtener la dirección y mostrar la información
+            const direccionUsuario = await obtenerDireccion(coordenadasUsuario[0], coordenadasUsuario[1]);
+            
+            // Crear un control de información con detalles de la mejor ruta
+            const infoControl = L.control({position: 'bottomleft'});
+            infoControl.onAdd = function() {
+                const div = L.DomUtil.create('div', 'info-route');
+                div.innerHTML = `
+                    <div style="background: white; padding: 12px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 1000; min-width: 220px; max-width: 350px;">
+                        <h4 style="margin: 0 0 8px 0; color: #28a745; font-weight: bold;">Detalles del envío</h4>
+                        <p style="margin: 0 0 5px 0;"><strong>Ubicación:</strong> <span style="font-size: 0.9em;">${direccionUsuario}</span></p>
+                        <p style="margin: 0 0 5px 0;"><strong>Distancia:</strong> ${distanciaKm} km</p>
+                        <p style="margin: 0 0 5px 0;"><strong>Tiempo estimado:</strong> ${tiempoMinutos} min</p>
+                        <p style="margin: 0 0 5px 0;"><strong>Costo por km:</strong> $${costoPorKm}.00 MXN</p>
+                        <p style="margin: 0; font-weight: bold; color: #28a745;"><strong>Costo de envío:</strong> $${costoEnvio} MXN</p>
+                    </div>
+                `;
+                return div;
+            };
+            infoControl.addTo(mapa);
+            
+        } catch (error) {
+            console.error("Error al dibujar ruta:", error);
+            // Mostrar solo el marcador del usuario si no se puede dibujar la ruta
+            if (!marcadorUsuario) {
+                marcadorUsuario = L.marker(coordenadasUsuario, {icon: iconoUsuario}).addTo(mapa);
+                mapa.setView(coordenadasUsuario, 15);
+            }
+            
+            // Mostrar mensaje de error al usuario
+            const errorControl = L.control({position: 'bottomleft'});
+            errorControl.onAdd = function() {
+                const div = L.DomUtil.create('div', 'error-route');
+                div.innerHTML = `
+                    <div style="background: white; padding: 10px; border-radius: 5px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 1000;">
+                        <h4 style="margin: 0 0 5px 0; color: #dc3545;">No se pudo calcular la ruta</h4>
+                        <p style="margin: 0;">Intente nuevamente más tarde</p>
+                    </div>
+                `;
+                return div;
+            };
+            errorControl.addTo(mapa);
+        }
+    }
+    
+    // Solicitar ubicación del usuario cuando cargue la página
+    let permisoDenegado = false;
+    
+    function solicitarUbicacion() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                // Éxito
+                function(position) {
+                    const coordenadasUsuario = [position.coords.latitude, position.coords.longitude];
+                    dibujarRutaUsuario(coordenadasUsuario);
+                    permisoDenegado = false;
+                },
+                // Error - Mostrar formulario para ingresar dirección manualmente
+                function(error) {
+                    console.log("Error al obtener ubicación:", error.message);
+                    mostrarFormularioDireccion();
+                    
+                    // Marcar que el permiso fue denegado para solicitar nuevamente más tarde
+                    if (error.code === error.PERMISSION_DENIED) {
+                        permisoDenegado = true;
+                        
+                        // Programar recordatorios periódicos para solicitar ubicación
+                        programarRecordatorioUbicacion();
+                    }
+                },
+                // Opciones
+                {
+                    enableHighAccuracy: true,
+                    timeout: 10000,
+                    maximumAge: 0
+                }
+            );
+        } else {
+            // Navegador no soporta geolocalización
+            mostrarFormularioDireccion();
+        }
+    }
+    
+    // Función para mostrar alerta y solicitar ubicación nuevamente
+    function mostrarAlertaUbicacion() {
+        if (permisoDenegado) {
+            const confirmar = confirm("Para una mejor experiencia, ¿nos permites acceder a tu ubicación para calcular la ruta de entrega?");
+            if (confirmar) {
+                solicitarUbicacion();
+            }
+        }
+    }
+    
+    // Programar recordatorios periódicos para solicitar ubicación
+    function programarRecordatorioUbicacion() {
+        // Mostrar el primer recordatorio después de 2 minutos
+        setTimeout(() => {
+            mostrarAlertaUbicacion();
+            
+            // Después mostrar cada 5 minutos si sigue denegado
+            const intervaloRecordatorio = setInterval(() => {
+                if (!permisoDenegado) {
+                    clearInterval(intervaloRecordatorio);
+                } else {
+                    mostrarAlertaUbicacion();
+                }
+            }, 5 * 60 * 1000); // 5 minutos
+            
+        }, 2 * 60 * 1000); // 2 minutos
+    }
+    
+    // Iniciar solicitud de ubicación con un pequeño retraso
+    setTimeout(solicitarUbicacion, 1000);
+    
+    // Función para mostrar formulario de dirección manual
+    function mostrarFormularioDireccion() {
+        // Crear control para el formulario
+        const direccionControl = L.control({position: 'topright'});
+        
+        direccionControl.onAdd = function() {
+            const div = L.DomUtil.create('div', 'direccion-form');
+            div.innerHTML = `
+                <div style="background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 1000; margin-top: 10px; width: 280px;">
+                    <h4 style="margin: 0 0 10px 0; color: #28a745;">Ingresa tu ubicación</h4>
+                    <input type="text" id="direccion-input" placeholder="Ej: Av. México 123, Tepic" 
+                           style="width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;">
+                    <button id="buscar-direccion" 
+                            style="background: #28a745; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; width: 100%;">
+                        Buscar
+                    </button>
+                    <p id="error-direccion" style="color: #dc3545; margin: 5px 0 0 0; font-size: 0.9em; display: none;">
+                        No se encontró la dirección. Intenta con otra.
+                    </p>
                 </div>
             `;
-            resultadoEnvio.style.display = 'block';
-            
-            return null;
-        }
-    }
-});
-
-// Función para geocodificar una dirección usando la API gratuita de Nominatim
-async function geocodificarDireccion(direccion) {
-    try {
-        const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(direccion)}`;
-        const respuesta = await fetch(url);
-        const datos = await respuesta.json();
+            return div;
+        };
         
-        if (datos && datos.length > 0) {
-            return [parseFloat(datos[0].lat), parseFloat(datos[0].lon)];
-        } else {
-            throw new Error("No se encontró la dirección");
+        direccionControl.addTo(mapa);
+        
+        // Agregar evento al botón de búsqueda
+        setTimeout(() => {
+            const botonBuscar = document.getElementById('buscar-direccion');
+            const inputDireccion = document.getElementById('direccion-input');
+            const errorDireccion = document.getElementById('error-direccion');
+            
+            if (botonBuscar && inputDireccion) {
+                botonBuscar.addEventListener('click', function() {
+                    buscarDireccion(inputDireccion.value);
+                });
+                
+                inputDireccion.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        buscarDireccion(inputDireccion.value);
+                    }
+                });
+            }
+            
+            // Función para buscar dirección usando Nominatim (OpenStreetMap)
+            async function buscarDireccion(direccion) {
+                if (!direccion.trim()) return;
+                
+                try {
+                    errorDireccion.style.display = 'none';
+                    botonBuscar.innerHTML = 'Buscando...';
+                    botonBuscar.disabled = true;
+                    
+                    // Añadir "Nayarit" a la búsqueda si no se especifica una ciudad
+                    if (!direccion.toLowerCase().includes('nayarit')) {
+                        direccion += ', Nayarit, México';
+                    } else if (!direccion.toLowerCase().includes('méxico') && !direccion.toLowerCase().includes('mexico')) {
+                        direccion += ', México';
+                    }
+                    
+                    const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(direccion)}&limit=1`;
+                    const respuesta = await fetch(url);
+                    const datos = await respuesta.json();
+                    
+                    if (datos && datos.length > 0) {
+                        const coordenadas = [parseFloat(datos[0].lat), parseFloat(datos[0].lon)];
+                        dibujarRutaUsuario(coordenadas);
+                    } else {
+                        errorDireccion.style.display = 'block';
+                    }
+                } catch (error) {
+                    console.error("Error al buscar dirección:", error);
+                    errorDireccion.style.display = 'block';
+                } finally {
+                    botonBuscar.innerHTML = 'Buscar';
+                    botonBuscar.disabled = false;
+                }
+            }
+        }, 100);
+    }
+
+    // Añadir estilos adicionales al mapa
+    const estilosMapa = document.createElement('style');
+    estilosMapa.textContent = `
+        #mapa-estatico {
+            position: absolute;
+            top: 122px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
-    } catch (error) {
-        console.error("Error al geocodificar:", error);
-        throw error;
-    }
-}
-
-// Función para decodificar polyline
-function decodePolyline(encoded) {
-    let points = [];
-    let index = 0, len = encoded.length;
-    let lat = 0, lng = 0;
-
-    while (index < len) {
-        let b, shift = 0, result = 0;
-        do {
-            b = encoded.charAt(index++).charCodeAt(0) - 63;
-            result |= (b & 0x1f) << shift;
-            shift += 5;
-        } while (b >= 0x20);
-        let dlat = ((result & 1) ? ~(result >> 1) : (result >> 1));
-        lat += dlat;
-
-        shift = 0;
-        result = 0;
-        do {
-            b = encoded.charAt(index++).charCodeAt(0) - 63;
-            result |= (b & 0x1f) << shift;
-            shift += 5;
-        } while (b >= 0x20);
-        let dlng = ((result & 1) ? ~(result >> 1) : (result >> 1));
-        lng += dlng;
-
-        points.push([lat * 1e-5, lng * 1e-5]);
-    }
-    return points;
-}
+        
+        @media (max-width: 768px) {
+            #mapa-estatico {
+                border-width: 5px;
+            }
+        }
+    `;
+    document.head.appendChild(estilosMapa);
+});
