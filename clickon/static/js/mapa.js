@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Asegurar que el contenedor del mapa sea visible
     mapaContainer.style.display = 'block';
-    mapaContainer.style.height = '550px';
+    mapaContainer.style.height = '610px';
     mapaContainer.style.position = 'relative';
     
     // Inicializar el mapa
