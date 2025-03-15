@@ -32,11 +32,13 @@ DEFAULT_APP = [
 ]
 
 CREATED_APP = [
+    'establecimiento',
+    'productos',
+    'carritocompras',
+    'ordenes',
     'apps.core',
     'apps.administracion',
     'apps.busquedas',
-    'apps.carritocompras',
-    'apps.establecimientos',
     'apps.feedbacks',
     'apps.pagos',
 ]
