@@ -10,8 +10,8 @@ urlpatterns = [
     path('inicio-sesion/', inicio.inicio_sesion, name="sesion"),
     path('registro/', inicio.registro, name="registro"),
     path('mapasitio/', inicio.mapa_sitio, name="mapasitio"),
-    path('contacto/', inicio.contacto, name='contacto'),
-    path('perfilAdmin/', inicio.perfilAdmin, name='perfilAdmin'),
-    path('perfilCliente/', inicio.perfilCliente, name='perfilCliente'),
     path('recuperar-contrasena/', inicio.recuperar_contrasena, name='recuperar_contrasena'),
+    path('contacto/', inicio.contacto, name='contacto'),
+    path('perfilCliente/', inicio.perfilCliente, name='perfilCliente'),
+    path('perfilAdmin/', inicio.perfilAdmin, name='perfilAdmin')
 ]

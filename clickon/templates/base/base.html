@@ -25,12 +25,12 @@
         <link rel="stylesheet" href="{% static 'css/base-media-lg.css' %}">
         <link rel="stylesheet" href="{% static 'css/base-media-md.css' %}">
         <link rel="stylesheet" href="{% static 'css/base-media-sm.css' %}">
-        <link rel="stylesheet" href="{% static 'css/perfil.css'%}">
-        <link rel="stylesheet" href="{% static 'css/admin_perfil.css'%}">
-        <link rel="stylesheet" href="{% static 'css/contacto.css'%}">
-        <link rel="stylesheet" href="{% static 'css/tema-oscuro.css'%}">
+        <link rel="stylesheet" href="{% static 'css/contacto.css' %}">
+        <link rel="stylesheet" href="{% static 'css/perfil.css' %}">
+        <link rel="stylesheet" href="{% static 'css/admin_perfil.css' %}">
+        <link rel="stylesheet" href="{% static 'css/tema-oscuro.css' %}">
         <!-- Importación de Maps -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     </head>
     <body>
 
@@ -59,12 +59,12 @@
                 integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" 
                 crossorigin="anonymous"></script>
                 <!-- Leaflet JS -->
-                <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-                <!-- Tu JS personalizado -->        
-                <script src="{% static 'js/mapa.js' %}"></script>
-                <script src="{% static 'js/admin_perfil.js' %}"></script>
-                <script src="{% static 'js/perfil.js' %}"></script>
-        
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <!-- Tu JS personalizado -->        
+        <script src="{% static 'js/mapa.js' %}"></script>
+        <script src="{% static 'js/admin_perfil.js' %}"></script>
+        <script src="{% static 'js/perfil.js' %}"></script>
+
         {% block scripts %}
             {{ scripts }}
         {% endblock %}
@@ -127,7 +127,7 @@
                 icon.classList.toggle('open');
             });
         </script>
-                <!-- Leaflet JS -->
-                <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+        <!-- Leaflet JS -->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     </body>
 </html>

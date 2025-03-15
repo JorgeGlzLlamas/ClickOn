@@ -19,14 +19,14 @@ def registro(request):
 def mapa_sitio(request):
     return render(request, "mapa_sitio.html")
 
+def recuperar_contrasena(request):
+    return render(request, "recuperar_contrasena.html")
+
 def contacto(request):
     return render(request, "contacto.html")
-
-def perfilAdmin(request):
-    return render(request, "perfilAdmin.html")
 
 def perfilCliente(request):
     return render(request, "perfilCliente.html")
 
-def recuperar_contrasena(request):
-    return render(request, "recuperar_contrasena.html")
+def perfilAdmin(request):
+    return render(request, "perfilAdmin.html")
