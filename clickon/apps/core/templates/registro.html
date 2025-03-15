@@ -5,69 +5,72 @@
 
 
 {% block content %}
+<!-- Contenedor principal fluido sin padding -->
 <div class="container-fluid p-0">
+    <!-- Fila sin gutters (espacios entre columnas) -->
     <div class="row g-0">
-        <!-- Left side - Background Image -->
+        <!-- Lado izquierdo - Imagen de fondo (visible solo en dispositivos medianos y grandes) -->
         <div class="col-md-6 bg-image d-none d-md-block">
-            <img class="w-100 h-100" src="{% static 'img/registro.jpg' %}"/>
+            <!-- Capa superpuesta con texto sobre la imagen -->
+            <div class="image-overlay">
+                <h2>¡Únete a nosotros!</h2>
+                <p>Crea tu cuenta y descubre un mundo de posibilidades al alcance de un click</p>
+            </div>
         </div>
         
-        <!-- Right side - Form -->
+        <!-- Lado derecho - Formulario de registro -->
         <div class="col-md-6 form-container">
+            <!-- Enlace para volver a la página de inicio -->
             <a href="{% url 'core:inicio' %}" class="back-home">
                 <i class="bi bi-arrow-left"></i>
                 Inicio
             </a>
-            <div class="logo">
-                <span class="logo-icon">
-                    <i class="fas fa-chevron-right"></i>
-                </span>
-                CLICK ON
+            <!-- Contenedor del logo y texto de bienvenida -->
+            <div class="logo-text">
+                <span class="welcome-text">Bienvenid@s a</span>
+                <div class="logo">
+                    <span class="logo-icon">
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+                    CLICK ON
+                </div>
             </div>
             
-            <h2 class="mb-4">CREAR UNA CUENTA</h2>
+            <!-- Texto descriptivo del formulario -->
+            <p class="subtitle">Por favor complete sus datos a continuación para crear su cuenta</p>
             
-            <!-- Social Login Buttons -->
-            <a href="#" class="btn social-btn w-100">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/600px-Facebook_Logo_%282019%29.png" alt="Facebook">
-                Continúa con Facebook
-            </a>
-            
-            <a href="#" class="btn social-btn w-100">
-                <img src="{% static 'img/google.png' %}" alt="Google">
-                Continúa con Google
-            </a>
-            
-            <!-- Divider -->
-            <div class="divider">O</div>
-            
-            <!-- Registration Form -->
+            <!-- Formulario de registro -->
             <form>
+                <!-- Campo para el correo electrónico -->
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo Electrónico</label>
                     <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo electrónico">
                 </div>
                 
+                <!-- Campo para el nombre completo -->
                 <div class="mb-3">
                     <label for="name" class="form-label">Nombre Completo</label>
                     <input type="text" class="form-control" id="name" placeholder="Ingresa tu nombre completo">
                 </div>
                 
+                <!-- Campo para el número de teléfono -->
                 <div class="mb-3">
                     <label for="phone" class="form-label">Numero de Teléfono</label>
                     <input type="tel" class="form-control" id="phone" placeholder="Ingresa tu número de teléfono">
                 </div>
                 
+                <!-- Campo para la contraseña con botón para mostrar/ocultar -->
                 <div class="mb-3">
                     <label for="password" class="form-label">Contraseña</label>
                     <div class="password-container">
                         <input type="password" class="form-control" id="password" placeholder="Crear una contraseña">
                         <span class="password-toggle" onclick="togglePassword()">
-                            <i class="far fa-eye" id="toggleIcon"></i>
+                            <i class="bi bi-eye" id="toggleIcon"></i>
                         </span>
                     </div>
                 </div>
                 
+                <!-- Casilla de verificación para aceptar términos y condiciones -->
                 <div class="mb-4">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="terms">
@@ -77,11 +80,30 @@
                     </div>
                 </div>
                 
-                <button type="submit" class="btn btn-primary submit-btn w-100">Crear Una Cuenta</button>
+                <!-- Botón para enviar el formulario -->
+                <button type="submit" class="btn btn-primary login-btn w-100">Crear Una Cuenta</button>
             </form>
             
-            <div class="login-link">
-                <p>Ya tienes una cuenta? <a href="{% url 'core:sesion' %}">Inicia Sesión</a></p>
+            <!-- Enlace para iniciar sesión si ya tiene cuenta -->
+            <div class="signup-link">
+                <p>¿Ya tienes una cuenta? <a href="{% url 'core:sesion' %}">Inicia Sesión</a></p>
+            </div>
+            
+            <!-- Divisor entre opciones de registro -->
+            <div class="divider">O</div>
+            
+            <!-- Botones para registro con redes sociales -->
+            <div class="social-icons">
+                <!-- Botón para registro con Google -->
+                <a href="#" class="social-btn google-btn">
+                    <img src="{% static 'img/google.png' %}" alt="Google">
+                    <span>Continuar con Google</span>
+                </a>
+                <!-- Botón para registro con Facebook -->
+                <a href="#" class="social-btn facebook-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/600px-Facebook_Logo_%282019%29.png" alt="Facebook">
+                    <span>Continuar con Facebook</span>
+                </a>
             </div>
         </div>
     </div>
