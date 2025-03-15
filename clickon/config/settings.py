@@ -22,6 +22,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 DEFAULT_APP = [
+    'usuarios',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -31,14 +32,15 @@ DEFAULT_APP = [
 ]
 
 CREATED_APP = [
+    'establecimiento',
+    'productos',
+    'carritocompras',
+    'ordenes',
     'apps.core',
     'apps.administracion',
     'apps.busquedas',
-    'apps.carritocompras',
-    'apps.establecimientos',
     'apps.feedbacks',
     'apps.pagos',
-    'apps.usuarios'
 ]
 
 THIRD_PARTY_APP = []
@@ -135,3 +137,6 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = 'usuarios.Usuario'
+

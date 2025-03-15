@@ -8,12 +8,21 @@
 <div class="position-absolute top-0 header-container w-100">
     <div class="position-relative">
         <div class="postion-absolute top-0 info-header-container">
-            <div id="resultadoEnvio" class="mt-2 rounded" style="display: none;"></div>
+            <form>
+                <h2>Todo lo que necesitas al alcance de un click</h2>
+                <div class="d-flex align-items-center justify-content-between cp-form">
+                    <input class="search-cp-control" 
+                        placeholder="Ingresa tu código postal para mejorar tu experiencia" />
+                    <button class="search-btn p-0 search-cp-control" type="submit">
+                        <i class="bi bi-send"></i>
+                    </button>
+                </div>
+            </form>
         </div>
+        <div class="position-absolute dark-shadow top-0 w-100"></div>
         <div class="position-absolute w-100 top-0">
-            <div id="mapa-estatico" class="w-100 background-image"></div>
+            <img src="{% static "img/googlemaps.webp" %}" class="w-100 background-image" />
         </div>
-</div>
     </div>
 </div>
 {% endblock %}
