@@ -28,7 +28,7 @@
 {% endblock %}
 
 {% block main_content %}
-    <div class="categorias-busquedas-filtros">
+    <div class="categorias-busquedas-filtros categorias-busquedas-filtros-top">
         <div class="d-flex categorias align-items-center">
             <a href="#" class="active">Todos</a>
             <a href="#">Comida rápida</a>
@@ -42,73 +42,37 @@
         <div class="busquedas-frecuentes-container d-flex align-items-center">
             <i class="bi bi-arrow-left-circle-fill left"></i>
             <div class="busquedas-frecuentes d-flex align-items-center">
+                <a href="{% url 'core:recomendados' %}" class="busqueda-card me-4">
+                    <img src="{% static 'img/establecimiento/Combo1.webp' %}" />
+                    <p>Alitas</p>
+                </a>
                 <div class="busqueda-card me-4">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
+                    <img src="{% static 'img/Burrito.webp' %}" />
+                    <p>Burritos</p>
                 </div>
                 <div class="busqueda-card me-4">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
+                    <img src="{% static 'img/Cafe.webp' %}" />
+                    <p>Café</p>
                 </div>
                 <div class="busqueda-card me-4">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
+                    <img src="{% static 'img/Elotes.webp' %}" />
+                    <p>Elotes</p>
                 </div>
                 <div class="busqueda-card me-4">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
+                    <img src="{% static 'img/Enlatados.webp' %}" />
+                    <p>Enlatados</p>
                 </div>
                 <div class="busqueda-card me-4">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
+                    <img src="{% static 'img/Galletas.webp'%}" />
+                    <p>Galletas</p>
                 </div>
                 <div class="busqueda-card me-4">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
+                    <img src="{% static 'img/Nachos.webp' %}" />
+                    <p>Nachos</p>
                 </div>
                 <div class="busqueda-card me-4">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
-                </div>
-                <div class="busqueda-card me-4">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
-                </div>
-                <div class="busqueda-card me-4">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
-                </div>
-                <div class="busqueda-card me-4">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
-                </div>
-                <div class="busqueda-card me-4">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
-                </div>
-                <div class="busqueda-card me-4">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
-                </div>
-                <div class="busqueda-card me-4">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
-                </div>
-                <div class="busqueda-card me-4">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
-                </div>
-                <div class="busqueda-card me-4">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
-                </div>
-                <div class="busqueda-card me-4">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
-                </div>
-                <div class="busqueda-card">
-                    <img src="#" />
-                    <p>Búsqueda 1</p>
+                    <img src="{% static 'img/Jugos.webp' %}" />
+                    <p>Jugos</p>
                 </div>
             </div>
             <i class="bi bi-arrow-right-circle-fill right"></i>
@@ -148,12 +112,12 @@
         </div>
         <div class="cards-container d-flex overflow-auto">
             <a href="{% url 'core:establecimiento' %}" class="card">
-                <img class="card-image" src="{% static 'img/alitas.webp' %}" alt="banner establecimiento">
+                <img class="card-image"src="{% static 'img/establecimiento/Combo4.webp' %}" alt="banner establecimiento">
                 <div class="card-info d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center m-4">
-                        <img class="logo" src="{% static 'img/logo.webp' %}" alt="logo">
+                        <img class="logo" src="{% static 'img/establecimiento/logo.webp' %}" alt="logo">
                         <div class="establecimiento-info ms-2">
-                            <h3>EatFood</h3>
+                            <h3>Alitas mañosos club</h3>
                             <div class="d-flex align-items-center">
                                 <p class="fw-bold">4.5</p>
                                 <i class="bi bi-star-fill ms-1 me-2"></i>
@@ -165,12 +129,12 @@
                 </div>
             </a>
             <div class="card">
-                <img class="card-image" src="{% static 'img/alitas.webp' %}" alt="banner establecimiento">
+                <img class="card-image" src="{% static 'img/Burrito.webp' %}" alt="banner establecimiento">
                 <div class="card-info d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center m-4">
-                        <img class="logo" src="{% static 'img/logo.webp' %}" alt="logo">
+                        <img class="logo" src="{% static 'img/BurritoLogo.webp' %}" alt="logo">
                         <div class="establecimiento-info ms-2">
-                            <h3>EatFood</h3>
+                            <h3>Burrito</h3>
                             <div class="d-flex align-items-center">
                                 <p class="fw-bold">4.5</p>
                                 <i class="bi bi-star-fill ms-1 me-2"></i>
@@ -182,12 +146,12 @@
                 </div>
             </div>
             <div class="card">
-                <img class="card-image" src="{% static 'img/alitas.webp' %}" alt="banner establecimiento">
+                <img class="card-image" src="{% static 'img/Nachos.webp' %}" alt="banner establecimiento">
                 <div class="card-info d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center m-4">
-                        <img class="logo" src="{% static 'img/logo.webp' %}" alt="logo">
+                        <img class="logo" src="{% static 'img/NachosLogo.webp' %}" alt="logo">
                         <div class="establecimiento-info ms-2">
-                            <h3>EatFood</h3>
+                            <h3>Nachos</h3>
                             <div class="d-flex align-items-center">
                                 <p class="fw-bold">4.5</p>
                                 <i class="bi bi-star-fill ms-1 me-2"></i>
@@ -199,12 +163,12 @@
                 </div>
             </div>
             <div class="card">
-                <img class="card-image" src="{% static 'img/alitas.webp' %}" alt="banner establecimiento">
+                <img class="card-image" src="{% static 'img/Pizza.webp' %}" alt="banner establecimiento">
                 <div class="card-info d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center m-4">
-                        <img class="logo" src="{% static 'img/logo.webp' %}" alt="logo">
+                        <img class="logo" src="{% static 'img/PizzaLogo.webp' %}" alt="logo">
                         <div class="establecimiento-info ms-2">
-                            <h3>EatFood</h3>
+                            <h3>Pizzería</h3>
                             <div class="d-flex align-items-center">
                                 <p class="fw-bold">4.5</p>
                                 <i class="bi bi-star-fill ms-1 me-2"></i>
@@ -251,12 +215,12 @@
                 <div class="position-absolute position">
                     <p>$0.00 aprox</p>
                 </div>
-                <img class="card-image" src="{% static 'img/alitas.webp' %}" alt="banner establecimiento">
+                <img class="card-image" src="{% static 'img/Burrito.webp' %}" alt="banner establecimiento">
                 <div class="card-info d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center m-4">
-                        <img class="logo" src="{% static 'img/logo.webp' %}" alt="logo">
+                        <img class="logo" src="{% static 'img/BurritoLogo.webp' %}" alt="logo">
                         <div class="establecimiento-info ms-2">
-                            <h3>EatFood</h3>
+                            <h3>Burrito</h3>
                             <div class="d-flex align-items-center">
                                 <p class="fw-bold">4.5</p>
                                 <i class="bi bi-star-fill ms-1 me-2"></i>
@@ -271,12 +235,12 @@
                 <div class="position-absolute position">
                     <p>$0.00 aprox</p>
                 </div>
-                <img class="card-image" src="{% static 'img/alitas.webp' %}" alt="banner establecimiento">
+                <img class="card-image" src="{% static 'img/Nachos.webp' %}" alt="banner establecimiento">
                 <div class="card-info d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center m-4">
-                        <img class="logo" src="{% static 'img/logo.webp' %}" alt="logo">
+                        <img class="logo" src="{% static 'img/NachosLogo.webp' %}" alt="logo">
                         <div class="establecimiento-info ms-2">
-                            <h3>EatFood</h3>
+                            <h3>Nachos</h3>
                             <div class="d-flex align-items-center">
                                 <p class="fw-bold">4.5</p>
                                 <i class="bi bi-star-fill ms-1 me-2"></i>
@@ -291,12 +255,12 @@
                 <div class="position-absolute position">
                     <p>$0.00 aprox</p>
                 </div>
-                <img class="card-image" src="{% static 'img/alitas.webp' %}" alt="banner establecimiento">
+                <img class="card-image" src="{% static 'img/Pizza.webp' %}" alt="banner establecimiento">
                 <div class="card-info d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center m-4">
-                        <img class="logo" src="{% static 'img/logo.webp' %}" alt="logo">
+                        <img class="logo" src="{% static 'img/PizzaLogo.webp' %}" alt="logo">
                         <div class="establecimiento-info ms-2">
-                            <h3>EatFood</h3>
+                            <h3>Pizzería</h3>
                             <div class="d-flex align-items-center">
                                 <p class="fw-bold">4.5</p>
                                 <i class="bi bi-star-fill ms-1 me-2"></i>
@@ -343,12 +307,12 @@
                 <div class="position-absolute position light-green">
                     <p>$0.00 aprox</p>
                 </div>
-                <img class="card-image" src="{% static 'img/alitas.webp' %}" alt="banner establecimiento">
+                <img class="card-image" src="{% static 'img/Burrito.webp' %}" alt="banner establecimiento">
                 <div class="card-info d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center m-4">
-                        <img class="logo" src="{% static 'img/logo.webp' %}" alt="logo">
+                        <img class="logo" src="{% static 'img/BurritoLogo.webp' %}" alt="logo">
                         <div class="establecimiento-info ms-2">
-                            <h3>EatFood</h3>
+                            <h3>Burrito</h3>
                             <div class="d-flex align-items-center">
                                 <p class="fw-bold">4.5</p>
                                 <i class="bi bi-star-fill ms-1 me-2"></i>
@@ -363,12 +327,12 @@
                 <div class="position-absolute position light-green">
                     <p>$0.00 aprox</p>
                 </div>
-                <img class="card-image" src="{% static 'img/alitas.webp' %}" alt="banner establecimiento">
+                <img class="card-image" src="{% static 'img/Nachos.webp' %}" alt="banner establecimiento">
                 <div class="card-info d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center m-4">
-                        <img class="logo" src="{% static 'img/logo.webp' %}" alt="logo">
+                        <img class="logo" src="{% static 'img/NachosLogo.webp' %}" alt="logo">
                         <div class="establecimiento-info ms-2">
-                            <h3>EatFood</h3>
+                            <h3>Nachos</h3>
                             <div class="d-flex align-items-center">
                                 <p class="fw-bold">4.5</p>
                                 <i class="bi bi-star-fill ms-1 me-2"></i>
@@ -383,12 +347,12 @@
                 <div class="position-absolute position light-green">
                     <p>$0.00 aprox</p>
                 </div>
-                <img class="card-image" src="{% static 'img/alitas.webp' %}" alt="banner establecimiento">
+                <img class="card-image" src="{% static 'img/Pizza.webp' %}" alt="banner establecimiento">
                 <div class="card-info d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center m-4">
-                        <img class="logo" src="{% static 'img/logo.webp' %}" alt="logo">
+                        <img class="logo" src="{% static 'img/PizzaLogo.webp' %}" alt="logo">
                         <div class="establecimiento-info ms-2">
-                            <h3>EatFood</h3>
+                            <h3>Pizzería</h3>
                             <div class="d-flex align-items-center">
                                 <p class="fw-bold">4.5</p>
                                 <i class="bi bi-star-fill ms-1 me-2"></i>
@@ -410,7 +374,7 @@
     <div class="container-cards responsive-cards">
         <div class="category-card">
             <div class="circular-image">
-                <img src="#" alt="Mexican Food">
+                <img src="{% static 'img/mexicana.webp' %}" alt="Mexican Food">
             </div>
             <h2 class="category-name">Mexicana</h2>
             <div class="price-range">$32.85 - $232.85</div>
@@ -429,9 +393,9 @@
         </div>
         <div class="category-card responsive-cards">
             <div class="circular-image">
-                <img src="#" alt="Mexican Food">
+                <img src="{% static 'img/italiana.webp' %}" alt="Mexican Food">
             </div>
-            <h2 class="category-name">Mexicana</h2>
+            <h2 class="category-name">Italina</h2>
             <div class="price-range">$32.85 - $232.85</div>
             <div class="rating">
                 <input value="5" name="rating" id="star5-1" type="radio">
@@ -448,9 +412,9 @@
         </div>
         <div class="category-card responsive-cards">
             <div class="circular-image">
-                <img src="#" alt="Mexican Food">
+                <img src="{% static 'img/china.webp' %}" alt="Mexican Food">
             </div>
-            <h2 class="category-name">Mexicana</h2>
+            <h2 class="category-name">China</h2>
             <div class="price-range">$32.85 - $232.85</div>
             <div class="rating">
                 <input value="5" name="rating" id="star5-2" type="radio">
@@ -467,9 +431,9 @@
         </div>
         <div class="category-card responsive-cards">
             <div class="circular-image">
-                <img src="#" alt="Mexican Food">
+                <img src="{% static 'img/licores.webp' %}" alt="Mexican Food">
             </div>
-            <h2 class="category-name">Mexicana</h2>
+            <h2 class="category-name">Bebidas y licores</h2>
             <div class="price-range">$32.85 - $232.85</div>
             <div class="rating">
                 <input value="5" name="rating" id="star5-3" type="radio">
