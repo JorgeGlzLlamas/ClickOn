@@ -3,7 +3,6 @@
 
 {% block title %} Registro {% endblock %}
 
-
 {% block content %}
 <!-- Contenedor principal fluido sin padding -->
 <div class="container-fluid p-0">
@@ -39,48 +38,114 @@
             <!-- Texto descriptivo del formulario -->
             <p class="subtitle">Por favor complete sus datos a continuación para crear su cuenta</p>
             
-            <!-- Formulario de registro -->
-            <form>
-                <!-- Campo para el correo electrónico -->
+            <!-- Formulario de registro con ID para JavaScript -->
+            <form method="post" action="{% url 'usuarios:registro' %}" id="registroForm" novalidate>
+                {% csrf_token %}
+                
+                <!-- Display form errors if any -->
+                {% if form.errors %}
+                <div class="alert alert-danger">
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ field.label }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                        {% for error in form.non_field_errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                
+                <!-- Username field -->
+                <div class="mb-3">
+                    <label for="username" class="form-label">Nombre de Usuario</label>
+                    <input type="text" class="form-control" id="username" name="username" 
+                           placeholder="Ingresa tu nombre de usuario" required
+                           pattern=".{4,}" title="El nombre de usuario debe tener al menos 4 caracteres">
+                    <small class="form-text text-muted">El nombre de usuario debe tener al menos 4 caracteres.</small>
+                </div>
+                
+                <!-- Email field -->
                 <div class="mb-3">
                     <label for="email" class="form-label">Correo Electrónico</label>
-                    <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo electrónico">
+                    <input type="email" class="form-control" id="email" name="email" 
+                           placeholder="Ingresa tu correo electrónico" required>
+                    <small class="form-text text-muted">Ingresa un correo electrónico válido.</small>
                 </div>
                 
-                <!-- Campo para el nombre completo -->
+                <!-- First name field -->
                 <div class="mb-3">
-                    <label for="name" class="form-label">Nombre Completo</label>
-                    <input type="text" class="form-control" id="name" placeholder="Ingresa tu nombre completo">
+                    <label for="first_name" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="first_name" name="first_name" 
+                           placeholder="Ingresa tu nombre" required
+                           pattern=".{2,}" title="Por favor ingresa tu nombre completo">
                 </div>
                 
-                <!-- Campo para el número de teléfono -->
+                <!-- Last name field -->
                 <div class="mb-3">
-                    <label for="phone" class="form-label">Numero de Teléfono</label>
-                    <input type="tel" class="form-control" id="phone" placeholder="Ingresa tu número de teléfono">
+                    <label for="last_name" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" 
+                           placeholder="Ingresa tu apellido" required
+                           pattern=".{2,}" title="Por favor ingresa tu apellido completo">
                 </div>
                 
-                <!-- Campo para la contraseña con botón para mostrar/ocultar -->
+                <!-- Phone field -->
                 <div class="mb-3">
-                    <label for="password" class="form-label">Contraseña</label>
+                    <label for="phone" class="form-label">Número de Teléfono</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" 
+                           placeholder="Ingresa tu número de teléfono" required
+                           pattern="[0-9]{10}" title="Ingresa un número de teléfono válido (10 dígitos)">
+                    <small class="form-text text-muted">Formato: 10 dígitos sin espacios ni guiones.</small>
+                </div>
+                
+                <!-- Password field with strength meter -->
+                <div class="mb-3">
+                    <label for="password1" class="form-label">Contraseña</label>
                     <div class="password-container">
-                        <input type="password" class="form-control" id="password" placeholder="Crear una contraseña">
-                        <span class="password-toggle" onclick="togglePassword()">
-                            <i class="bi bi-eye" id="toggleIcon"></i>
+                        <input type="password" class="form-control" id="password1" name="password1" 
+                               placeholder="Crear una contraseña" required
+                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                               title="La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas y números">
+                        <span class="password-toggle" onclick="togglePassword('password1')">
+                            <i class="bi bi-eye" id="toggleIcon1"></i>
                         </span>
+                    </div>
+                    <small class="form-text text-muted">La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas y números.</small>
+                    
+                    <!-- Password strength meter -->
+                    <div class="password-strength-container mt-2">
+                        <div class="progress" style="height: 5px;">
+                            <div id="password-strength" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Casilla de verificación para aceptar términos y condiciones -->
+                <!-- Confirm password field -->
+                <div class="mb-3">
+                    <label for="password2" class="form-label">Confirmar Contraseña</label>
+                    <div class="password-container">
+                        <input type="password" class="form-control" id="password2" name="password2" 
+                               placeholder="Confirmar contraseña" required>
+                        <span class="password-toggle" onclick="togglePassword('password2')">
+                            <i class="bi bi-eye" id="toggleIcon2"></i>
+                        </span>
+                    </div>
+                    <small class="form-text text-muted">Repite la contraseña exactamente igual.</small>
+                </div>
+                
+                <!-- Terms checkbox -->
                 <div class="mb-4">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="terms">
+                        <input class="form-check-input" type="checkbox" id="terms" required>
                         <label class="form-check-label" for="terms">
-                            Acepto los Términos de servicio y reconozco que he leído nuestra Política de privacidad.
+                            Acepto los <a href="#" class="text-decoration-none">Términos de servicio</a> y reconozco que he leído nuestra <a href="#" class="text-decoration-none">Política de privacidad</a>.
                         </label>
                     </div>
                 </div>
                 
-                <!-- Botón para enviar el formulario -->
+                <!-- Submit button -->
                 <button type="submit" class="btn btn-primary login-btn w-100">Crear Una Cuenta</button>
             </form>
             
@@ -101,11 +166,13 @@
                 </a>
                 <!-- Botón para registro con Facebook -->
                 <a href="#" class="social-btn facebook-btn">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/600px-Facebook_Logo_%282019%29.png" alt="Facebook">
+                    <img src="{% static 'img/facebook.png' %}" alt="Facebook">
                     <span>Continuar con Facebook</span>
                 </a>
             </div>
         </div>
     </div>
 </div>
+<!-- Script para validaciones del lado del cliente -->
+<script src="{% static 'js/auth.js' %}"></script>
 {% endblock %}

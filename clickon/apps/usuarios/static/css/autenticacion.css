@@ -1,481 +1,423 @@
-/* Variables de colores y fuentes para toda la aplicación */
-:root {
-    --primary-green: #5AAA08;
-    --dark-green: #246B1A;
-    --light-green: #9DE11A;
-    --white: #ffffff;
-    --white-background: #F9FAFB;
-    --text: #101010;
-    --light-gray: rgba(234, 234, 234, 0.4);
-    --gray: #9E7789;
-    --gray-100: #f8f9fa;
-    --gray-200: #e9ecef;
-    --gray-300: #dee2e6;
-    --gray-800: #777b7f;
-    --ubuntu: "Ubuntu", sans-serif;
-    --madimi-one: "Madimi One", sans-serif;
-}
-
-/* Imagen de fondo para la página de autenticación */
-.bg-image {
-    background-image: url('/static/img/login.jpg');
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    border-radius: 0 30px 30px 0;
-    position: relative;
-}
-
-/* Contenedor del formulario de autenticación */
+/* Estilos generales para formularios de autenticación */
 .form-container {
-    background-color: white;
-    padding: 2rem 3rem;
-    min-height: 100vh;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    animation: fadeIn 0.8s ease-in-out;
+    min-height: 100vh;
+    background-color: #fff;
 }
 
-/* Animación de aparición con desvanecimiento */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Contenedor del logo y texto de bienvenida */
-.logo-text {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-    animation: slideInDown 0.8s ease-in-out;
-}
-
-/* Animación de deslizamiento desde arriba */
-@keyframes slideInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Estilo del botón de inicio de sesión */
-.login-btn {
-    background-color: var(--primary-green);
-    border: none;
-    border-radius: 50px;
-    padding: 12px;
-    font-weight: 500;
-    margin-top: 10px;
-    margin-bottom: 15px;
-    transition: all 0.3s;
+/* Imagen de fondo para el lado izquierdo */
+.bg-image {
+    background-image: url('../img/auth-background.jpg');
+    background-size: cover;
+    background-position: center;
     position: relative;
-    overflow: hidden;
+    min-height: 100vh;
 }
 
-/* Efecto al pasar el cursor sobre el botón de inicio de sesión */
-.login-btn:hover {
-    background-color: var(--light-green);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(90, 170, 8, 0.3);
-}
-
-/* Efecto al hacer clic en el botón de inicio de sesión */
-.login-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 5px rgba(90, 170, 8, 0.3);
-}
-
-/* Efecto de onda para el botón de inicio de sesión */
-.login-btn::after {
-    content: '';
+/* Overlay para texto sobre la imagen */
+.image-overlay {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 5px;
-    height: 5px;
-    background: rgba(255, 255, 255, 0.5);
-    opacity: 0;
-    border-radius: 100%;
-    transform: scale(1, 1) translate(-50%);
-    transform-origin: 50% 50%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
 }
 
-/* Animación de onda al pasar el cursor */
-.login-btn:hover::after {
-    animation: ripple 1s ease-out;
+.image-overlay h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
 }
 
-/* Definición de la animación de onda */
-@keyframes ripple {
-    0% {
-        transform: scale(0, 0);
-        opacity: 0.5;
-    }
-    100% {
-        transform: scale(20, 20);
-        opacity: 0;
-    }
+.image-overlay p {
+    font-size: 1.2rem;
+    max-width: 80%;
 }
 
-/* Estilo para los botones de redes sociales */
-.social-btn {
-    border-radius: 50px;
-    padding: 10px 15px;
+/* Estilos para el logo */
+.logo-text {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.welcome-text {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ff5722;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: 500;
-    border: 1px solid #e0e0e0;
-    transition: all 0.3s;
-    text-decoration: none;
-    color: var(--text);
-    width: 100%;
-    position: relative;
-    overflow: hidden;
 }
 
-/* Efecto al pasar el cursor sobre los botones de redes sociales */
-.social-btn:hover {
-    background-color: #f8f9fa;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Efecto al hacer clic en los botones de redes sociales */
-.social-btn:active {
-    transform: translateY(0);
-}
-
-/* Estilo para los campos de entrada del formulario */
-.form-control {
-    border-radius: 8px;
-    padding: 12px 15px;
-    margin-bottom: 15px;
-    transition: all 0.3s ease;
-    border: 1px solid var(--gray-300);
-}
-
-/* Efecto al enfocar los campos de entrada */
-.form-control:focus {
-    border-color: var(--primary-green);
-    box-shadow: 0 0 0 3px rgba(90, 170, 8, 0.2);
-    transform: translateY(-2px);
-}
-
-/* Animación para la imagen de fondo */
-.bg-image {
-    background-image: url('/static/img/login.jpg');
-    background-size: cover;
-    background-position: center;
-    min-height: 100vh;
-    border-radius: 0 30px 30px 0;
-    position: relative;
-    animation: zoomIn 1.5s ease-in-out;
-}
-
-/* Definición de la animación de zoom */
-@keyframes zoomIn {
-    from {
-        opacity: 0;
-        transform: scale(1.1);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-/* Estilo para el texto de bienvenida */
-.welcome-text {
-    font-size: 1.8rem;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-/* Estilo para el logo */
-.logo {
-    color: var(--primary-green);
-    font-weight: bold;
-    font-size: 2.2rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    display: inline-flex;
-    align-items: center;
-}
-
-/* Estilo para el icono del logo */
 .logo-icon {
-    margin-right: 5px;
+    margin-right: 0.5rem;
+    background-color: #ff5722;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
 }
 
-/* Estilo para el subtítulo */
+/* Estilos para el formulario */
 .subtitle {
-    color: #6c757d;
+    color: #666;
     margin-bottom: 2rem;
-    max-width: 90%;
+    text-align: center;
 }
 
-/* Estilo para las etiquetas de los campos */
 .form-label {
-    color: #6c757d;
-    font-size: 0.9rem;
-    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
 }
 
-/* Contenedor para el campo de contraseña */
+.form-control {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #ff5722;
+    box-shadow: 0 0 0 0.2rem rgba(255, 87, 34, 0.25);
+}
+
 .password-container {
     position: relative;
 }
 
-/* Estilo para el botón de mostrar/ocultar contraseña */
 .password-toggle {
     position: absolute;
-    right: 15px;
+    right: 10px;
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    color: #6c757d;
-    background-color: var(--gray-100);
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    z-index: 2;
+    color: #666;
 }
 
-/* Efecto al pasar el cursor sobre el botón de mostrar/ocultar contraseña */
-.password-toggle:hover {
-    background-color: var(--gray-200);
-    color: var(--primary-green);
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+.password-strength-container {
+    margin-top: 0.5rem;
 }
 
-/* Estilo para el icono del botón de mostrar/ocultar contraseña */
-.password-toggle i {
-    font-size: 16px;
+.login-btn {
+    background-color: #ff5722;
+    border: none;
+    padding: 0.75rem;
+    font-weight: 500;
+    border-radius: 8px;
     transition: all 0.3s ease;
 }
 
-/* Efecto al pasar el cursor sobre el icono */
-.password-toggle:hover i {
-    transform: scale(1.1);
+.login-btn:hover {
+    background-color: #e64a19;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo para el enlace de registro */
+/* Estilos para enlaces y divisores */
 .signup-link {
     text-align: center;
-    margin-bottom: 10px;
+    margin: 1.5rem 0;
 }
 
-/* Contenedor de iconos de redes sociales */
-.social-icons {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
-}
-
-/* Estilo para los enlaces en el texto de registro */
 .signup-link a {
-    color: var(--light-green);
+    color: #ff5722;
+    font-weight: 500;
     text-decoration: none;
 }
 
-/* Efecto al pasar el cursor sobre los enlaces de registro */
 .signup-link a:hover {
     text-decoration: underline;
 }
 
-/* Estilo para el divisor entre opciones de inicio de sesión */
 .divider {
-    display: flex;
-    align-items: center;
-    margin: -3px 0px;
-    color: #6c757d;
+    text-align: center;
+    margin: 1.5rem 0;
+    position: relative;
 }
 
-/* Líneas del divisor (antes del texto) */
-.divider::before {
-    content: "";
-    flex: 1;
-    border-bottom: 1px solid #e0e0e0;
-    margin-right: 1rem;
-}
-
-/* Líneas del divisor (después del texto) */
+.divider::before,
 .divider::after {
     content: "";
-    flex: 1;
-    border-bottom: 1px solid #e0e0e0;
-    margin-left: 1rem;
-}
-
-/* Estilo para las imágenes en los botones de redes sociales */
-.social-btn img {
-    margin-right: 10px;
-    width: 24px;
-    height: 24px;
-}
-
-/* Estilo para el texto en los botones de redes sociales */
-.social-btn span {
-    white-space: nowrap;
-}
-
-/* Capa superpuesta sobre la imagen de fondo */
-.image-overlay {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    width: 80%;
+    width: 45%;
+    height: 1px;
+    background-color: #ddd;
 }
 
-/* Estilo para el título en la capa superpuesta */
-.image-overlay h2 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
+.divider::before {
+    left: 0;
 }
 
-/* Estilo para el párrafo en la capa superpuesta */
-.image-overlay p {
-    font-size: 1.2rem;
-    max-width: 80%;
-    margin: 0 auto;
+.divider::after {
+    right: 0;
 }
 
-/* Estilo para el enlace de volver al inicio */
-.back-home {
-    text-decoration: none;
-    color: var(--text);
-    font-size: 18px;
-    font-family: var(--ubuntu);
-    margin-bottom: 25px;
-    font-weight: 500;
-    display: inline-flex;
+/* Estilos para botones sociales */
+.social-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.social-btn {
+    display: flex;
     align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #ddd;
     transition: all 0.3s ease;
-    padding: 8px 15px;
-    border-radius: 50px;
-    background-color: var(--gray-100);
 }
 
-/* Estilo para el icono en el enlace de volver al inicio */
+.social-btn:hover {
+    background-color: #f5f5f5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.social-btn img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.google-btn {
+    background-color: white;
+}
+
+.facebook-btn {
+    background-color: white;
+}
+
+/* Enlace para volver a inicio */
+.back-home {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    color: #666;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
 .back-home i {
-    margin-right: 8px;
-    font-size: 20px;
-    transition: transform 0.3s ease;
+    margin-right: 0.5rem;
 }
 
-/* Efecto al pasar el cursor sobre el enlace de volver al inicio */
 .back-home:hover {
-    color: var(--primary-green);
-    background-color: var(--gray-200);
+    color: #ff5722;
 }
 
-/* Efecto al pasar el cursor sobre el icono de volver al inicio */
-.back-home:hover i {
-    transform: translateX(-4px);
+/* Estilos para mensajes de error */
+.error-message {
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
 }
 
-/* Estilos responsivos para dispositivos móviles */
+.is-invalid {
+    border-color: #dc3545;
+}
+
+.is-valid {
+    border-color: #28a745;
+}
+
+/* Animaciones para alertas */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+/* Estilos responsivos */
 @media (max-width: 767.98px) {
     .form-container {
+        padding: 1.5rem;
         min-height: auto;
-        padding: 2rem 1.5rem;
     }
     
     .bg-image {
-        min-height: 40vh;
-        border-radius: 0 0 30px 30px;
-        order: -1;
-        display: none; /* Ocultar la imagen en móviles */
+        display: none;
     }
     
-    .row {
-        flex-direction: column-reverse;
+    .back-home {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 1rem;
     }
     
-    .image-overlay {
-        display: none; /* Ocultar el texto de la imagen en móviles */
+    .logo-text {
+        margin-bottom: 1.5rem;
+    }
+    
+    .subtitle {
+        margin-bottom: 1.5rem;
+    }
+    
+    .social-icons {
+        margin-bottom: 2rem;
     }
 }
 
-/* Aplicación de fuentes a los diferentes elementos */
-body, 
-.subtitle, 
-.form-label, 
-.form-control, 
-.signup-link, 
-.divider, 
-.social-btn span,
-.back-home,
-p {
-    font-family: var(--ubuntu);
+/* Estilos para tablets */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .form-container {
+        padding: 1.5rem;
+    }
+    
+    .image-overlay h2 {
+        font-size: 2rem;
+    }
+    
+    .image-overlay p {
+        font-size: 1rem;
+    }
 }
 
-.logo, 
-.welcome-text, 
-.image-overlay h2,
-.login-btn,
-.signup-link a,
-.social-btn {
-    font-family: var(--madimi-one);
-}
-
-/* Estilo para el enlace de recuperación de contraseña */
-.forgot-password {
-    text-align: right;
-    margin-top: 8px;
-}
-
-/* Estilo para el enlace de olvidé mi contraseña */
-.forgot-link {
-    color: var(--primary-green);
-    font-size: 0.9rem;
-    text-decoration: none;
+/* Animaciones adicionales */
+.btn-hover-effect {
     transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
 }
 
-/* Efecto al pasar el cursor sobre el enlace de olvidé mi contraseña */
-.forgot-link:hover {
-    color: var(--dark-green);
+.btn-hover-effect:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Efecto de subrayado para el enlace de olvidé mi contraseña */
-.forgot-link::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: -2px;
-    left: 0;
-    background-color: var(--primary-green);
-    transition: width 0.3s ease;
+/* Estilos para mensajes de alerta */
+.alert {
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Animación del subrayado al pasar el cursor */
-.forgot-link:hover::after {
-    width: 100%;
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+}
+
+/* Estilos para checkbox personalizado */
+.form-check-input {
+    width: 1.25em;
+    height: 1.25em;
+    margin-top: 0.25em;
+    vertical-align: top;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: 1px solid #ddd;
+    border-radius: 0.25em;
+    appearance: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.form-check-input:checked {
+    background-color: #ff5722;
+    border-color: #ff5722;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='%23fff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e");
+}
+
+.form-check-input:focus {
+    border-color: #ff5722;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(255, 87, 34, 0.25);
+}
+
+/* Estilos para el indicador de fortaleza de contraseña */
+.password-strength-text {
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+.password-requirements {
+    font-size: 0.85rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+.requirement-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+
+.requirement-item i {
+    margin-right: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.requirement-met {
+    color: #28a745;
+}
+
+.requirement-not-met {
+    color: #dc3545;
 }

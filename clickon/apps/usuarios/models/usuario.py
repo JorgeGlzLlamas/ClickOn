@@ -39,7 +39,11 @@ class Usuario(AbstractUser):
     is_blocked = models.BooleanField(default=False, verbose_name="Bloqueado")
     
     def get_full_name(self):
-        return f"{self.first_name} {self.last_name}"
+        """
+        Retorna el nombre completo del usuario.
+        """
+        full_name = f"{self.first_name} {self.last_name}"
+        return full_name.strip()
     
     def __str__(self):
         return f"{self.first_name} {self.last_name} ({self.username})"

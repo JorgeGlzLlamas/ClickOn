@@ -30,30 +30,37 @@
                 <p class="subtitle">Por favor complete sus datos a continuación para iniciar sesión en su cuenta</p>
                 
                 <!-- Formulario de inicio de sesión -->
-                <form>
-                    <!-- Campo para el correo electrónico -->
+                <form method="post" action="{% url 'usuarios:sesion' %}">
+                    {% csrf_token %}
+                    
+                    <!-- Campo para el nombre de usuario -->
                     <div class="mb-3">
-                        <label for="email" class="form-label">Correo Electrónico</label>
-                        <input type="email" class="form-control" id="email" placeholder="Ingrese su correo electrónico registrado">
+                        <label for="username" class="form-label">Nombre de Usuario</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Ingresa tu nombre de usuario" required>
                     </div>
                     
-                    <!-- Campo para la contraseña con botón para mostrar/ocultar -->
-                    <div class="mb-4">
+                    <!-- Campo para la contraseña -->
+                    <div class="mb-3">
                         <label for="password" class="form-label">Contraseña</label>
                         <div class="password-container">
-                            <input type="password" class="form-control" id="password" placeholder="Ingrese su contraseña">
-                            <!-- Botón para mostrar/ocultar contraseña -->
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu contraseña" required>
                             <span class="password-toggle" onclick="togglePassword()">
                                 <i class="bi bi-eye" id="toggleIcon"></i>
                             </span>
                         </div>
-                        <!-- Enlace para recuperar contraseña olvidada -->
-                        <div class="forgot-password">
-                            <a href="{% url 'usuarios:recuperar_contrasena' %}" class="forgot-link">¿Olvidaste tu contraseña?</a>
+                    </div>
+                    
+                    <!-- Casilla para recordar usuario -->
+                    <div class="mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="remember" name="remember">
+                            <label class="form-check-label" for="remember">
+                                Recordarme
+                            </label>
                         </div>
                     </div>
                     
-                    <!-- Botón para enviar el formulario -->
+                    <!-- Botón para iniciar sesión -->
                     <button type="submit" class="btn btn-primary login-btn w-100">Iniciar Sesión</button>
                 </form>
                 

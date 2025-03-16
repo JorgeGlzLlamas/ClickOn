@@ -125,20 +125,57 @@
                             <span class="cart-badge">1</span>
                         </a>
                     </div>
+                    
+                    <!-- Botones de autenticación para pantallas grandes -->
                     <div class="auth-buttons d-flex gap-2 d-none d-lg-flex">
-                        <a href="{% url 'usuarios:sesion' %}" class="btn btn-login">Iniciar Sesión</a>
-                        <a href="{% url 'usuarios:registro' %}" class="btn btn-register m-auto">Registrarse</a>
+                        <!-- En la sección del navbar donde muestras la información del usuario -->
+                        {% if user.is_authenticated %}
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="{% static 'img/default-avatar.png' %}" alt="Avatar" class="rounded-circle me-2" width="30" height="30">
+                                    <span>{{ user.get_full_name }}</span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="{% url 'usuarios:perfilCliente' %}">Mi Cuenta</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <form method="post" action="{% url 'usuarios:logout' %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="dropdown-item">Cerrar Sesión</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        {% else %}
+                            <a href="{% url 'usuarios:sesion' %}" class="btn btn-login">Iniciar Sesión</a>
+                            <a href="{% url 'usuarios:registro' %}" class="btn btn-register m-auto">Registrarse</a>
+                        {% endif %}
                     </div>
                 
-                    <!-- Este bloque solo se muestra en pantallas pequeñas (móviles) -->
+                    <!-- Botones de autenticación para pantallas pequeñas (móviles) -->
                     <ul class="auth-button-lg d-lg-none d-flex gap-2 align-items-center navbar-nav">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person-circle fs-3"></i>
+                                {% if user.is_authenticated %}
+                                    <img src="{% static 'img/default-avatar.png' %}" alt="Avatar" class="rounded-circle" width="30" height="30">
+                                {% else %}
+                                    <i class="bi bi-person-circle fs-3"></i>
+                                {% endif %}
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url 'usuarios:sesion' %}">Iniciar sesión</a></li>
-                                <li><a class="dropdown-item" href="{% url 'usuarios:registro' %}">Registrarse</a></li>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                {% if user.is_authenticated %}
+                                    <li><a class="dropdown-item" href="{% url 'usuarios:perfilCliente' %}">Mi Cuenta</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li>
+                                        <form method="post" action="{% url 'usuarios:logout' %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="dropdown-item">Cerrar Sesión</button>
+                                        </form>
+                                    </li>
+                                {% else %}
+                                    <li><a class="dropdown-item" href="{% url 'usuarios:sesion' %}">Iniciar sesión</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'usuarios:registro' %}">Registrarse</a></li>
+                                {% endif %}
                             </ul>
                         </li>
                     </ul>                                
@@ -264,4 +301,29 @@
             </div>
         </li>
     </ul>    
+</div>
+
+<!-- Add this where you want the login/user menu to appear -->
+<div class="navbar-nav ms-auto">
+    {% if user.is_authenticated %}
+        <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="{% static 'img/default-avatar.png' %}" alt="Avatar" class="rounded-circle" width="30" height="30">
+                {{ user.get_full_name }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="{% url 'usuarios:perfilCliente' %}">Mi Cuenta</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                    <form method="post" action="{% url 'usuarios:logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="dropdown-item">Cerrar Sesión</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    {% else %}
+        <a class="nav-link" href="{% url 'usuarios:sesion' %}">Iniciar Sesión</a>
+        <a class="nav-link" href="{% url 'usuarios:registro' %}">Registrarse</a>
+    {% endif %}
 </div>
