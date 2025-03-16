@@ -14,7 +14,7 @@ class ValoracionProducto(models.Model):
     )
 
     # Usuario
-    usaurio = models.ForeignKey(
+    usuario = models.ForeignKey(
         Usuario,
         related_name='valoracion',
         on_delete=models.CASCADE,
