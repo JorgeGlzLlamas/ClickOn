@@ -7,11 +7,6 @@ urlpatterns = [
     path('', inicio.home, name='inicio'),
     path('establecimiento/', inicio.establecimiento, name='establecimiento'),
     path('recomendados/', inicio.recomendados, name="recomendados"),
-    path('inicio-sesion/', inicio.inicio_sesion, name="sesion"),
-    path('registro/', inicio.registro, name="registro"),
     path('mapasitio/', inicio.mapa_sitio, name="mapasitio"),
     path('contacto/', inicio.contacto, name='contacto'),
-    path('perfilAdmin/', inicio.perfilAdmin, name='perfilAdmin'),
-    path('perfilCliente/', inicio.perfilCliente, name='perfilCliente'),
-    path('recuperar-contrasena/', inicio.recuperar_contrasena, name='recuperar_contrasena'),
 ]
