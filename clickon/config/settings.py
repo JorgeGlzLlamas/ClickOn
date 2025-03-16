@@ -40,7 +40,7 @@ CREATED_APP = [
     'apps.administracion',
     'apps.busquedas',
     'apps.feedbacks',
-    'apps.pagos',
+    'pagos',
 ]
 
 THIRD_PARTY_APP = []

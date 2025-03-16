@@ -8,7 +8,10 @@ class UsuarioAdmin(admin.ModelAdmin):
     model = Usuario
     list_display = ('username', 'email', 'first_name', 'last_name', 'rol_usuario', 'is_active', 'is_staff')
     fieldsets = UserAdmin.fieldsets + (
-        ('Información adicional', {
-            'fields': ('entidad_federativa', 'municipio', 'cp', 'calle', 'numero_exterior', 'numero_interior', 'phone', 'rol_usuario', 'is_blocked')
+        ('Ubicación usuario', {
+            'fields': ('entidad_federativa', 'municipio', 'cp', 'calle', 'numero_exterior', 'numero_interior')
         }),
+        ('Información adicional',{
+            'fields':('phone', 'rol_usuario', 'avatar_image', 'stripe_customer_id')
+        })
     )
