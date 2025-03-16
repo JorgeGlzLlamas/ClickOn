@@ -1,0 +1,98 @@
+@media (max-width: 991px) {
+    
+    /* Header container */
+    .header-container,
+    .header-container .background-image,
+    .header-container .dark-shadow {
+        height: 400px !important;
+    }
+  
+    .info-header-container{
+        height: 400px !important;
+    }
+  
+    .info-header-container form{
+        margin-bottom: 100px !important;
+    }
+  
+    .categorias-busquedas-filtros-top{
+        margin-top: 350px !important;
+    }
+  
+    .info-header-container form h2{
+        font-size: 24px !important;
+    }
+  
+    .info-header-container form button i{
+        height: 15px !important;
+        width: 15px !important;
+    }
+  
+    .cp-form{
+        height: 40px !important;
+    }
+  
+    .search-cp-control{
+        font-size: 16px !important;
+        height: 20px;
+    }
+  
+    .search-btn i{
+        font-size: 20px !important;
+    }
+
+    /* Footer */
+    .footer-content {
+        flex-direction: column;
+    }
+  
+    .logo-section {
+        margin-bottom: 30px;
+    }
+  
+    .footer-links {
+        flex-direction: column;
+        gap: 30px;
+    }
+  
+    .social-media {
+        margin-top: 30px;
+    }
+
+    .position-breadcrumb{
+        margin-top: 400px;
+    }
+
+    .establecimiento-container{
+        top: 300px;
+    }
+}
+
+@media (max-width: 886px){
+    .productos-establecimiento .filtros-producto{
+        display: none;
+    }
+
+    .productos-establecimiento{
+        margin-top: 400px;
+    }
+
+    .nav-breadcrumb{
+        display: none;
+    }
+}
+
+@media (max-width: 840px){
+    .establecimiento-container .establecimiento-nombre h2{
+        font-size: 36px;
+    }
+
+    .establecimiento-container .establecimiento-detalles{
+        font-size: 14px;
+    }
+
+    .establecimiento-container .image{
+        width: 120px;
+        height: 120px;
+    }
+}

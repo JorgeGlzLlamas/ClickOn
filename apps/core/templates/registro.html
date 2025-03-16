@@ -1,0 +1,89 @@
+{% extends "base/base_auth.html" %}
+{% load static %}
+
+{% block title %} Registro {% endblock %}
+
+
+{% block content %}
+<div class="container-fluid p-0">
+    <div class="row g-0">
+        <!-- Left side - Background Image -->
+        <div class="col-md-6 bg-image d-none d-md-block">
+            <img class="w-100 h-100" src="{% static 'img/registro.jpg' %}"/>
+        </div>
+        
+        <!-- Right side - Form -->
+        <div class="col-md-6 form-container">
+            <a href="{% url 'core:inicio' %}" class="back-home">
+                <i class="bi bi-arrow-left"></i>
+                Inicio
+            </a>
+            <div class="logo">
+                <span class="logo-icon">
+                    <i class="fas fa-chevron-right"></i>
+                </span>
+                CLICK ON
+            </div>
+            
+            <h2 class="mb-4">CREAR UNA CUENTA</h2>
+            
+            <!-- Social Login Buttons -->
+            <a href="#" class="btn social-btn w-100">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/600px-Facebook_Logo_%282019%29.png" alt="Facebook">
+                Continúa con Facebook
+            </a>
+            
+            <a href="#" class="btn social-btn w-100">
+                <img src="{% static 'img/google.png' %}" alt="Google">
+                Continúa con Google
+            </a>
+            
+            <!-- Divider -->
+            <div class="divider">O</div>
+            
+            <!-- Registration Form -->
+            <form>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="email" placeholder="Ingresa tu correo electrónico">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre Completo</label>
+                    <input type="text" class="form-control" id="name" placeholder="Ingresa tu nombre completo">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="phone" class="form-label">Numero de Teléfono</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Ingresa tu número de teléfono">
+                </div>
+                
+                <div class="mb-3">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <div class="password-container">
+                        <input type="password" class="form-control" id="password" placeholder="Crear una contraseña">
+                        <span class="password-toggle" onclick="togglePassword()">
+                            <i class="far fa-eye" id="toggleIcon"></i>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="terms">
+                        <label class="form-check-label" for="terms">
+                            Acepto los Términos de servicio y reconozco que he leído nuestra Política de privacidad.
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary submit-btn w-100">Crear Una Cuenta</button>
+            </form>
+            
+            <div class="login-link">
+                <p>Ya tienes una cuenta? <a href="{% url 'core:sesion' %}">Inicia Sesión</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

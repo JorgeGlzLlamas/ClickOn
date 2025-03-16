@@ -1,0 +1,790 @@
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %} Alitas mañosos club {% endblock %}
+
+{% block top_content %}
+<div class="position-absolute top-0 header-container w-100">
+    <div class="position-relative">
+        <div class="position-absolute dark-shadow top-0 w-100"></div>
+        <div class="position-absolute w-100 top-0">
+            <img src="{% static 'img/establecimiento/Combo4.webp' %}" class="w-100 background-image" />
+        </div>
+    </div>
+</div>
+
+<div class="establecimiento-container">
+    <div class="d-flex align-items-center">
+        <div class="image">
+            <img src="{% static 'img/establecimiento/logo.webp' %}" />
+        </div>
+        <div class="info-establecimiento">
+            <div class="establecimiento-nombre">
+                <h2>Alitas los Mañosos Club</h2>
+            </div>
+            <div class="establecimiento-detalles">
+                <div>
+                    <div class="rating-establecimiento">
+                        <i class="bi bi-star-fill"></i>
+                        4.6 (222)
+                    </div>
+                    <div class="tiempo-entrega">
+                        Entrega estimada <br>
+                        15min - 30min
+                    </div>
+                </div>
+                <div class="tarifa">
+                    <div class="tarifa-entrega">
+                        Tarifa de entrega
+                    </div>
+                    <div class="tarifa-precio">
+                        Gratis <span>MX$10 (Gasta MX$245.00)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="icon">
+        <i class="bi bi-heart"></i>
+    </div>
+</div>
+{% endblock %}
+
+{% block breadcrumbs %}
+<nav class="nav-breadcrumb position-breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'core:inicio' %}">Inicio</a></li>
+        <li class="breadcrumb-item"><a href="{% url 'core:recomendados' %}">Alitas</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Alitas mañosos club</li>
+    </ol>
+</nav>
+{% endblock %}
+
+{% block main_content %}
+<div class="productos-establecimiento">
+    <div class="filtros-producto">
+        <a href="#promociones" class="active">Promociones (7)</a>
+        <a href="#favoritos">favoritos (4)</a>
+        <a href="#recomendados">Recomendados (6)</a>
+        <a href="#combos">Combos (3)</a>
+        <a href="#mas">Más (15)</a>
+    </div>
+    <div class="categorias-productos-container">
+        <h3 id="promociones">Promociones</h3>
+        <div class="productos-container">
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Promocion1.webp'%}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" data-bs-toggle="offcanvas" data-bs-target="#offcanvasProducto"
+                            class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Promocion2.webp'%}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Promocion3.webp'%}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Promocion4.webp'%}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Promocion1.webp'%}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Promocion2.webp'%}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Promocion3.webp'%}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+        </div>
+        <h3 id="favoritos">Favoritos</h3>
+        <div class="productos-container">
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Favoritos1.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Favoritos2.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Favoritos3.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Favoritos4.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+        </div>
+        <h3 id="recomendados">Recomendados</h3>
+        <div class="productos-container">
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Promocion1.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Promocion2.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Promocion3.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Promocion4.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Promocion1.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Promocion2.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+        </div>
+        <h3 id="combos">Combos</h3>
+        <div class="productos-container">
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Combo1.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Combo2.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/Combo3.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+        </div>
+        <h3 id="mas">Más</h3>
+        <div class="productos-container">
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/mas1.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/mas2.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/mas3.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/mas4.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/mas5.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/mas6.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/mas7.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/mas8.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/mas1.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/mas2.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/mas3.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/mas4.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/mas5.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/mas6.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+            <div class="producto-card">
+                <div class="d-flex justify-content-between info-producto">
+                    <div class="info-container">
+                        <h4 class="nombre-producto">Combo Alitas</h4>
+                        <p class="descripcion-producto">1x BBQ, 1x Pimienta Limón</p>
+                        <p class="precio-producto">$45</p>
+                    </div>
+                    <div class="image-container">
+                        <img src="{% static 'img/establecimiento/mas7.webp' %}" />
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between add-producto">
+                    <a href="" class="d-flex align-items-center añadir-producto">
+                        <i class="bi bi-cart-fill me-2"></i>
+                        <p class="m-0">Agregar</p>
+                    </a>
+                    <i class="bi bi-heart"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include "producto.html" %}
+
+
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const sections = document.querySelectorAll(".categorias-productos-container h3");
+        const navLinks = document.querySelectorAll(".filtros-producto a");
+    
+        function changeActiveSection() {
+            let scrollPosition = window.scrollY;
+    
+            sections.forEach((section) => {
+                let sectionTop = section.offsetTop - 100; // Ajuste para que cambie antes de llegar al título
+                let sectionId = section.getAttribute("id");
+    
+                if (scrollPosition >= sectionTop) {
+                    navLinks.forEach((link) => {
+                        link.classList.remove("active");
+                        if (link.getAttribute("href") === `#${sectionId}`) {
+                            link.classList.add("active");
+                        }
+                    });
+                }
+            });
+        }
+    
+        window.addEventListener("scroll", changeActiveSection);
+    });
+</script>
+{% endblock %}

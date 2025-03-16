@@ -1,0 +1,549 @@
+
+{% extends "base/base.html" %}
+{% load static %}
+
+{% block title %} ClickOn {% endblock %}
+
+{% block top_content %}
+<div class="position-absolute top-0 header-container w-100">
+    <div class="position-relative">
+        <div class="postion-absolute top-0 info-header-container">
+            <form>
+                <h2>Todo lo que necesitas al alcance de un click</h2>
+                <div class="d-flex align-items-center justify-content-between cp-form">
+                    <input class="search-cp-control" 
+                        placeholder="Ingresa tu código postal para mejorar tu experiencia" />
+                    <button class="search-btn p-0 search-cp-control" type="submit">
+                        <i class="bi bi-send"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="position-absolute dark-shadow top-0 w-100"></div>
+        <div class="position-absolute w-100 top-0">
+            <img src="{% static "img/googlemaps.webp" %}" class="w-100 background-image" />
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block main_content %}
+    <div class="categorias-busquedas-filtros categorias-busquedas-filtros-top">
+        <div class="d-flex categorias align-items-center">
+            <a href="#" class="active">Todos</a>
+            <a href="#">Comida rápida</a>
+            <a href="#">Comida saludable</a>
+            <a href="#">Bebidas</a>
+            <a href="#">Postres</a>
+            <a href="#">Despensa</a>
+            <a href="#">Congelados</a>
+            <a href="#">Dietas especiales</a>
+        </div>
+        <div class="busquedas-frecuentes-container d-flex align-items-center">
+            <i class="bi bi-arrow-left-circle-fill left"></i>
+            <div class="busquedas-frecuentes d-flex align-items-center">
+                <a href="{% url 'core:recomendados' %}" class="busqueda-card me-4">
+                    <img src="{% static 'img/establecimiento/Combo1.webp' %}" />
+                    <p>Alitas</p>
+                </a>
+                <div class="busqueda-card me-4">
+                    <img src="{% static 'img/Burrito.webp' %}" />
+                    <p>Burritos</p>
+                </div>
+                <div class="busqueda-card me-4">
+                    <img src="{% static 'img/Cafe.webp' %}" />
+                    <p>Café</p>
+                </div>
+                <div class="busqueda-card me-4">
+                    <img src="{% static 'img/Elotes.webp' %}" />
+                    <p>Elotes</p>
+                </div>
+                <div class="busqueda-card me-4">
+                    <img src="{% static 'img/Enlatados.webp' %}" />
+                    <p>Enlatados</p>
+                </div>
+                <div class="busqueda-card me-4">
+                    <img src="{% static 'img/Galletas.webp'%}" />
+                    <p>Galletas</p>
+                </div>
+                <div class="busqueda-card me-4">
+                    <img src="{% static 'img/Nachos.webp' %}" />
+                    <p>Nachos</p>
+                </div>
+                <div class="busqueda-card me-4">
+                    <img src="{% static 'img/Jugos.webp' %}" />
+                    <p>Jugos</p>
+                </div>
+            </div>
+            <i class="bi bi-arrow-right-circle-fill right"></i>
+        </div>
+        <div class="d-flex align-items filters-container">
+            <a href="#" class="filter">
+                <p class="filter-text">Costo</p>      
+                <i class="bi bi-caret-down-fill"></i>
+            </a>
+            <a href="#" class="filter">
+                <p class="filter-text">Costo de envío</p>      
+                <i class="bi bi-caret-down-fill"></i>
+            </a>
+            <a href="#" class="filter">
+                <p class="filter-text">Ofertas</p>      
+                <i class="bi bi-caret-down-fill"></i>
+            </a>
+            <a href="#" class="filter">
+                <p class="filter-text">Mayor calificación</p>      
+                <i class="bi bi-caret-down-fill"></i>
+            </a>
+            <a href="#" class="filter">
+                <p class="filter-text">Tipo de dieta</p>      
+                <i class="bi bi-caret-down-fill"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="categorias-container categoria-top">
+        <div class="top-container d-flex justify-content-between align-items-center">
+            <h2 class="m-0">Populares cerca de ti</h2>
+            <div class="todos-container d-flex align-items-center">
+                <p>Ver todas</p>
+                <i class="bi bi-arrow-left-circle-fill fs-2 ms-2"></i>
+                <i class="bi bi-arrow-right-circle-fill fs-2 ms-2 me-2"></i>
+            </div>
+        </div>
+        <div class="cards-container d-flex overflow-auto">
+            <a href="{% url 'core:establecimiento' %}" class="card">
+                <img class="card-image"src="{% static 'img/establecimiento/Combo4.webp' %}" alt="banner establecimiento">
+                <div class="card-info d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center m-4">
+                        <img class="logo" src="{% static 'img/establecimiento/logo.webp' %}" alt="logo">
+                        <div class="establecimiento-info ms-2">
+                            <h3>Alitas mañosos club</h3>
+                            <div class="d-flex align-items-center">
+                                <p class="fw-bold">4.5</p>
+                                <i class="bi bi-star-fill ms-1 me-2"></i>
+                                <p>(250)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="bi bi-heart me-4"></i>
+                </div>
+            </a>
+            <div class="card">
+                <img class="card-image" src="{% static 'img/Burrito.webp' %}" alt="banner establecimiento">
+                <div class="card-info d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center m-4">
+                        <img class="logo" src="{% static 'img/BurritoLogo.webp' %}" alt="logo">
+                        <div class="establecimiento-info ms-2">
+                            <h3>Burrito</h3>
+                            <div class="d-flex align-items-center">
+                                <p class="fw-bold">4.5</p>
+                                <i class="bi bi-star-fill ms-1 me-2"></i>
+                                <p>(250)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="bi bi-heart me-4"></i>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-image" src="{% static 'img/Nachos.webp' %}" alt="banner establecimiento">
+                <div class="card-info d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center m-4">
+                        <img class="logo" src="{% static 'img/NachosLogo.webp' %}" alt="logo">
+                        <div class="establecimiento-info ms-2">
+                            <h3>Nachos</h3>
+                            <div class="d-flex align-items-center">
+                                <p class="fw-bold">4.5</p>
+                                <i class="bi bi-star-fill ms-1 me-2"></i>
+                                <p>(250)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="bi bi-heart me-4"></i>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-image" src="{% static 'img/Pizza.webp' %}" alt="banner establecimiento">
+                <div class="card-info d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center m-4">
+                        <img class="logo" src="{% static 'img/PizzaLogo.webp' %}" alt="logo">
+                        <div class="establecimiento-info ms-2">
+                            <h3>Pizzería</h3>
+                            <div class="d-flex align-items-center">
+                                <p class="fw-bold">4.5</p>
+                                <i class="bi bi-star-fill ms-1 me-2"></i>
+                                <p>(250)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="bi bi-heart me-4"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="categorias-container">
+        <div class="top-container d-flex justify-content-between align-items-center">
+            <h2 class="m-0">Ofertas de hoy</h2>
+            <div class="todos-container d-flex align-items-center">
+                <p>Ver todas</p>
+                <i class="bi bi-arrow-left-circle-fill fs-2 ms-2"></i>
+                <i class="bi bi-arrow-right-circle-fill fs-2 ms-2 me-2"></i>
+            </div>
+        </div>
+        <div class="cards-container d-flex overflow-auto">
+            <div class="card postion-relative">
+                <div class="position-absolute position">
+                    <p>$0.00 aprox</p>
+                </div>
+                <img class="card-image" src="{% static 'img/alitas.webp' %}" alt="banner establecimiento">
+                <div class="card-info d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center m-4">
+                        <img class="logo" src="{% static 'img/logo.webp' %}" alt="logo">
+                        <div class="establecimiento-info ms-2">
+                            <h3>EatFood</h3>
+                            <div class="d-flex align-items-center">
+                                <p class="fw-bold">4.5</p>
+                                <i class="bi bi-star-fill ms-1 me-2"></i>
+                                <p>(250)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="bi bi-heart me-4"></i>
+                </div>
+            </div>
+            <div class="card postion-relative">
+                <div class="position-absolute position">
+                    <p>$0.00 aprox</p>
+                </div>
+                <img class="card-image" src="{% static 'img/Burrito.webp' %}" alt="banner establecimiento">
+                <div class="card-info d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center m-4">
+                        <img class="logo" src="{% static 'img/BurritoLogo.webp' %}" alt="logo">
+                        <div class="establecimiento-info ms-2">
+                            <h3>Burrito</h3>
+                            <div class="d-flex align-items-center">
+                                <p class="fw-bold">4.5</p>
+                                <i class="bi bi-star-fill ms-1 me-2"></i>
+                                <p>(250)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="bi bi-heart me-4"></i>
+                </div>
+            </div>
+            <div class="card postion-relative">
+                <div class="position-absolute position">
+                    <p>$0.00 aprox</p>
+                </div>
+                <img class="card-image" src="{% static 'img/Nachos.webp' %}" alt="banner establecimiento">
+                <div class="card-info d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center m-4">
+                        <img class="logo" src="{% static 'img/NachosLogo.webp' %}" alt="logo">
+                        <div class="establecimiento-info ms-2">
+                            <h3>Nachos</h3>
+                            <div class="d-flex align-items-center">
+                                <p class="fw-bold">4.5</p>
+                                <i class="bi bi-star-fill ms-1 me-2"></i>
+                                <p>(250)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="bi bi-heart me-4"></i>
+                </div>
+            </div>
+            <div class="card postion-relative">
+                <div class="position-absolute position">
+                    <p>$0.00 aprox</p>
+                </div>
+                <img class="card-image" src="{% static 'img/Pizza.webp' %}" alt="banner establecimiento">
+                <div class="card-info d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center m-4">
+                        <img class="logo" src="{% static 'img/PizzaLogo.webp' %}" alt="logo">
+                        <div class="establecimiento-info ms-2">
+                            <h3>Pizzería</h3>
+                            <div class="d-flex align-items-center">
+                                <p class="fw-bold">4.5</p>
+                                <i class="bi bi-star-fill ms-1 me-2"></i>
+                                <p>(250)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="bi bi-heart me-4"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="categorias-container">
+        <div class="top-container d-flex justify-content-between align-items-center">
+            <h2 class="m-0">Comidas a excelentes precios</h2>
+            <div class="todos-container d-flex align-items-center">
+                <p>Ver todas</p>
+                <i class="bi bi-arrow-left-circle-fill fs-2 ms-2"></i>
+                <i class="bi bi-arrow-right-circle-fill fs-2 ms-2 me-2"></i>
+            </div>
+        </div>
+        <div class="cards-container d-flex overflow-auto">
+            <div class="card postion-relative">
+                <div class="position-absolute position light-green">
+                    <p>$0.00 aprox</p>
+                </div>
+                <img class="card-image" src="{% static 'img/alitas.webp' %}" alt="banner establecimiento">
+                <div class="card-info d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center m-4">
+                        <img class="logo" src="{% static 'img/logo.webp' %}" alt="logo">
+                        <div class="establecimiento-info ms-2">
+                            <h3>EatFood</h3>
+                            <div class="d-flex align-items-center">
+                                <p class="fw-bold">4.5</p>
+                                <i class="bi bi-star-fill ms-1 me-2"></i>
+                                <p>(250)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="bi bi-heart me-4"></i>
+                </div>
+            </div>
+            <div class="card postion-relative">
+                <div class="position-absolute position light-green">
+                    <p>$0.00 aprox</p>
+                </div>
+                <img class="card-image" src="{% static 'img/Burrito.webp' %}" alt="banner establecimiento">
+                <div class="card-info d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center m-4">
+                        <img class="logo" src="{% static 'img/BurritoLogo.webp' %}" alt="logo">
+                        <div class="establecimiento-info ms-2">
+                            <h3>Burrito</h3>
+                            <div class="d-flex align-items-center">
+                                <p class="fw-bold">4.5</p>
+                                <i class="bi bi-star-fill ms-1 me-2"></i>
+                                <p>(250)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="bi bi-heart me-4"></i>
+                </div>
+            </div>
+            <div class="card postion-relative">
+                <div class="position-absolute position light-green">
+                    <p>$0.00 aprox</p>
+                </div>
+                <img class="card-image" src="{% static 'img/Nachos.webp' %}" alt="banner establecimiento">
+                <div class="card-info d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center m-4">
+                        <img class="logo" src="{% static 'img/NachosLogo.webp' %}" alt="logo">
+                        <div class="establecimiento-info ms-2">
+                            <h3>Nachos</h3>
+                            <div class="d-flex align-items-center">
+                                <p class="fw-bold">4.5</p>
+                                <i class="bi bi-star-fill ms-1 me-2"></i>
+                                <p>(250)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="bi bi-heart me-4"></i>
+                </div>
+            </div>
+            <div class="card postion-relative">
+                <div class="position-absolute position light-green">
+                    <p>$0.00 aprox</p>
+                </div>
+                <img class="card-image" src="{% static 'img/Pizza.webp' %}" alt="banner establecimiento">
+                <div class="card-info d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center m-4">
+                        <img class="logo" src="{% static 'img/PizzaLogo.webp' %}" alt="logo">
+                        <div class="establecimiento-info ms-2">
+                            <h3>Pizzería</h3>
+                            <div class="d-flex align-items-center">
+                                <p class="fw-bold">4.5</p>
+                                <i class="bi bi-star-fill ms-1 me-2"></i>
+                                <p>(250)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <i class="bi bi-heart me-4"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="texto-cards">
+        <h3>Categorias Populares</h1>
+        <p>Descubre lo más pedido por nuestros usuarios y encuentra tus favoritos en un solo click.</p>
+    </div>
+
+    <div class="container-cards responsive-cards">
+        <div class="category-card">
+            <div class="circular-image">
+                <img src="{% static 'img/mexicana.webp' %}" alt="Mexican Food">
+            </div>
+            <h2 class="category-name">Mexicana</h2>
+            <div class="price-range">$32.85 - $232.85</div>
+            <div class="rating">
+                <input value="5" name="rating" id="star5" type="radio">
+                <label for="star5"></label>
+                <input value="4" name="rating" id="star4" type="radio">
+                <label for="star4"></label>
+                <input value="3" name="rating" id="star3" type="radio">
+                <label for="star3"></label>
+                <input value="2" name="rating" id="star2" type="radio">
+                <label for="star2"></label>
+                <input value="1" name="rating" id="star1" type="radio">
+                <label for="star1"></label>
+              </div>
+        </div>
+        <div class="category-card responsive-cards">
+            <div class="circular-image">
+                <img src="{% static 'img/italiana.webp' %}" alt="Mexican Food">
+            </div>
+            <h2 class="category-name">Italina</h2>
+            <div class="price-range">$32.85 - $232.85</div>
+            <div class="rating">
+                <input value="5" name="rating" id="star5-1" type="radio">
+                <label for="star5-1"></label>
+                <input value="4" name="rating" id="star4-1" type="radio">
+                <label for="star4-1"></label>
+                <input value="3" name="rating" id="star3-1" type="radio">
+                <label for="star3-1"></label>
+                <input value="2" name="rating" id="star2-1" type="radio">
+                <label for="star2-1"></label>
+                <input value="1" name="rating" id="star1-1" type="radio">
+                <label for="star1-1"></label>
+              </div>
+        </div>
+        <div class="category-card responsive-cards">
+            <div class="circular-image">
+                <img src="{% static 'img/china.webp' %}" alt="Mexican Food">
+            </div>
+            <h2 class="category-name">China</h2>
+            <div class="price-range">$32.85 - $232.85</div>
+            <div class="rating">
+                <input value="5" name="rating" id="star5-2" type="radio">
+                <label for="star5-2"></label>
+                <input value="4" name="rating" id="star4-2" type="radio">
+                <label for="star4-2"></label>
+                <input value="3" name="rating" id="star3-2" type="radio">
+                <label for="star3-2"></label>
+                <input value="2" name="rating" id="star2-2" type="radio">
+                <label for="star2-2"></label>
+                <input value="1" name="rating" id="star1-2" type="radio">
+                <label for="star1-2"></label>
+              </div>
+        </div>
+        <div class="category-card responsive-cards">
+            <div class="circular-image">
+                <img src="{% static 'img/licores.webp' %}" alt="Mexican Food">
+            </div>
+            <h2 class="category-name">Bebidas y licores</h2>
+            <div class="price-range">$32.85 - $232.85</div>
+            <div class="rating">
+                <input value="5" name="rating" id="star5-3" type="radio">
+                <label for="star5-3"></label>
+                <input value="4" name="rating" id="star4-3" type="radio">
+                <label for="star4-3"></label>
+                <input value="3" name="rating" id="star3-3" type="radio">
+                <label for="star3-3"></label>
+                <input value="2" name="rating" id="star2-3" type="radio">
+                <label for="star2-3"></label>
+                <input value="1" name="rating" id="star1-3" type="radio">
+                <label for="star1-3"></label>
+              </div>
+        </div>
+    </div>
+
+    <div class="texto-cards">
+        <h3>Restaurantes mejor calificados</h1>
+        <p>Descubre los restaurantes más aclamados por los usuarios</p>
+    </div>
+
+    <div class="container-restaurants d-block">
+        <div class="restaurant-row">
+            <div class="restaurant-card left">
+                <!-- Imagen del restaurante -->
+                <img  src="{% static 'img/hamburguesa4.webp' %}"
+                        alt="Nombre restaurante"
+                        class="restaurant-image"/>
+                <div class="restaurant-details">
+                    <div class="position-relative">
+                        <p class="category">Categoría</p>
+                        <h4>Nombre restaurante</h4>
+                        <p class="address">Dirección</p>
+                        <div class="rating-container">
+                            <span>5.0</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                    <div class="bottom-info">
+                        <span class="price-label">Precio promedio</span>
+                        <span class="price-value">$45</span>
+                    </div>
+                </div>
+            </div> 
+            <div class="restaurant-card right">
+                <!-- Imagen del restaurante -->
+                <img  src="{% static 'img/hamburguesa4.webp' %}"
+                        alt="Nombre restaurante"
+                        class="restaurant-image"/>
+                <div class="restaurant-details">
+                    <div class="top-info">
+                        <p class="category">Categoría</p>
+                        <h4>Nombre restaurante</h4>
+                        <p class="address">Dirección</p>
+                        <div class="rating-container">
+                            <span>5.0</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                    <div class="bottom-info">
+                        <span class="price-label">Precio promedio</span>
+                        <span class="price-value">$45</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="restaurant-row">
+            <div class="restaurant-card left">
+                <!-- Imagen del restaurante -->
+                <img  src="{% static 'img/hamburguesa4.webp' %}"
+                        alt="Nombre restaurante"
+                        class="restaurant-image"/>
+                <div class="restaurant-details">
+                    <div class="position-relative">
+                        <p class="category">Categoría</p>
+                        <h4>Nombre restaurante</h4>
+                        <p class="address">Dirección</p>
+                        <div class="rating-container">
+                            <span>5.0</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                    <div class="bottom-info">
+                        <span class="price-label">Precio promedio</span>
+                        <span class="price-value">$45</span>
+                    </div>
+                </div>
+            </div> 
+            <div class="restaurant-card right">
+                <!-- Imagen del restaurante -->
+                <img  src="{% static 'img/hamburguesa4.webp' %}"
+                        alt="Nombre restaurante"
+                        class="restaurant-image"/>
+                <div class="restaurant-details">
+                    <div class="top-info">
+                        <p class="category">Categoría</p>
+                        <h4>Nombre restaurante</h4>
+                        <p class="address">Dirección</p>
+                        <div class="rating-container">
+                            <span>5.0</span>
+                            <span class="star">★</span>
+                        </div>
+                    </div>
+                    <div class="bottom-info">
+                        <span class="price-label">Precio promedio</span>
+                        <span class="price-value">$45</span>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>
+
+{% endblock %}
