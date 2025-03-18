@@ -28,3 +28,6 @@ class Establecimiento(models.Model):
         app_label = 'establecimiento'  
         verbose_name = 'establecimiento'
         db_table = 'establecimiento'
+    
+    def __str__(self):
+        return self.nombre

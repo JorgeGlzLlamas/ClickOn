@@ -15,3 +15,4 @@ class Carrito(models.Model):
         app_label = 'carritocompras'  
         verbose_name = 'carrito'
         db_table = 'carrito_compras'
+    

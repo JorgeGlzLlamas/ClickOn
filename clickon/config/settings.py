@@ -36,11 +36,11 @@ CREATED_APP = [
     'productos',
     'carritocompras',
     'ordenes',
+    'pagos',
     'apps.core',
     'apps.administracion',
     'apps.busquedas',
     'apps.feedbacks',
-    'pagos',
 ]
 
 THIRD_PARTY_APP = []
@@ -140,3 +140,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'usuarios.Usuario'
 
+
+# Ruta donde se guardarán los archivos multimedia
+MEDIA_URL = '/media/'  # URL base para acceder a archivos multimedia
+# Directorio en el sistema de archivos donde se guardarán los archivos subidos
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  

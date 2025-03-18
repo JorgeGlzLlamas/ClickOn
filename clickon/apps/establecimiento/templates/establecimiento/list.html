@@ -1,0 +1,10 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block main_content %}
+    {% for establecimiento in establecimientos %}
+        {{ establecimiento.usuario }}
+        {{ establecimiento.nombre }}
+        
+        <img src="{{ establecimiento.logo.url }}" alt="Logo de {{ establecimiento.nombre }}">
+    {% endfor %}
+{% endblock %}

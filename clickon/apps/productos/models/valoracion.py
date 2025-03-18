@@ -29,3 +29,6 @@ class ValoracionProducto(models.Model):
         verbose_name = 'valoracion'
         verbose_name_plural = 'valoraciones'
         db_table = 'valoracion_producto'
+
+    def __str__(self):
+        return self.valoracion

@@ -13,10 +13,13 @@ class SubcategoriaProducto(models.Model):
     )
 
     # Nombre de la subcategoría
-    subcategoria = models.CharField(max_length=50, verbose_name="Categoría del producto")
+    subcategoria = models.CharField(max_length=50, verbose_name="Subcategoría del producto")
 
     class Meta:
         app_label = 'productos'  
         verbose_name = 'subcategoria'
         verbose_name_plural = 'subcategorias'
         db_table = 'subcategoria_producto'
+
+    def __str__(self):
+        return self.subcategoria

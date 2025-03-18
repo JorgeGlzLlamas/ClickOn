@@ -32,3 +32,6 @@ class Horario(models.Model):
         verbose_name_plural = 'horarios'
         db_table = 'horario'
         ordering = ['dia']
+    
+    def __str__(self):
+        return self.dia

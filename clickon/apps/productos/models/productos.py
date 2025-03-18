@@ -17,7 +17,7 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=50, verbose_name="Nombre del producto")
     descripcion = models.CharField(max_length=100, verbose_name="Descripción del producto")
     precio = models.FloatField(max_length=10, verbose_name="Precio del producto")
-    imagen = models.ImageField(upload_to="img/img_productos/", verbose_name="Logo del producto")
+    imagen = models.ImageField(upload_to="img/img_productos/", verbose_name="Imagen del producto")
 
     # Categoría
     categoria = models.ForeignKey(
@@ -38,3 +38,6 @@ class Producto(models.Model):
         verbose_name = 'producto'
         verbose_name_plural = 'productos'
         db_table = 'producto'
+
+    def __str__(self):
+        return self.nombre
