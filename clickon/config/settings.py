@@ -145,3 +145,21 @@ AUTH_USER_MODEL = 'usuarios.Usuario'
 MEDIA_URL = '/media/'  # URL base para acceder a archivos multimedia
 # Directorio en el sistema de archivos donde se guardarán los archivos subidos
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  
+
+# Ajustes de Sesion
+SESSION_COOKIE_AGE = 7200  # 2 horas en segundos
+
+#la sesion se cierra cuando se cierra el navegador
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True 
+
+# Actualiza la sesión después de cada solicitud
+SESSION_SAVE_EVERY_REQUEST = True
+
+
+# Email configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'juniorrenteria91@gmail.com'  # Replace with your email
+EMAIL_HOST_PASSWORD = 'lmnv ucok hiux rfeg'  # Replace with your email password

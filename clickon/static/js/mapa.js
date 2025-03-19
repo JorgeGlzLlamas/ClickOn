@@ -335,9 +335,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const estilosMapa = document.createElement('style');
     estilosMapa.textContent = `
         #mapa-estatico {
-            position: absolute;
-            top: 122px;
-            left: 0;
             width: 100%;
             height: 100%;
             z-index: 1;
