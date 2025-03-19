@@ -22,7 +22,7 @@ class ProductoCarrito(models.Model):
 
     # Detalles del producto del carrito
     cantidad = models.IntegerField(verbose_name='Cantidad de productos', default=1)
-    precio_total = models.FloatField(max_length=10, verbose_name='Precio total del producto', blank=True, null=True)
+    precio_total = models.DecimalField(max_digits=8, decimal_places=2, verbose_name='Precio total del producto', blank=True, null=True)
 
     class Meta:
         app_label = 'carritocompras'  

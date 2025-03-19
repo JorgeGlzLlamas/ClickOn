@@ -1,6 +1,7 @@
 from django.views.generic import ListView
 from carritocompras.models.producto_carrito import ProductoCarrito
 from carritocompras.models.carrito import Carrito
+from carritocompras.forms.producto_carrito import ProductoCarritoForm
 
 class CarritoView(ListView):
     model = ProductoCarrito
@@ -8,10 +9,15 @@ class CarritoView(ListView):
     template_name = 'carrito.html'
 
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Agregamos el formulario por producto al contexto
+        productos_con_form = []
+        for producto in context['productos_carrito']:
+            form = ProductoCarritoForm(instance=producto, product_id=producto.id)
+            productos_con_form.append((producto, form))
+        context['productos_con_form'] = productos_con_form
+        return context
 
     def get_queryset(self):
         """
