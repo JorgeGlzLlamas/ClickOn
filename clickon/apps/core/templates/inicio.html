@@ -8,6 +8,16 @@
 <div class="position-absolute top-0 header-container w-100">
     <div class="position-relative">
         <div class="postion-absolute top-0 info-header-container">
+            <div id="resultadoEnvio" class="mt-2 rounded" style="display: none;"></div>
+        </div>
+        <div class="position-absolute w-100 top-0">
+            <div id="mapa-estatico" class="w-100 background-image"></div>
+        </div>
+    </div>
+</div>
+{% comment %} <div class="position-absolute top-0 header-container w-100">
+    <div class="position-relative">
+        <div class="postion-absolute top-0 info-header-container">
             <form>
                 <h2>Todo lo que necesitas al alcance de un click</h2>
                 <div class="d-flex align-items-center justify-content-between cp-form">
@@ -24,7 +34,7 @@
             <img src="{% static "img/googlemaps.webp" %}" class="w-100 background-image" />
         </div>
     </div>
-</div>
+</div> {% endcomment %}
 {% endblock %}
 
 {% block main_content %}
@@ -42,7 +52,7 @@
         <div class="busquedas-frecuentes-container d-flex align-items-center">
             <i class="bi bi-arrow-left-circle-fill left"></i>
             <div class="busquedas-frecuentes d-flex align-items-center">
-                <a href="{% url 'core:recomendados' %}" class="busqueda-card me-4">
+                <a href="#" class="busqueda-card me-4">
                     <img src="{% static 'img/establecimiento/Combo1.webp' %}" />
                     <p>Alitas</p>
                 </a>
@@ -111,7 +121,7 @@
             </div>
         </div>
         <div class="cards-container d-flex overflow-auto">
-            <a href="{% url 'core:establecimiento' %}" class="card">
+            <a href="#" class="card">
                 <img class="card-image"src="{% static 'img/establecimiento/Combo4.webp' %}" alt="banner establecimiento">
                 <div class="card-info d-flex justify-content-between align-items-center">
                     <div class="d-flex align-items-center m-4">
@@ -546,4 +556,9 @@
         </div>   
     </div>
 
+{% endblock %}
+
+{% block scripts %}
+<!-- Leaflet JS -->
+<script src="{% static 'js/mapa.js' %}"></script>
 {% endblock %}

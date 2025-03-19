@@ -19,12 +19,14 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Madimi+One&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" 
                 rel="stylesheet">
-                <!-- Importación de archivos css -->
+        <!-- Importación de archivos css -->
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
         <link rel="stylesheet" href="{% static 'css/base-media-xlg.css' %}">
         <link rel="stylesheet" href="{% static 'css/base-media-lg.css' %}">
         <link rel="stylesheet" href="{% static 'css/base-media-md.css' %}">
         <link rel="stylesheet" href="{% static 'css/base-media-sm.css' %}">
+        <!-- Importación de Maps -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     </head>
     <body>
 
@@ -56,6 +58,8 @@
         <script src="https://unpkg.com/htmx.org@2.0.4" 
                 integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" 
                 crossorigin="anonymous"></script>
+        <!-- Leaflet JS -->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
         
         {% block scripts %}
             {{ scripts }}
