@@ -16,3 +16,5 @@ class Carrito(models.Model):
         verbose_name = 'carrito'
         db_table = 'carrito_compras'
     
+    def __str__(self):
+        return f"Carrito de {self.usuario.username}"

@@ -1,0 +1,50 @@
+{% extends "base/base.html" %}
+{% block title %} Carrito {% endblock %}
+
+{% block main_content %}
+    <table>
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Precio unitario</th>
+                <th>Precio total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto_carrito in productos_carrito %}
+            <tr>
+                <td>{{ producto_carrito.producto.nombre }}</td>
+                <td>{{ producto_carrito.producto.descripcion }}</td>
+                <td>
+                    <form method="post"
+                        action="{% url 'carritocompras:actualizar-producto' producto=producto_carrito.id %}">
+                        {% csrf_token %}
+                        <input 
+                            type="number" 
+                            name="cantidad"
+                            value="{{ producto_carrito.cantidad }}" 
+                            class="cantidad-input"
+                        />
+                    </form>
+                </td>
+                <td>{{ producto_carrito.producto.precio }}</td>
+                <td>{{ producto_carrito.precio_total }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".cantidad-input").forEach(input => {
+            input.addEventListener("change", function () {
+                this.closest("form").submit(); 
+            });
+        });
+    });
+</script>
+{% endblock %}

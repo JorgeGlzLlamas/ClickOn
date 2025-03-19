@@ -51,3 +51,31 @@ class ProductoAddCarritoView(View):
 
         next_url = request.META.get('HTTP_REFERER', '/')
         return redirect(next_url)
+    
+
+class ProductoUpdateCarritoView(View): 
+
+    def dispatch(self, request, *args, **kwargs):
+        # Obtener el id del producto de la URL
+        producto_carrito_id = kwargs.get('producto')
+        
+        # Verificar que el producto existe en el carrito
+        self.producto_carrito = get_object_or_404(ProductoCarrito, id=producto_carrito_id)
+
+        return super().dispatch(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        cantidad = request.POST.get("cantidad")
+
+        if not cantidad or not cantidad.isdigit() or int(cantidad) <= 0:
+            return JsonResponse({'mensaje': 'Cantidad inválida. Debe ser un número mayor a 0.'}, status=400)
+
+        cantidad = int(cantidad)
+
+        self.producto_carrito.precio_total = self.producto_carrito.producto.precio * cantidad
+        self.producto_carrito.cantidad = cantidad
+        self.producto_carrito.save() 
+
+        next_url = request.META.get('HTTP_REFERER', '/')
+        return redirect(next_url)
+        
