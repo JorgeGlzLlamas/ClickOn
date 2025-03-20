@@ -1,7 +1,6 @@
 {% for producto, form in productos_con_form %}
     <tr>
-        <form id="form-{{ producto.id }}" method="post" action="{% url 'carritocompras:actualizar-producto' producto=producto.id %}">
-            {% csrf_token %}
+        
             <td>
                 <div class="d-flex">
                     <img src="{{ producto.producto.imagen.url }}" class="img-producto-carrito">
@@ -12,12 +11,24 @@
                 </div>             
             </td>
             <td>
-                {{ form.cantidad}}
+                <form id="form-{{ producto.id }}" method="post" 
+                    action="{% url 'carritocompras:actualizar-producto' producto=producto.id %}">
+                    {% csrf_token %}
+                        {{ form.cantidad}}
+                </form>
             </td>
             <td>{{ producto.producto.precio }}</td>
             <td>{{ producto.precio_total }}</td>
-            <td></td>
-        </form>
+            <td>
+                <form method="post" action="{% url 'carritocompras:eliminar-producto' producto=producto.id %}" 
+                    style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-trash3-fill"></i>
+                    </button>
+                </form>                
+            </td>
+        
     </tr>
 {% endfor %}
 

@@ -1677,6 +1677,20 @@ background: #FFFFFF;
     margin: 100px auto;
 }
 
+.container-carrito-items .carrito-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.container-carrito-items .carrito-container h2{
+    font-family: var(--madimi-one);
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--primary-green);
+}
 .img-producto-carrito{
     width: 70px;
     height: 70px;

@@ -12,20 +12,29 @@
         </div>
     {% endif %}
     <div class="container-carrito-items">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Precio unitario</th>
-                    <th>Precio total</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% include 'includes/carrito_item.html' %}
-            </tbody>
-        </table>
+        <div class="carrito-container">
+            <h2>Carrito de compras</h2>
+            <form method="post" action="{% url 'carritocompras:vaciar-carrito' %}" style="display: inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Vaciar carrito</button>
+            </form>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Precio unitario</th>
+                        <th>Precio total</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% include 'includes/carrito_item.html' %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {% endblock %}
 

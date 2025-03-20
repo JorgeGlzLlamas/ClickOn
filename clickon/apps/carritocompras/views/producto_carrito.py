@@ -1,4 +1,4 @@
-from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic import UpdateView
 from django.views import View
 from django.http import JsonResponse, HttpResponseRedirect
 from django.contrib import messages
@@ -7,7 +7,7 @@ from productos.models.productos import Producto
 from carritocompras.models.producto_carrito import ProductoCarrito
 from carritocompras.models.carrito import Carrito
 from carritocompras.forms.producto_carrito import ProductoCarritoForm
-from usuarios.models.usuario import Usuario
+
 
 class ProductoAddCarritoView(View):
     
@@ -83,4 +83,11 @@ class ProductoUpdateCarritoView(UpdateView):
     def get_success_url(self):
         # Redirigir a la página anterior o página de inicio
         return self.request.META.get('HTTP_REFERER', '/')
-        
+    
+
+class ProductoDeleteCarritoView(View):
+    def post(self, request, *args, **kwargs):
+        producto_carrito_id = self.kwargs.get('producto')
+        producto = get_object_or_404(ProductoCarrito, id=producto_carrito_id)
+        producto.delete()
+        return redirect(request.META.get('HTTP_REFERER', '/'))
