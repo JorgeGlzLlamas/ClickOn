@@ -19,8 +19,8 @@
                 <button type="submit" class="btn btn-danger">Vaciar carrito</button>
             </form>
         </div>
-        <div class="table-responsive">
-            <table class="table">
+        <div class="table-responsive text-center"> 
+            <table class="table table-card text-center align-middle">
                 <thead>
                     <tr>
                         <th>Producto</th>
@@ -35,10 +35,18 @@
                 </tbody>
             </table>
         </div>
+        <p>Costo de Envío: <span id="costo-envio-mostrar">$0.00 MXN</span></p>
     </div>
 {% endblock %}
 
 {% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const costoEnvio = localStorage.getItem('costoEnvio') || "0.00";
+        console.log(costoEnvio);
+        document.getElementById('costo-envio-mostrar').textContent = `$${costoEnvio} MXN`;
+    });
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         // Selecciona todos los inputs cuyo id inicia con "cantidad-"

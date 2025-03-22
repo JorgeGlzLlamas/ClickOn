@@ -24,8 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Asegurar que el contenedor del mapa sea visible
     mapaContainer.style.display = 'block';
-    mapaContainer.style.height = '610px';
-    mapaContainer.style.position = 'relative';
+    mapaContainer.style.height = '610px'; 
     
     // Inicializar el mapa
     let mapa = L.map('mapa-estatico', {
@@ -156,6 +155,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 return div;
             };
             infoControl.addTo(mapa);
+
+            // Función para actualizar el costo de envío en la página
+            localStorage.setItem('costoEnvio', costoEnvio);
+            console.log("Costo de envío:", costoEnvio);
             
         } catch (error) {
             console.error("Error al dibujar ruta:", error);
@@ -181,6 +184,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
+
+
     // Solicitar ubicación del usuario cuando cargue la página
     let permisoDenegado = false;
     
