@@ -163,3 +163,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'juniorrenteria91@gmail.com'  # Replace with your email
 EMAIL_HOST_PASSWORD = 'lmnv ucok hiux rfeg'  # Replace with your email password
+
+# Configuración de Stripe
+STRIPE_PUBLIC_KEY = 'pk_test_51R5kCpQ473LRnYe1VycPFIyHY9tpte6YK5WOZ0bO1ual8IKqFxzMT70IAGCQcEGpXAJKmt1Hh2fSKbXE6qRiO8Ps00RULC8j5h'
+STRIPE_SECRET_KEY = 'sk_test_51R5kCpQ473LRnYe1CHXkcM0Utl3FunJsIYBDhbZzKN6XWiBFAUrRqTu0bettCq6PJ6VyI4af5SCkysnx8C5RzuCV00pBg5cRbL'

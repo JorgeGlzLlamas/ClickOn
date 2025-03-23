@@ -1,0 +1,80 @@
+{% extends "base/base.html" %}
+
+{% block title %} Detalles de la compra {% endblock %}
+
+{% block main_content %}
+<div class="container-carrito-items">
+    <div class="row row-cards d-flex justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-title">
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" 
+                            class="nav-breadcrumb mt-2 p-3" id="breadcrumb">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="{% url 'carritocompras:carrito' %}">Carrito</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Detalles de compra</li>
+                            <li class="breadcrumb-item disabled">Dirección de envío</li>
+                            <li class="breadcrumb-item disabled">Método de pago</li>
+                            <li class="breadcrumb-item disabled">Finalizar compra</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="card-body">
+                    <div class="row row-cards mb-3 align-items-center">
+                        <div class="col-lg-6 text-center fw-bold"> Producto </div>
+                        <div class="col-lg-2 text-center fw-bold"> Cantidad </div>
+                        <div class="col-lg-2 text-center fw-bold"> Precio unitario </div>
+                        <div class="col-lg-2 text-center fw-bold"> Precio total </div>
+                    </div>
+                    {% for producto in productos_carrito %}
+                    <div class="row row-cards mb-3 align-items-center">
+                        <div class="col-lg-6">
+                            <div class="d-flex align-items-center">
+                                <img src="{{ producto.producto.imagen.url }}" class="img-producto-carrito">
+                                <div class="descripcion-producto-carrito ms-2">
+                                    <h4>{{ producto.producto.nombre }}</h4>
+                                    <p>{{ producto.producto.descripcion }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 text-center"> {{ producto.cantidad }}x </div>
+                        <div class="col-lg-2 text-center"> {{ producto.producto.precio }} </div>
+                        <div class="col-lg-2 text-center"> {{ producto.precio_total }} </div>
+                    </div>
+                    {% endfor %}
+                    <div class="total-pagar mt-2">
+                        Total a pagar <span id="total-pagar" >$0.00 MXN</span>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="text-end mt-2">
+                        <a href="{% url 'carritocompras:carrito' %}" class="btn btn-secondary">
+                            Regresar
+                        </a>
+                        <a href="{% url 'carritocompras:detalles-ubicacion' pk=usuario.id %}" class="btn btn-primary-green">
+                            Continuar
+                        </a>
+                    </div>
+                </div>            
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const costoEnvio = localStorage.getItem('costoEnvio') || "0.00";
+
+        // Obtener elementos del DOM
+        const totalCarritoElemento = document.querySelector(".precio");
+    
+        // Obtener valores y convertirlos a número
+        let totalCarrito = parseFloat("{{ carrito.total_carrito }}"); 
+        // Calcular el total general
+        let totalFinal = totalCarrito + parseFloat(costoEnvio);
+        document.getElementById('total-pagar').textContent = `$${totalFinal} MXN`;
+    });
+</script>
+{% endblock %}

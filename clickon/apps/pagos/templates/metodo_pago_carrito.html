@@ -1,0 +1,91 @@
+{% extends "base/base.html" %}
+
+{% block title %} Método de pago {% endblock %}
+
+{% block main_content %}
+{% if messages %}
+        <div>
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+<div class="container-carrito-items">
+    <div class="row row-cards d-flex justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-title">
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" 
+                            class="nav-breadcrumb mt-2 p-3" id="breadcrumb">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="{% url 'carritocompras:carrito' %}">Carrito</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'carritocompras:detalles-carrito' %}">Detalles de compra</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'carritocompras:detalles-carrito' %}">Dirección de envío</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Método de pago</li>
+                            <li class="breadcrumb-item disabled">Finalizar compra</li>
+                        </ol>
+                    </nav>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="card-body">
+                        <div class="row row-cards mb-3 d-flex justify-content-center">
+                            <div class="col-lg-5"> 
+                                {{ form.tipo_tarjeta }}
+                            </div>
+                            <div class="col-lg-6 text-end fw-bold">
+                                <div class="row mb-3">
+                                    <div class="col-lg-12">
+                                        <label class="form-control" readonly> {{ usuario.get_full_name }} </label>
+                                    </div>
+                                </div> 
+                                <div class="row mb-3">
+                                    <div class="col-lg-12">
+                                        {{ form.ultimos_cuatro }}
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-lg-6">
+                                        {{ form.exp_mes }}
+                                    </div>
+                                    <div class="col-lg-6">
+                                        {{ form.exp_mes }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="text-end mt-2">
+                            <a href="{% url 'carritocompras:detalles-carrito' %}" class="btn btn-secondary">
+                                Regresar
+                            </a>
+                            <button type="submit" class="btn btn-primary-green">
+                                Realizar pago <span id="total-pagar" >$0.00 MXN</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const costoEnvio = localStorage.getItem('costoEnvio') || "0.00";
+        // Obtener elementos del DOM
+        const totalCarritoElemento = document.querySelector(".precio");
+
+        // Obtener valores y convertirlos a número
+        let totalCarrito = parseFloat("{{ carrito.total_carrito }}"); 
+        // Calcular el total general
+        let totalFinal = totalCarrito + parseFloat(costoEnvio);
+        document.getElementById('total-pagar').textContent = `$${totalFinal} MXN`;
+    });
+</script>
+{% endblock%}

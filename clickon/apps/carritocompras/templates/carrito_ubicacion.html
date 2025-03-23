@@ -1,0 +1,51 @@
+{% extends "base/base.html" %}
+
+{% block title %} Dirección de envío {% endblock %}
+
+{% block main_content %}
+<div class="container-carrito-items">
+    <div class="row row-cards d-flex justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-title">
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" 
+                            class="nav-breadcrumb mt-2 p-3" id="breadcrumb">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="{% url 'carritocompras:carrito' %}">Carrito</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'carritocompras:detalles-carrito' %}">Detalles de compra</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Dirección de envío</li>
+                            <li class="breadcrumb-item disabled">Método de pago</li>
+                            <li class="breadcrumb-item disabled">Finalizar compra</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="card-body">
+                    <div class="row row-cards mb-3 d-flex justify-content-center">
+                        <div class="col-lg-5"> 
+                            <div class="fw-bold"> Ubicación </div>
+                            <div> {{usuario.get_domicilio }} </div>
+                            <div> {{usuario.entidad_federativa }}, {{ usuario.municipio}} </div>
+                            <div> {{usuario.cp }} </div>
+                        </div>
+                        <div class="col-lg-6 text-end fw-bold"> 
+                            <a href="#" class="btn btn-primary-green">
+                                Actualizar ubicación
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="text-end mt-2">
+                        <a href="{% url 'carritocompras:detalles-carrito' %}" class="btn btn-secondary">
+                            Regresar
+                        </a>
+                        <a href="{% url 'pagos:pagar-carrito' %}" class="btn btn-primary-green">
+                            Continuar
+                        </a>
+                    </div>
+                </div>            
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

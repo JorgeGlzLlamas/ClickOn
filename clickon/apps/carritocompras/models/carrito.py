@@ -11,6 +11,8 @@ class Carrito(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Usuario')
     
+    total_carrito = models.DecimalField(max_digits=6, decimal_places=2, verbose_name='Total del carrito', default=0.00)
+    
     class Meta:
         app_label = 'carritocompras'  
         verbose_name = 'carrito'

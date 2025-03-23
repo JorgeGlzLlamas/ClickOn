@@ -1,6 +1,15 @@
 {% extends "base/base.html" %}
 {% block title %} Carrito {% endblock %}
 
+{% block breadcrumbs %}
+<nav class="nav-breadcrumb breadcrumb-busqueda-page">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'core:inicio' %}">Inicio</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Carrito de compras</li>
+    </ol>
+</nav>
+{% endblock %}
+
 {% block main_content %}
     {% if messages %}
         <div>
@@ -16,12 +25,15 @@
             <h2>Carrito de compras</h2>
             <form method="post" action="{% url 'carritocompras:vaciar-carrito' %}" style="display: inline;">
                 {% csrf_token %}
-                <button type="submit" class="btn btn-danger">Vaciar carrito</button>
+                <button type="submit" class="btn btn-danger">
+                    <i class="bi bi-trash3-fill me-2"></i>
+                    Vaciar carrito
+                </button>
             </form>
         </div>
         <div class="table-responsive text-center"> 
-            <table class="table table-card text-center align-middle">
-                <thead>
+            <table class="table table-bordered table-light text-center align-middle">
+                <thead class="table-success">
                     <tr>
                         <th>Producto</th>
                         <th>Cantidad</th>
@@ -35,7 +47,19 @@
                 </tbody>
             </table>
         </div>
-        <p>Costo de Envío: <span id="costo-envio-mostrar">$0.00 MXN</span></p>
+        <div class="text-end carrito-pago">
+            <div class="info-carrito d-flex justify-content-end align-items-center">
+                <div class="descripcion">Total productos</div>
+                <div class="precio">${{ carrito.total_carrito }} MXN</div>
+            </div>
+            <div class="info-carrito d-flex justify-content-end align-items-center mt-2">
+                <div class="descripcion">Costo de envío</div>
+                <div class="precio" id="costo-envio-mostrar" >$0.00 MXN</div>
+            </div>
+            <a href="{% url 'carritocompras:detalles-carrito' %}" class="continuar-pago mt-2">
+                Total a pagar <span id="total-pagar">$0.00 MXN</span>
+            </a>
+        </div>
     </div>
 {% endblock %}
 
@@ -43,10 +67,19 @@
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const costoEnvio = localStorage.getItem('costoEnvio') || "0.00";
-        console.log(costoEnvio);
         document.getElementById('costo-envio-mostrar').textContent = `$${costoEnvio} MXN`;
+
+        // Obtener elementos del DOM
+        const totalCarritoElemento = document.querySelector(".precio");
+    
+        // Obtener valores y convertirlos a número
+        let totalCarrito = parseFloat("{{ carrito.total_carrito }}"); 
+        // Calcular el total general
+        let totalFinal = totalCarrito + parseFloat(costoEnvio);
+        document.getElementById('total-pagar').textContent = `$${totalFinal} MXN`;
     });
 </script>
+    
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         // Selecciona todos los inputs cuyo id inicia con "cantidad-"

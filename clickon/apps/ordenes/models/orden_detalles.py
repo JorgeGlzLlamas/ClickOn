@@ -21,7 +21,7 @@ class ProductosOrden(models.Model):
 
     # Detalles del producto de la orden
     cantidad = models.IntegerField(verbose_name='Cantidad de productos de la orden')
-    precio_total = models.FloatField(max_length=10, verbose_name='Precio total del producto', blank=True)
+    precio_total = models.DecimalField(max_digits=6, decimal_places=2, verbose_name='Total producto orden', blank=True, null=True)
     
     class Meta:
         app_label = 'ordenes'  

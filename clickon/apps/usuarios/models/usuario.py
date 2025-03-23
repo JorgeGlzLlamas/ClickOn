@@ -44,3 +44,8 @@ class Usuario(AbstractUser):
     
     def __str__(self):
         return f"{self.first_name} {self.last_name} ({self.username})"
+    
+    def get_domicilio(self):
+        return f"{self.calle} {self.numero_exterior or ''} {self.numero_interior or ''}"
+    
+    

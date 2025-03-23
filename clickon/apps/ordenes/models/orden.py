@@ -11,8 +11,10 @@ class Orden(models.Model):
         on_delete=models.CASCADE,
         verbose_name='Usuario')
     
-    total_orden = models.FloatField(max_length=10, verbose_name='Precio total de la orden')
-    
+    total_orden = models.DecimalField(max_digits=8, decimal_places=2, verbose_name='Total de la orden', blank=True, null=True)
+    total_carrito = models.DecimalField(max_digits=8, decimal_places=2, verbose_name='Total del carrito', blank=True, null=True)
+    costo_envio = models.DecimalField(max_digits=6, decimal_places=2, verbose_name='Costo de envío', blank=True, null=True)
+
     class Meta:
         app_label = 'ordenes'  
         verbose_name = 'orden'
