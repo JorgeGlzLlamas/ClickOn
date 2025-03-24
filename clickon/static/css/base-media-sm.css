@@ -1,6 +1,0 @@
-@media (max-width: 480px) {
-    .container-restaurants {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-  }
