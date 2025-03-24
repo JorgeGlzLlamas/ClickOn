@@ -1,6 +1,6 @@
 {% extends "base/base.html" %}
 
-{% block title %} Detalles de la compra {% endblock %}
+{% block title %} Detalles orden {% endblock %}
 
 {% block main_content %}
 <div class="container-carrito-items">
@@ -12,21 +12,28 @@
                             class="nav-breadcrumb mt-2 p-3" id="breadcrumb">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="{% url 'carritocompras:carrito' %}">Carrito</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Detalles de compra</li>
-                            <li class="breadcrumb-item disabled">Dirección de envío</li>
-                            <li class="breadcrumb-item disabled">Método de pago</li>
-                            <li class="breadcrumb-item disabled">Finalizar compra</li>
+                            <li class="breadcrumb-item"><a href="{% url 'carritocompras:detalles-carrito' %}">Detalles de compra</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'carritocompras:detalles-ubicacion' pk=usuario.id %}">Dirección de envío</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'pagos:pagar-carrito' %}">Método de pago</a></li>
+                            <li class="breadcrumb-item active">Finalizar compra</li>
                         </ol>
                     </nav>
                 </div>
                 <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between mb-3 orden-header">
+                        <h3 class="orden-title">Orden No.{{ orden.id }}</h3>
+                        <div class="text-end">
+                            <div class="fw-bold dark-green"> {{ orden.fecha_creacion}} </div>
+                            <div class="fw-bold dark-green"> {{ usuario.get_domicilio}} </div>
+                        </div>
+                    </div>
                     <div class="row row-cards mb-3 align-items-center">
                         <div class="col-lg-6 text-center fw-bold"> Producto </div>
                         <div class="col-lg-2 text-center fw-bold"> Cantidad </div>
                         <div class="col-lg-2 text-center fw-bold"> Precio unitario </div>
                         <div class="col-lg-2 text-center fw-bold"> Precio total </div>
                     </div>
-                    {% for producto in productos_carrito %}
+                    {% for producto in productos_orden %}
                     <div class="row row-cards mb-3 align-items-center">
                         <div class="col-lg-6">
                             <div class="d-flex align-items-center">
@@ -42,17 +49,19 @@
                         <div class="col-lg-2 text-center"> {{ producto.precio_total }} </div>
                     </div>
                     {% endfor %}
-                    <div class="total-pagar mt-2">
-                        ${{ carrito.total_carrito }} MXN
+                    <div class="d-flex align-items-center justify-content-between mt-4">
+                        <div class="btn-primary-green">
+                           {{ orden.get_estado_orden_display }} 
+                        </div>
+                        <div class="total-pagar">
+                            Total del pedido ${{ orden.total_carrito }} MXN
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">
                     <div class="text-end mt-2">
-                        <a href="{% url 'carritocompras:carrito' %}" class="btn btn-secondary">
-                            Regresar
-                        </a>
-                        <a href="{% url 'carritocompras:detalles-ubicacion' pk=usuario.id %}" class="btn btn-primary-green">
-                            Continuar
+                        <a href="{% url 'core:inicio' %}" class="btn btn-primary-green">
+                            Finalizar
                         </a>
                     </div>
                 </div>            

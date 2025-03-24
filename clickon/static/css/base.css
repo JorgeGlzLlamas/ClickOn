@@ -865,9 +865,6 @@ _#navbar .dropdown-menu {
   overflow-x: auto;
 }
 
-
-
-
 .footer-bottom {
   background-color: var(--light-green);
   padding: 15px 0;
@@ -1794,4 +1791,49 @@ background: #FFFFFF;
 .btn-primary-green:hover{
     background-color: var(--white);
     color: var(--primary-green);
+}
+
+/* Método de pago */
+.metodo-pago-card{
+    padding: 10px 30px;
+    border-radius: 10px;
+    font-size: 18px;
+    border: 2px solid var(--light-gray);
+}
+.metodo-card-active{
+    border: 2px solid var(--primary-green);
+}
+.metodo-pago-card .metodo-pago-ultimos-cuatro{
+    margin-left: 20px;
+    font-weight: 500;
+}
+
+.metodo-pago-card .metodo-pago-predeterminado{
+    margin-left: 20px;
+    padding: 5px 10px;
+    background-color: var(--primary-green);
+    color: var(--white);
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.metodo-pago-card .metodo-pago-caducidad{
+    margin-right: 0px;
+    margin-left: auto;
+}
+
+.metodo-pago-card .nuevo-metodo{
+    margin-left: 15px;
+    font-weight: 500;
+}
+
+/* Orden header */
+.orden-header .orden-title{
+    font-family: var(--madimi-one);
+    font-size: 36px;
+    color: var(--dark-green);
+}
+
+.orden-header .dark-green{
+    color: var(--dark-green);
 }

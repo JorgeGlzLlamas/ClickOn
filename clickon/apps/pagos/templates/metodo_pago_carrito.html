@@ -1,73 +1,87 @@
 {% extends "base/base.html" %}
+{% load static %}
 
-{% block title %} Método de pago {% endblock %}
+{% block title %}Método de pago{% endblock %}
 
 {% block main_content %}
-{% if messages %}
-        <div>
-            {% for message in messages %}
-                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-                    {{ message }}
-                </div>
-            {% endfor %}
-        </div>
-    {% endif %}
 <div class="container-carrito-items">
     <div class="row row-cards d-flex justify-content-center">
         <div class="col-lg-8">
             <div class="card">
                 <div class="card-title">
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" 
-                            class="nav-breadcrumb mt-2 p-3" id="breadcrumb">
+                         class="nav-breadcrumb mt-2 p-3" id="breadcrumb">
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="{% url 'carritocompras:carrito' %}">Carrito</a></li>
                             <li class="breadcrumb-item"><a href="{% url 'carritocompras:detalles-carrito' %}">Detalles de compra</a></li>
-                            <li class="breadcrumb-item"><a href="{% url 'carritocompras:detalles-carrito' %}">Dirección de envío</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Método de pago</li>
+                            <li class="breadcrumb-item"><a href="{% url 'carritocompras:detalles-ubicacion' pk=usuario.id %}">Dirección de envío</a></li>
+                            <li class="breadcrumb-item active">Método de pago</li>
                             <li class="breadcrumb-item disabled">Finalizar compra</li>
                         </ol>
                     </nav>
                 </div>
-                <form method="post">
-                    {% csrf_token %}
-                    <div class="card-body">
-                        <div class="row row-cards mb-3 d-flex justify-content-center">
-                            <div class="col-lg-5"> 
-                                {{ form.tipo_tarjeta }}
+                <div class="card-body">
+                    <!-- Formulario para seleccionar el método de pago -->
+                    <form id="metodos-form">
+                        {% for metodo in metodos_pago %}
+                            <div class="metodo-pago-card mb-2 {% if metodo.is_default %}metodo-card-active{% endif %}">
+                                <input type="radio" name="metodo_pago_select" value="{{ metodo.stripe_payment_method_id }}" id="metodo{{ metodo.id }}"
+                                       {% if metodo.is_default %}checked{% endif %} style="display: none;">
+                                <label for="metodo{{ metodo.id }}" style="cursor: pointer;" class="w-100 d-flex align-items-center">
+                                    {% if metodo.tipo_tarjeta == '01' %}
+                                        <img src="{% static 'img/metodo_pago/visa.jpg' %}" alt="VISA" style="height: 30px;">
+                                    {% elif metodo.tipo_tarjeta == '02' %}
+                                        <img src="{% static 'img/metodo_pago/mastercard.webp' %}" alt="MASTERCARD" style="height: 30px;">
+                                    {% else %}
+                                        <img src="{% static 'img/metodo_pago/american_express.jpg' %}" alt="AMERICAN_EXPRESS" style="height: 30px;">
+                                    {% endif %}
+                                    <div class="metodo-pago-ultimos-cuatro"> .... {{ metodo.ultimos_cuatro }} </div>
+                                    {% if metodo.is_default %} <div class="metodo-pago-predeterminado"> Predeterminado </div> {% endif %}
+                                    <div class="metodo-pago-caducidad"> {{ metodo.exp_mes }} / {{ metodo.exp_year }} </div>
+                                </label>
                             </div>
-                            <div class="col-lg-6 text-end fw-bold">
-                                <div class="row mb-3">
-                                    <div class="col-lg-12">
-                                        <label class="form-control" readonly> {{ usuario.get_full_name }} </label>
-                                    </div>
-                                </div> 
-                                <div class="row mb-3">
-                                    <div class="col-lg-12">
-                                        {{ form.ultimos_cuatro }}
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-lg-6">
-                                        {{ form.exp_mes }}
-                                    </div>
-                                    <div class="col-lg-6">
-                                        {{ form.exp_mes }}
-                                    </div>
-                                </div>
+                        {% endfor %}
+                        <!-- Opción para agregar un nuevo método -->
+                        <div class="metodo-pago-card mb-3" id="metodo-card-nuevo">
+                            <input type="radio" name="metodo_pago_select" value="nuevo" id="metodo_nuevo" style="display: none;">
+                            <label for="metodo_nuevo" style="cursor: pointer;" class="w-100 d-flex align-items-center">
+                                <i class="bi bi-plus-square"></i> 
+                                <div class="nuevo-metodo"> Añadir método de pago </div>
+                            </label>
+                        </div>
+                    </form>
+                    
+                    <!-- Formulario de pago que se enviará al backend -->
+                    <form id="payment-form" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="metodo_pago" id="selected_metodo">
+                        <input type="hidden" name="setup_intent_id" id="setup_intent_id">
+                        <input type="hidden" name="guardar_metodo" id="guardar_metodo" value="false">
+                        
+                        <!-- Esta sección se mostrará solo para 'nuevo' -->
+                        <div id="payment-element-container" style="display: none;" class="mb-3">
+                            <div id="payment-element">
+                                <!-- Stripe Elements se inyectará aquí -->
+                            </div>
+                            <div class="form-check mt-2">
+                                <input class="form-check-input" type="checkbox" id="save-card-checkbox">
+                                <label class="form-check-label" for="save-card-checkbox">
+                                    Guardar esta tarjeta para futuros pagos
+                                </label>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                        <div class="text-end mt-2">
+                        
+                        <div class="text-end mt-3">
                             <a href="{% url 'carritocompras:detalles-carrito' %}" class="btn btn-secondary">
                                 Regresar
                             </a>
-                            <button type="submit" class="btn btn-primary-green">
-                                Realizar pago <span id="total-pagar" >$0.00 MXN</span>
+                            <button id="submit-button" type="submit" class="btn btn-primary-green">
+                                Pagar ${{ carrito.total_carrito }} MXN
                             </button>
                         </div>
-                    </div>
-                </form>
+                        <div id="error-message" class="mt-2 text-danger"></div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -75,17 +89,116 @@
 {% endblock %}
 
 {% block scripts %}
+<script src="https://js.stripe.com/v3/"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        const costoEnvio = localStorage.getItem('costoEnvio') || "0.00";
-        // Obtener elementos del DOM
-        const totalCarritoElemento = document.querySelector(".precio");
-
-        // Obtener valores y convertirlos a número
-        let totalCarrito = parseFloat("{{ carrito.total_carrito }}"); 
-        // Calcular el total general
-        let totalFinal = totalCarrito + parseFloat(costoEnvio);
-        document.getElementById('total-pagar').textContent = `$${totalFinal} MXN`;
+        const stripe = Stripe('{{ stripe_public_key }}');
+        let elements, paymentElement;
+        const setupClientSecret = '{{ setup_client_secret }}';
+        
+        // Manejo de la selección de métodos de pago
+        const radioButtons = document.querySelectorAll('input[name="metodo_pago_select"]');
+        const paymentForm = document.getElementById("payment-form");
+        const selectedMethodInput = document.getElementById("selected_metodo");
+        const paymentElementContainer = document.getElementById("payment-element-container");
+        const saveCardCheckbox = document.getElementById("save-card-checkbox");
+        const guardarMetodoInput = document.getElementById("guardar_metodo");
+        const setupIntentIdInput = document.getElementById("setup_intent_id");
+        const errorMessageDiv = document.getElementById("error-message");
+        const submitButton = document.getElementById("submit-button");
+        
+        // Inicializar elementos de Stripe solo cuando sea necesario
+        function initStripeElements() {
+            if (!setupClientSecret) {
+                errorMessageDiv.textContent = "Error: No se pudo inicializar el sistema de pago.";
+                return false;
+            }
+            
+            const options = {
+                clientSecret: setupClientSecret,
+                appearance: { theme: 'stripe' }
+            };
+            
+            elements = stripe.elements(options);
+            paymentElement = elements.create('payment');
+            paymentElement.mount('#payment-element');
+            return true;
+        }
+        
+        // Actualizar la selección visual y mostrar/ocultar elementos
+        function actualizarSeleccion() {
+            document.querySelectorAll('.metodo-pago-card').forEach(card => {
+                card.classList.remove('metodo-card-active');
+            });
+            
+            const radioSeleccionado = document.querySelector('input[name="metodo_pago_select"]:checked');
+            if (radioSeleccionado) {
+                radioSeleccionado.closest('.metodo-pago-card').classList.add('metodo-card-active');
+                selectedMethodInput.value = radioSeleccionado.value;
+                
+                if (radioSeleccionado.value === "nuevo") {
+                    paymentElementContainer.style.display = "block";
+                    if (!paymentElement && setupClientSecret) {
+                        initStripeElements();
+                    }
+                } else {
+                    paymentElementContainer.style.display = "none";
+                }
+            }
+        }
+        
+        // Escuchar cambios en los radio buttons
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', actualizarSeleccion);
+        });
+        
+        // Escuchar cambios en el checkbox para guardar tarjeta
+        saveCardCheckbox.addEventListener('change', function() {
+            guardarMetodoInput.value = this.checked ? "true" : "false";
+        });
+        
+        // Inicializar el estado
+        actualizarSeleccion();
+        
+        // Manejar el envío del formulario
+        paymentForm.addEventListener("submit", async function(event) {
+            event.preventDefault();
+            errorMessageDiv.textContent = "";
+            submitButton.disabled = true;
+            
+            const metodoSeleccionado = selectedMethodInput.value;
+            
+            try {
+                // Si es un método nuevo, primero confirmar el SetupIntent
+                if (metodoSeleccionado === "nuevo") {
+                    if (!elements) {
+                        throw new Error("El sistema de pago no se ha inicializado correctamente");
+                    }
+                    
+                    const result = await stripe.confirmSetup({
+                        elements,
+                        confirmParams: {
+                            return_url: window.location.href,
+                        },
+                        redirect: 'if_required',
+                    });
+                    
+                    if (result.error) {
+                        throw result.error;
+                    }
+                    
+                    // Guardar el ID del SetupIntent para el backend
+                    setupIntentIdInput.value = result.setupIntent.id;
+                }
+                
+                // Enviar el formulario al backend
+                paymentForm.submit();
+                
+            } catch (error) {
+                errorMessageDiv.textContent = error.message || "Ha ocurrido un error al procesar el pago";
+                submitButton.disabled = false;
+            }
+        });
     });
 </script>
-{% endblock%}
+{% endblock %}

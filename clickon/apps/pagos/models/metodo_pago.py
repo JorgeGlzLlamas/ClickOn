@@ -6,6 +6,7 @@ class TipoTarjeta(models.TextChoices):
     VISA = '01', 'VISA'
     MASTERCARD = '02', 'MASTERCARD'
     AMERICAN_EXPRESS = '03', 'AMERICAN EXPRESS'
+    OTRO = '04', 'OTRO'
 
 # Modelo Métodos de pago
 class MetodosPago(models.Model):

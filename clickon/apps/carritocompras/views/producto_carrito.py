@@ -44,10 +44,15 @@ class ProductoAddCarritoView(View):
         producto_carrito.precio_total = self.producto.precio * producto_carrito.cantidad
         producto_carrito.save()
 
-        # Inicializar el total del carrito en 0 y recalcular el total del carrito
+
+        # Inicializar el total del carrito en 0
         self.carrito.total_carrito = Decimal(0.00)
+
+        # Recalcular el total del carrito a partir de los productos del carrito
         for producto in self.carrito.productos_carritos.all():
+            print(f"Precio del producto: {producto.precio_total}") 
             self.carrito.total_carrito += producto.precio_total
+        self.carrito.total_carrito += Decimal('50.00')
         self.carrito.save()
 
         # Retornar un mensaje de éxito
@@ -87,12 +92,14 @@ class ProductoUpdateCarritoView(UpdateView):
         self.object.precio_total = self.object.producto.precio * cantidad
         self.object.save()
 
-        # Inicializamos el total del carrito en 0
+        # Inicializar el total del carrito en 0
         self.carrito.total_carrito = Decimal(0.00)
 
-        # Recalculamos el total del carrito a partir de los productos del carrito
+        # Recalcular el total del carrito a partir de los productos del carrito
         for producto in self.carrito.productos_carritos.all():
+            print(f"Precio del producto: {producto.precio_total}") 
             self.carrito.total_carrito += producto.precio_total
+        self.carrito.total_carrito += Decimal('50.00')
         self.carrito.save()
 
         return super().form_valid(form)
@@ -133,7 +140,9 @@ class ProductoDeleteCarritoView(View):
 
         # Recalcular el total del carrito a partir de los productos del carrito
         for producto in self.carrito.productos_carritos.all():
+            print(f"Precio del producto: {producto.precio_total}") 
             self.carrito.total_carrito += producto.precio_total
+        self.carrito.total_carrito += Decimal('50.00')
         self.carrito.save()
 
         # Retornar un mensaje de éxito
